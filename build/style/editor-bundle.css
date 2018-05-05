@@ -1,0 +1,213 @@
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+button {
+  padding: 0;
+  border: none;
+  color: inherit;
+  background-color: inherit;
+  outline: none;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+}
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-weight: lighter;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  overflow: hidden;
+  min-width: 1200px;
+}
+.global-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  background-color: #2A3541;
+}
+.global-top .left,
+.global-top .right {
+  display: flex;
+  align-items: center;
+}
+.global-top .logo {
+  display: flex;
+  align-items: flex-end;
+}
+.global-top .logo .logo-img {
+  width: 39px;
+  height: 37px;
+  background: url(/image/logo.png) center / 39px 37px;
+}
+.global-top .logo .logo-text {
+  margin-left: 10px;
+  color: #ffffff;
+  font-size: 23px;
+}
+.global-top .nav {
+  display: flex;
+  margin-left: 20px;
+}
+.global-top .nav li {
+  display: flex;
+  color: #ffffff;
+  font-size: 20px;
+}
+.global-top .nav li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 50px;
+  width: 60px;
+}
+.global-top .nav li a.active .cover {
+  opacity: 0.45;
+}
+.global-top .nav li .cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f9f9f9;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.global-top .nav li .cover:hover {
+  opacity: 0.45;
+}
+.global-top .tool-list {
+  display: flex;
+}
+.global-top .tool-list li {
+  font-size: 15px;
+  color: #ffffff;
+}
+.global-top .tool-list li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 45px;
+}
+.global-top .tool-list li a:hover {
+  text-shadow: 1px 1px 1px #62C3F3;
+}
+.global-top .user-module {
+  margin: 0 10px;
+}
+.global-top .user-module .user-profile {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #ffffff;
+  border-radius: 20px;
+}
+.editor-tool-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: #4A4A4A;
+  color: #ffffff;
+}
+.editor-tool-bar .left,
+.editor-tool-bar .right,
+.editor-tool-bar ul,
+.editor-tool-bar li {
+  display: flex;
+}
+.editor-tool-bar li {
+  margin-left: 15px;
+}
+.editor-tool-bar .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2px;
+  height: 30px;
+  color: #ffffff;
+  transition: all 0.5s;
+}
+.editor-tool-bar .btn:hover .icon {
+  animation: rotate 2s infinite;
+}
+@keyframes rotate {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+.editor-tool-bar .btn .icon {
+  margin-right: 5px;
+  font-size: 13px;
+}
+.editor-tool-bar .btn .text {
+  font-size: 12px;
+}
+.editor-tool-bar .setting-list {
+  padding-right: 15px;
+  border-right: 1px solid #938D8D;
+}
+.editor-tool-bar .other-tool-list {
+  margin-right: 15px;
+}
+.editor-tool-bar .page-list {
+  border-left: 1px solid #938D8D;
+  margin-right: 5px;
+}
+.editor-tool-bar .publish {
+  background-color: #66CACA;
+  border-radius: 3px;
+  padding: 2px 15px;
+}
+.editor-tool-bar .publish .icon {
+  margin-right: 5px;
+  font-size: 13px;
+}
+.editor-tool-bar .publish .text {
+  font-size: 13px;
+}
+.editor-tool-bar .publish:hover {
+  background-color: #5FBAB9;
+  color: #ffffff;
+}
+.editor .new {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 900px;
+  height: 200px;
+  margin: 30px auto;
+  border: 3px dashed #66CACA;
+  border-radius: 5px;
+  font-size: 30px;
+  color: #66CACA;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.editor .new:hover {
+  background-color: #66CACA;
+  color: #ffffff;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZS9lZGl0b3ItYnVuZGxlLmNzcyIsInNvdXJjZVJvb3QiOiIifQ==*/
