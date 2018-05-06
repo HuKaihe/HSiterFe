@@ -55,7 +55,7 @@ body {
 .global-top .logo .logo-img {
   width: 39px;
   height: 37px;
-  background: url(/image/logo.png) center / 39px 37px;
+  background: url(/images/logo.png) center / 39px 37px;
 }
 .global-top .logo .logo-text {
   margin-left: 10px;
@@ -210,4 +210,4 @@ body {
   color: #ffffff;
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZS9lZGl0b3ItYnVuZGxlLmNzcyIsInNvdXJjZVJvb3QiOiIifQ==*/
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZXMvZWRpdG9yLWJ1bmRsZS5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/

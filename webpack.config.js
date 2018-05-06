@@ -1,14 +1,17 @@
 // const webpack = require('webpack');
 const path = require('path');
 
+// Plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackTemplate = require('html-webpack-template');
-
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-// const CleanWebpackPlugin = require('clean-webpack-plugin');
+// 环境变量
+const { onServer } = process.env;
 
-const editorStyle = new ExtractTextPlugin({ filename: 'style/[name]-bundle.css', publicPath: '/' });
+
+const ExtractLessPlugin = new ExtractTextPlugin({ filename: 'styles/[name]-bundle.css', publicPath: '/' });
 
 const HTMLTemplate = {
     inject: false,
@@ -24,6 +27,7 @@ const HTMLTemplate = {
     ],
 };
 
+
 module.exports = {
 
     entry: {
@@ -33,7 +37,7 @@ module.exports = {
     },
 
     output: {
-        filename: 'javascript/[name]-bundle.js',
+        filename: 'javascripts/[name]-bundle.js',
         path: path.resolve('./build/'),
         publicPath: '/',
     },
@@ -53,7 +57,7 @@ module.exports = {
             },
             {
                 test: /\.less$/i,
-                use: editorStyle.extract([
+                use: ExtractLessPlugin.extract([
                     'css-loader',
                     'less-loader',
                 ]),
@@ -67,7 +71,7 @@ module.exports = {
                             context: 'src',
                             output: '/build',
                             publicPath: '/',
-                            name: 'image/[name].[ext]',
+                            name: 'images/[name].[ext]',
                         },
                     },
                     {
@@ -82,14 +86,14 @@ module.exports = {
     },
 
     plugins: [
-        editorStyle,
+        ExtractLessPlugin,
         new HtmlWebpackPlugin({
             title: 'HSiter editor',
             filename: 'editor.html',
             chunks: ['editor'],
             ...HTMLTemplate,
         }),
-        // new CleanWebpackPlugin([path.join(__dirname, 'build')]),
+        ...(onServer ? [] : [new CleanWebpackPlugin([path.join(__dirname, 'build')])]),
     ],
 
     resolve: {

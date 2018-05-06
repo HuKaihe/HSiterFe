@@ -4,7 +4,7 @@
   "description": "Front end of HSiter",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open",
+    "start": "onServer=true webpack-dev-server --open",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
