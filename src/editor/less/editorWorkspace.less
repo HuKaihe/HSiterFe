@@ -1,0 +1,102 @@
+.editor {
+    display: flex;
+    flex-direction: column;
+    min-width: 1300px;
+    width: 95%;
+    /* overflow: auto; */
+    margin: 0 auto;
+    padding:3px 3px 50px 3px;
+    background-color: @white;
+    .new {
+        .center;
+        width: 900px;
+        height: 200px;
+        margin: 50px auto;
+        border: 3px dashed @blue_main;
+        border-radius: 5px;
+        font-size: 30px;
+        color: @blue_main;
+        cursor: pointer;
+        transition: all 0.25s;
+        &:hover {
+            background-color: @blue_main;
+            color: @white;
+        }
+    }
+    .single-component-container {
+        position: relative;
+        cursor: pointer;
+        margin-top: 10px;
+        min-height: 50px;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .component-mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            .component-editor-bar {
+                position: absolute;
+                right: 5px;
+                top: 15px;
+                width: 30px;
+                border-radius: 5px;
+                background-color: @white;
+                li {
+                    .center;
+                    height: 30px;
+                    font-size: 15px;
+                    color: @gray_6;
+                    button {
+                        width: 100%;
+                    }
+                    .disabled {
+                        color: @gray_2;
+                    }
+                    &:hover {
+                        color: @blue_hover;
+                    }
+                }
+                &.transverse {
+                    display: flex;
+                    top: 13px;
+                    min-width: 120px;
+                    li {
+                        width: 30px;
+                    }
+                }
+            }
+            .add-component {
+                position: absolute;
+                z-index: 100;
+                right: -9px;
+                .center;
+                width: 22px;
+                height: 22px;
+                border-radius: 11px;
+                color: @white;
+                background-color: @black;
+                opacity: 0.7;
+                &.before {
+                    top: -11px;
+                }
+                &.after {
+                    bottom: -11px;
+                }
+                &:hover {
+                    opacity: 1;
+                    background-color: @blue_main;
+                }
+            }
+        }
+        .component-mask:hover {
+            opacity: 1;
+        }
+    }
+}

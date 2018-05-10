@@ -1,0 +1,64 @@
+// 颜色
+@white: #ffffff;
+@dark: #2A3541;
+@black: #4A4A4A;
+@gray_1: #f9f9f9;
+@gray_2: #F2F3F7;
+@gray_6: #938D8D;
+@blue_hover: #62C3F3;
+@blue_main: #66CACA;
+@blue_main_hover: #5FBAB9;
+@red: #FF6A59;
+// CSS属性书写规范顺序：
+//  0. 性质属性(display, float, overflow, box-sizing等)
+//  1. 位置属性(position, top, right, z-index)
+//  2. 盒子属性(width, height, padding, margin, border)
+//  3. 文字(font, line-height, letter-spacing, color, text-align等)
+//  4. 其它(background, vertical-align等)
+//  5. 动画及过渡(animation, transition等)
+// ** Reset **
+ul,
+li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+button {
+    padding: 0;
+    border: none;
+    color: inherit;
+    background-color: inherit;
+    outline: none;
+    cursor: pointer;
+}
+
+.remove:hover{
+    color: @red;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: @gray_1
+}
+
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-weight: lighter;
+}
+
+// ** minx **
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

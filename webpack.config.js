@@ -18,6 +18,12 @@ const HTMLTemplate = {
     template: HtmlWebpackTemplate,
     appMountId: 'app',
     links: [
+        {
+            href: 'http://fontawesome.hukaihe.com/public/image/logo_gold.png',
+            rel: 'icon',
+            sizes: '32x32',
+            type: 'image/png',
+        },
         'https://cdn.bootcss.com/animate.css/3.5.2/animate.css',
         'https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css',
     ],
@@ -60,6 +66,12 @@ module.exports = {
                 use: ExtractLessPlugin.extract([
                     'css-loader',
                     'less-loader',
+                ]),
+            },
+            {
+                test: /\.css$/i,
+                use: ExtractLessPlugin.extract([
+                    'css-loader',
                 ]),
             },
             {

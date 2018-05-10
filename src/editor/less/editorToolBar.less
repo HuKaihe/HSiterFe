@@ -1,0 +1,70 @@
+.editor-tool-bar-affix .ant-affix{
+    z-index: 105;
+}
+.editor-tool-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    background-color: @black;
+    color: @white;
+    .left,
+    .right,
+    ul,
+    li {
+        display: flex;
+    }
+    li {
+        margin-left: 15px;
+    }
+    .btn {
+        .center;
+        padding: 0 2px;
+        height: 30px;
+        color: @white;
+        transition: all 0.5s;
+        &:hover .icon{
+            animation: rotate 2s infinite;
+            @keyframes rotate {
+                from {
+                    transform: rotateY(0deg)
+                } to {
+                    transform: rotateY(360deg)
+                }
+            }
+        }
+        .icon {
+            margin-right: 5px;
+            font-size: 13px;
+        }
+        .text {
+            font-size: 12px;
+        }
+    }
+    .setting-list {
+        padding-right: 15px;
+        border-right: 1px solid @gray_6;
+    }
+    .other-tool-list {
+        margin-right: 15px;
+    }
+    .page-list {
+        border-left: 1px solid @gray_6;
+        margin-right: 5px;
+    }
+    .publish {
+        background-color: #66CACA;
+        border-radius: 3px;
+        padding: 2px 15px;
+        .icon {
+            margin-right: 5px;
+            font-size: 13px;
+        }
+        .text {
+            font-size: 13px;
+        }
+        &:hover {
+            background-color: @blue_main_hover;
+            color: @white;
+        }
+    }
+}

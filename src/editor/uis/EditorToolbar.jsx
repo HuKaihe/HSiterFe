@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Affix } from 'antd';
 // import PropTypes from 'prop-types';
 
-class EditorToolbar extends Component {
-    static defaultProps = {
+function EditorToolbar(props) {
+    const {
+        undo,
+        forward,
+    } = props;
 
-    }
-
-    state = {
-
-    }
-
-    render() {
-        return (
+    return (
+        <Affix className="editor-tool-bar-affix">
             <div className="editor-tool-bar">
                 <div className="left">
                     <ul className="setting-list">
@@ -31,13 +29,13 @@ class EditorToolbar extends Component {
                     </ul>
                     <ul className="edit-list">
                         <li>
-                            <button className="btn">
+                            <button className="btn" onClick={() => { undo(); }}>
                                 <i className="icon fa fa-reply" />
                                 <span className="text">撤销</span>
                             </button>
                         </li>
                         <li>
-                            <button className="btn">
+                            <button className="btn" onClick={() => { forward(); }}>
                                 <i className="icon fa fa-share" />
                                 <span className="text">前进</span>
                             </button>
@@ -89,10 +87,10 @@ class EditorToolbar extends Component {
                     </ul>
                 </div>
             </div>
-        );
-    }
+        </Affix>
+    );
 }
 
 EditorToolbar.propTypes = {};
-
+EditorToolbar.defaultProps = {};
 export default EditorToolbar;
