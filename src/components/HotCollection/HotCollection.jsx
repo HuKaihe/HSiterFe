@@ -26,11 +26,28 @@ function HotCollection(props) {
 }
 
 HotCollection.defaultProps = {
-    cards: [{
-        title: 'BAT前端校招面试思考',
-        url: 'http://www.baidu.com',
-        pictureUrl: './images/HotCollection.jpg',
-    }],
+    cards: [
+        {
+            title: 'React',
+            url: 'http://www.baidu.com',
+            pictureUrl: 'https://t.alipayobjects.com/images/rmsweb/T16xRhXkxbXXXXXXXX.svg',
+        },
+        {
+            title: 'Vuejs',
+            url: 'http://www.baidu.com',
+            pictureUrl: 'https://cn.vuejs.org/images/logo.png',
+        },
+        {
+            title: 'BAT前端校招面试思考',
+            url: 'http://www.baidu.com',
+            pictureUrl: 'http://fontawesome.hukaihe.com/public/image/logo_gold.png',
+        },
+        {
+            title: 'Angular',
+            url: 'http://www.baidu.com',
+            pictureUrl: 'https://www.angular.cn/assets/images/logos/angular/angular.svg',
+        },
+    ],
     showTitle: true,
     moduleTitle: '热门集合',
 };

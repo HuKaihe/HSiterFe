@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import EditorWorkspace from '../uis/EditorWorkspace';
-import { getRandomString } from '../../service/service';
 
 const mapStateToProps = state => ({
     layoutSchema: state.pageSchema.layoutSchema,
@@ -8,13 +7,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    addNewComponent: (name, order = 0) => {
-        const id = getRandomString() + new Date().getDate() + getRandomString();
+    openNewComponentModal: () => {
         dispatch({
-            id,
-            type: 'addNewComponent',
-            name,
-            order,
+            type: 'openNewComponentModal',
         });
     },
 });

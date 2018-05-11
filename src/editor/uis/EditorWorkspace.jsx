@@ -1,6 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import SingleComponentContainer from '../containers/SingleComponentContainer';
+import { globalStore } from '../../service/service';
 
 // Components
 import components from '../../components/components';
@@ -8,7 +9,7 @@ import components from '../../components/components';
 function EditorWorkspace(props) {
     const compNums = props.layoutSchema.length - 1;
     return (
-        <div className="editor">
+        <div className="hsite-editor">
             {
                 props.layoutSchema.map(({ name, id }, index) => {
                     const MyComponent = components[name];
@@ -26,7 +27,13 @@ function EditorWorkspace(props) {
                     );
                 })
             }
-            <div className="new" onClick={() => props.addNewComponent('HKHBlogBanner', (compNums + 1))} >
+            <div
+                className="hsite-new-component-bottom"
+                onClick={() => {
+                    globalStore.set('newComponentOrder', compNums + 1);
+                    props.openNewComponentModal();
+                }}
+            >
                 <i className="fa fa-plus" />
             </div>
         </div>

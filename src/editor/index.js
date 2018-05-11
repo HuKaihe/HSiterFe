@@ -7,27 +7,22 @@ import App from './containers';
 import './less/index.less';
 import editorReducer from './reducers/index.reducer';
 
+// mock
+import componentGroup from './mock/componentGroup';
+
 const pageSchema = {
     layoutSchema: [],
     componentSchema: [],
 };
 
-const componentList = {
-    HKHBlogBanner: {
-        name: 'HKHBlogBanner',
-        img: 'http://fontawesome.hukaihe.com/public/image/HKHBlogBanner.png',
-        author: '恩言',
-        github: '',
-        npm: '',
-    },
-    HotCollection: {},
-    HNav: {},
-};
-
-const store = createStore(editorReducer, { pageSchema, componentList });
+const store = createStore(editorReducer, {
+    pageSchema,
+    componentGroup,
+    isNewComponentModalDisplayed: false,
+});
 
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={store} >
         <App />
     </Provider>,
     document.getElementById('app'),

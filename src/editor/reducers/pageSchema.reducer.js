@@ -25,6 +25,7 @@ function setSchemaRecord(schema) {
 
 // 添加新元素
 function addNewComponent({ id = '', name = '', order = 0 }, state) {
+    console.log(name);
     const { layoutSchema: oldLayoutSchema, componentSchema: oldComponentSchema } = state;
     const newLayoutSchema = [...oldLayoutSchema];
     const newComponentSchema = [...oldComponentSchema];
@@ -44,6 +45,7 @@ function addNewComponent({ id = '', name = '', order = 0 }, state) {
         componentSchema: newComponentSchema,
     };
     setSchemaRecord(newPageSchema);
+    console.log(newPageSchema);
     return newPageSchema;
 }
 

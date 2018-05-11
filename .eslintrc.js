@@ -5,6 +5,10 @@ module.exports = {
         "browser": true,
     },
     "rules": {
+
+        // 打印
+        "no-console": "off",
+
         // 缩进
         "indent": ["error", 4],
         "react/jsx-indent": ["error", 4],
@@ -15,8 +19,8 @@ module.exports = {
 
         // react
         "react/no-did-mount-set-state": 'off',
-        "react/prop-types": ['warn'],
-        "react/default-props-match-prop-types": ['warn'],
+        "react/prop-types": ['off'],
+        "react/default-props-match-prop-types": ['off'],
 
         // dom与界面
         "jsx-a11y/click-events-have-key-events": 'off',

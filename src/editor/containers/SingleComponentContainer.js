@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import scrollIntoView from 'scroll-into-view';
 
 import SingleComponentContainer from '../uis/SingleComponentContainer';
-import { getRandomString } from '../../service/service';
 
 const mapStateToProps = (state, ownProps) => ({
     index: ownProps.index,
@@ -10,17 +9,11 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    addNewComponent: (name, order = 0) => {
-        const id = getRandomString() + new Date().getDate() + getRandomString();
+
+    openNewComponentModal: () => {
         dispatch({
-            type: 'addNewComponent',
-            id,
-            name,
-            order,
+            type: 'openNewComponentModal',
         });
-        setTimeout(() => {
-            scrollIntoView(document.getElementById(id));
-        }, 100);
     },
 
     moveComponentUp: (id, order) => {

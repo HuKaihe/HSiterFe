@@ -4,6 +4,16 @@ export function getRandomString() {
     return Math.random().toString(36).substr(2) + new Date().getTime();
 }
 
+const globalData = {};
+export const globalStore = {
+    set(key, value) {
+        globalData[key] = value;
+    },
+    get(key) {
+        return globalData[key];
+    },
+};
+
 export function post(url, data = {}, headers = { 'Content-Type': 'application/json' }) {
     return fetch(url, {
         method: 'POST',

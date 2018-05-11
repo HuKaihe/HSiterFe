@@ -1,6 +1,7 @@
 import classames from 'classnames';
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
+import { globalStore } from '../../service/service';
 
 class SingleComponentContainer extends Component {
     static propTypes = {}
@@ -31,23 +32,29 @@ class SingleComponentContainer extends Component {
 
         // 方法
         const {
-            addNewComponent,
             moveComponentUp,
             moveComponentDown,
             deleteComponent,
             editComponent,
+            openNewComponentModal,
         } = this.props;
 
 
         const operateBarCls = classames({
-            'component-editor-bar': true,
+            'hisite-component-editor-bar': true,
             transverse: this.state.transverse,
         });
 
         return (
-            <div id={id} className="single-component-container">
-                <div className="component-mask" >
-                    <div className="add-component before" onClick={() => { addNewComponent('HNav', (index)); }}>
+            <div id={id} className="hisite-single-component-container">
+                <div className="hisite-component-mask" >
+                    <div
+                        className="hisite-add-component before"
+                        onClick={() => {
+                            globalStore.set('newComponentOrder', index);
+                            openNewComponentModal();
+                        }}
+                    >
                         <i className="fa fa-plus" />
                     </div>
                     <ul className={operateBarCls}>
@@ -82,7 +89,7 @@ class SingleComponentContainer extends Component {
                         </li>
                         <li>
                             <button
-                                className="remove"
+                                className="hisite-remove"
                                 onClick={() => { deleteComponent(id, index); }}
                             >
                                 <i className="fa fa-trash-o" />
@@ -90,8 +97,11 @@ class SingleComponentContainer extends Component {
                         </li>
                     </ul>
                     <div
-                        className="add-component after"
-                        onClick={() => { addNewComponent('HotCollection', (index + 1)); }}
+                        className="hisite-add-component after"
+                        onClick={() => {
+                            globalStore.set('newComponentOrder', index + 1);
+                            openNewComponentModal();
+                        }}
                     >
                         <i className="fa fa-plus" />
                     </div>
