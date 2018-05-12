@@ -1,6 +1,6 @@
 import { getRandomString } from '../../service/service';
 
-const componentList = [
+const componentInfoList = [
     {
         id: getRandomString(),
         name: 'HNav',
@@ -80,10 +80,11 @@ const classification = [
     },
 ];
 
-const componentGroup = classification.map(item => ({
+const componentInfoGroup = classification.map(item => ({
     ...item,
-    children: componentList.filter(i => i.collection === item.code),
+    children: componentInfoList.filter(i => i.collection === item.code),
 }));
-
-
-export default componentGroup;
+// 将变量挂在到window对象上
+window.componentInfoGroup = componentInfoGroup;
+window.componentInfoList = componentInfoList;
+// export { componentInfoGroup, componentInfoList };

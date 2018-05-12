@@ -5,7 +5,7 @@ import { BackTop } from 'antd';
 import GlobalTop from '../../global/GlobalTop/GlobalTop';
 import EditorToolBar from './EditorToolbar';
 import EditorWorkspace from './EditorWorkspace';
-import NewComponentModal from './NewComponentModal';
+import NewComponentModal from './NewComponentModal/NewComponentModal';
 
 class HSiter extends Component {
     static propTypes = {

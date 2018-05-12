@@ -1,27 +1,16 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import NewComponentModal from './ComponentModal';
-import NewAppComponent from './NewAppComponent';
-import NewLayoutComponent from './NewLayoutComponent';
+import ComponentModal from '../../containers/NewComponentModal/ComponentModal';
+import NewAppComponent from './AppComponent';
+import NewLayoutComponent from './LayoutComponent';
 
 function NewComponent(props) {
-    const {
-        isNewComponentModalDisplayed,
-        componentGroup,
-    } = props;
-
-    const {
-        closeNewComponentModal,
-        addNewComponent,
-    } = props;
-
     const tabs = [
         {
             key: 'appcomponenttab',
             title: '应用组件',
             icon: 'fa-puzzle-piece',
             PaneContent: NewAppComponent,
-            componentGroup,
         }, {
             key: 'layoutcomponenttab',
             title: '布局组件',
@@ -36,12 +25,10 @@ function NewComponent(props) {
     };
 
     return (
-        <NewComponentModal
+        <ComponentModal
             tabs={tabs}
             copy={copy}
-            isNewComponentModalDisplayed={isNewComponentModalDisplayed}
-            closeNewComponentModal={closeNewComponentModal}
-            addNewComponent={addNewComponent}
+            componentInfoList={props.componentInfoList}
         />
     );
 }

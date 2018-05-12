@@ -1,20 +1,28 @@
 import { connect } from 'react-redux';
 import scrollIntoView from 'scroll-into-view';
-import NewComponentModal from '../uis/NewComponentModal/NewComponentModal';
-import { getRandomString, globalStore } from '../../service/service';
+import ComponentModal from '../../uis/NewComponentModal/ComponentModal';
+import { getRandomString } from '../../../service/service';
+import globalStore from '../../../service/globalStore';
+
 
 const mapStateToProps = state => ({
-    componentGroup: state.componentGroup,
+    componentInfoGroup: state.componentInfoGroup,
     isNewComponentModalDisplayed: state.isNewComponentModalDisplayed,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
     addNewComponent: () => {
         const id = getRandomString();
+        const newComponentInfoId = globalStore.get('newComponentInfoId');
+        const { componentInfoList } = ownProps;
+        const newComponentInfo = componentInfoList.find(item => item.id === newComponentInfoId);
+        const {
+            name: newComponentName,
+        } = newComponentInfo;
         dispatch({
             id,
             type: 'addNewComponent',
-            name: globalStore.get('newComponentName'),
+            name: newComponentName,
             order: globalStore.get('newComponentOrder'),
         });
         setTimeout(() => {
@@ -33,4 +41,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(NewComponentModal);
+)(ComponentModal);

@@ -1,7 +1,7 @@
 import classames from 'classnames';
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import { globalStore } from '../../service/service';
+import globalStore from '../../service/globalStore';
 
 class SingleComponentContainer extends Component {
     static propTypes = {}

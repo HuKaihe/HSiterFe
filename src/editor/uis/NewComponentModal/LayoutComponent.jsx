@@ -5,14 +5,17 @@ import React from 'react';
 // import { getRandomString } from '../../../service/service';
 // const { TabPane } = Tabs;
 
-function NewLayoutComponent() {
+function LayoutComponent() {
     return (
-        <div className="wait-to-be-online">
+        <div className="layout-component">
+            <div className="wait-to-be-online">
             更多组件正在上线中... ...
+            </div>
         </div>
+
     );
 }
 
-NewLayoutComponent.propTypes = {};
-NewLayoutComponent.defaultProps = {};
-export default NewLayoutComponent;
+LayoutComponent.propTypes = {};
+LayoutComponent.defaultProps = {};
+export default LayoutComponent;

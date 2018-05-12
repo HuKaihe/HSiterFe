@@ -1,7 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import SingleComponentContainer from '../containers/SingleComponentContainer';
-import { globalStore } from '../../service/service';
+import globalStore from '../../service/globalStore';
 
 // Components
 import components from '../../components/components';

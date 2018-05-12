@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Tabs } from 'antd';
 import ComponentListPanel from './ComponentListPanel';
+import globalStore from '../../../service/globalStore';
 
 const { TabPane } = Tabs;
 
-class NewAppComponent extends Component {
+class AppComponent extends Component {
     static propTypes = {}
 
     static defaultProps = {}
@@ -17,19 +18,18 @@ class NewAppComponent extends Component {
         this.setState({
             activeComponentId: id,
         });
+        globalStore.set('newComponentInfoId', id);
     }
 
     render() {
-        const {
-            componentGroup,
-        } = this.props;
+        const { componentInfoGroup } = this.props;
         return (
             <Tabs
                 tabPosition="left"
-                className="component-menu"
+                className="new-app-component"
             >
                 {
-                    componentGroup.map(item => (
+                    componentInfoGroup.map(item => (
                         <TabPane
                             key={item.code}
                             tab={
@@ -53,4 +53,4 @@ class NewAppComponent extends Component {
         );
     }
 }
-export default NewAppComponent;
+export default AppComponent;

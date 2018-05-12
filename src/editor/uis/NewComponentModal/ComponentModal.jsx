@@ -2,15 +2,17 @@ import React from 'react';
 
 // import PropTypes from 'prop-types';
 // import { classames } from 'classnames';
-import { Modal, Tabs } from 'antd';
+import { Modal, Tabs, message } from 'antd';
+import globalStore from '../../../service/globalStore';
 
 const { TabPane } = Tabs;
 
-function NewComponentModal(props) {
+function ComponentModal(props) {
     const {
         tabs,
         copy,
         isNewComponentModalDisplayed,
+        componentInfoGroup,
     } = props;
     const {
         closeNewComponentModal,
@@ -26,7 +28,14 @@ function NewComponentModal(props) {
                 wrapClassName="vertical-center-modal"
                 closable={false}
                 visible={isNewComponentModalDisplayed}
-                onOk={addNewComponent}
+                onOk={() => {
+                    if (!globalStore.get('newComponentInfoId')) {
+                        message.error('请选择一个元素');
+                        return;
+                    }
+                    addNewComponent();
+                    closeNewComponentModal();
+                }}
                 okText={copy.okText}
                 onCancel={closeNewComponentModal}
                 cancelText={copy.cancelText}
@@ -38,7 +47,9 @@ function NewComponentModal(props) {
                                 key={item.key}
                                 tab={<span className="tab-title"><i className={`fa ${item.icon}`} />{item.title}</span>}
                             >
-                                <item.PaneContent {...item} />
+                                <item.PaneContent
+                                    componentInfoGroup={componentInfoGroup}
+                                />
                             </TabPane>
                         ))
                     }
@@ -48,6 +59,6 @@ function NewComponentModal(props) {
     );
 }
 
-NewComponentModal.propTypes = {};
-NewComponentModal.defaultProps = {};
-export default NewComponentModal;
+ComponentModal.propTypes = {};
+ComponentModal.defaultProps = {};
+export default ComponentModal;

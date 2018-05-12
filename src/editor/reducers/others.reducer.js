@@ -1,10 +1,9 @@
-// import { getRandomString } from '../../service/service';
-export function componentGroup(state = {}, action) {
-    const { type } = action;
-    const map = {
-    };
-    const operate = map[type] || (() => { });
-    return operate(action, state) || state;
+export function arrDisposable(state = []) {
+    return [...state];
+}
+
+export function objDisposable(state = {}) {
+    return state;
 }
 
 export function toggleNewComponentModal(state = false, action) {

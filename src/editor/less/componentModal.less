@@ -1,19 +1,5 @@
 .component-modal {
-    // 模态框外层tab: 应用组件\布局组件 - 组件配置\布局配置
-    .tab-title {
-        color: @blue_main;
-        i {
-            margin-right: 5px;
-        }
-    }
-    .component-tab-panel {
-        display: flex;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        overflow: auto;
-        height: 500px;
-    } // 新增应用元素
-    .component-menu {
+    .new-app-component {
         .component-menu-item {
             width: 205px;
             text-align: left;
@@ -32,6 +18,76 @@
                 font-size: 20px;
             }
         }
+        .component-menu-panel {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            overflow: auto;
+            height: 500px;
+        }
+        .component-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 205px;
+            height: 260px;
+            padding: 5px;
+            margin: 0 27px 20px 0;
+            border: 1px solid @gray_2;
+            color: @black;
+            cursor: pointer; // transition: all 0.2s;
+            &:hover {
+                box-shadow: 9px 9px 8px @gray_4;
+                left: -1px;
+                top: -1px;
+            }
+            &.active {
+                border: 2px solid @blue_main;
+                &:hover {
+                    left: 0;
+                    top: 0;
+                    box-shadow: none;
+                }
+            }
+            .cover-img {
+                .center;
+                width: 100%;
+                height: 155px;
+                background-color: @gray_2;
+                img {
+                    max-width: 100%;
+                    max-height: 100%;
+                }
+            }
+            .component-title {
+                font-size: 15px;
+                text-align: center;
+            }
+            .component-desc {
+                font-size: 12px;
+                text-align: center;
+                width: 100%;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+            .component-info {
+                display: flex;
+                justify-content: flex-end;
+                width: 100%;
+                font-size: 15px;
+                li {
+                    margin: 0 10px;
+                }
+            }
+        }
+    } // 新增布局与元素
+    .layout-component {
+        height: 500px;
+        overflow: auto;
     }
     .wait-to-be-online {
         width: 100%;
@@ -40,69 +96,18 @@
         text-align: center;
         font-weight: lighter;
     }
-    .component-card {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        position: relative;
-        left: 0;
-        top: 0;
-        width: 205px;
-        height: 260px;
-        padding: 5px;
-        margin: 0 27px 20px 0;
-        border: 1px solid @gray_2;
-        color: @black;
-        cursor: pointer; // transition: all 0.2s;
-        &:hover {
-            box-shadow: 9px 9px 8px @gray_4;
-            left: -1px;
-            top: -1px;
-        }
-        &.active {
-            border: 2px solid @blue_main;
-            &:hover {
-                left: 0;
-                top: 0;
-                box-shadow: none;
-            }
-        }
-        .cover-img {
-            .center;
-            width: 100%;
-            height: 155px;
-            background-color: @gray_2;
-            img {
-                max-width: 100%;
-                max-height: 100%;
-            }
-        }
-        .component-title {
-            font-size: 15px;
-            text-align: center;
-        }
-        .component-desc {
-            font-size: 12px;
-            text-align: center;
-            width: 100%;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-        .component-info {
-            display: flex;
-            justify-content: flex-end;
-            width: 100%;
-            font-size: 15px;
-            li {
-                margin: 0 10px;
-            }
+
+    // 模态框外层tab: 应用组件\布局组件 - 组件配置\布局配置
+    .tab-title {
+        color: @blue_main;
+        i {
+            margin-right: 5px;
         }
     } // 样式重写
     .ant-tabs-ink-bar {
         background-color: @blue_main;
     }
-    .component-menu .ant-tabs-bar {
+    .new-app-component .ant-tabs-bar {
         height: 500px;
         padding-top: 15px;
         background-color: #F2F3F7;
@@ -117,21 +122,24 @@
             }
         }
     }
-    .vertical-center-modal {
-        text-align: center;
-        white-space: nowrap;
-    }
-    .vertical-center-modal:before {
-        content: '';
-        display: inline-block;
-        height: 100%;
-        vertical-align: middle;
-        width: 0;
-    }
-    .vertical-center-modal .ant-modal {
-        display: inline-block;
-        vertical-align: middle;
-        top: 0;
-        text-align: left;
-    }
+}
+
+.vertical-center-modal {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.vertical-center-modal:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    width: 0;
+}
+
+.vertical-center-modal .ant-modal {
+    display: inline-block;
+    vertical-align: middle;
+    top: 0;
+    text-align: left;
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Tooltip } from 'antd';
 import classnames from 'classnames';
-import { globalStore } from '../../../service/service';
 
 function ComponentListPanel(props) {
     const { componentList } = props;
@@ -18,7 +17,6 @@ function ComponentListPanel(props) {
                 key={card.id}
                 onClick={() => {
                     setActiveComponentId(card.id);
-                    globalStore.set('newComponentName', card.name);
                 }}
             >
                 <div className="cover-img">
@@ -46,7 +44,7 @@ function ComponentListPanel(props) {
         );
     };
     return (
-        <div className="component-tab-panel">
+        <div className="component-menu-panel">
             {
                 componentList.length ?
                     componentList.map(card => getComponentCard(card), this) :

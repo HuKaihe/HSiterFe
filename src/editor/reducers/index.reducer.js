@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux';
 
 import pageSchema from './pageSchema.reducer';
-import { componentGroup, toggleNewComponentModal } from './others.reducer';
+import { arrDisposable, toggleNewComponentModal } from './others.reducer';
 
 const editorReducer = combineReducers({
     pageSchema,
-    componentGroup,
+    componentInfoGroup: arrDisposable,
+    componentInfoList: arrDisposable,
     isNewComponentModalDisplayed: toggleNewComponentModal,
 });
 
