@@ -7,30 +7,33 @@ import App from './containers';
 import './less/index.less';
 import editorReducer from './reducers/index.reducer';
 import globalStore from '../service/globalStore';
-import './mock/componentInfo';
+import { componentTypeInfoList } from './mock/componentInfo';
+import { deepCloneObj } from '../service/service';
 
 const pageSchema = {
-    layoutSchema: [],
-    componentSchema: [],
+    layoutSchema: [{ id: 'mmekx19vd81526119444508', name: 'HotCollection' }],
+    componentSchema: [{ id: 'mmekx19vd81526119444508', componentData: deepCloneObj(componentTypeInfoList[2].defaultData), componentTypeId: 'HotCollection' }],
 };
 
 // react全局状态存储到redux store中
 const store = createStore(editorReducer, {
     pageSchema,
     isNewComponentModalDisplayed: false,
-    componentInfoList: window.componentInfoList,
+    isComponentConfigPanelDisplayed: false,
     componentInfoGroup: window.componentInfoGroup,
 });
 
-// 销毁挂载在window上的数据
-window.componentInfoList = {};
-window.componentInfoGroup = {};
-
-// 必要的非react内部状态存储到globalStore中
+// 将与UI完全无关、由事件触发的部分数据放到globalStore里管理
 globalStore.init({
-    newComponentInfoId: '',
+    componentTypeInfoList: deepCloneObj(window.componentTypeInfoList),
+    newComponentTypeId: '',
     newComponentOrder: '',
+    configComponentId: '',
 });
+
+// 销毁挂载在window上的数据
+window.componentTypeInfoList = null;
+window.componentInfoGroup = null;
 
 ReactDOM.render(
     <Provider store={store} >

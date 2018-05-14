@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 // import PropTypes from 'prop-types';
 import SingleComponentContainer from '../containers/SingleComponentContainer';
 import globalStore from '../../service/globalStore';
@@ -13,7 +14,12 @@ function EditorWorkspace(props) {
             {
                 props.layoutSchema.map(({ name, id }, index) => {
                     const MyComponent = components[name];
-                    const { data } = props.componentSchema.find(item => item.id === id) || {};
+                    const { componentData } = props.componentSchema.find(item =>
+                        item.id === id) || {};
+                    // const myComponentContainerCls = classnames({
+                    //     'hsiter-my-component-container': 'true',
+                    //     active: id === props.currentComponentId,
+                    // });
                     return (
                         <SingleComponentContainer
                             key={id}
@@ -22,7 +28,9 @@ function EditorWorkspace(props) {
                             canCompMoveUp={index !== 0}
                             canCompMoveDown={index <= (compNums - 1)}
                         >
-                            <MyComponent {...data} />
+                            {/* <div className={myComponentContainerCls}> */}
+                            <MyComponent {...componentData} />
+                            {/* </div> */}
                         </SingleComponentContainer>
                     );
                 })

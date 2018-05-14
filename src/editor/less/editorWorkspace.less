@@ -5,7 +5,7 @@
     width: 95%;
     /* overflow: auto; */
     margin: 0 auto;
-    padding:3px 3px 50px 3px;
+    padding: 3px 3px 50px 3px;
     background-color: @white;
     .hsite-new-component-bottom {
         .center;
@@ -32,6 +32,11 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        .hsiter-my-component-container {
+            &.active {
+                border: 2px solid @blue_main;
+            }
+        }
         .hisite-component-mask {
             position: absolute;
             top: 0;

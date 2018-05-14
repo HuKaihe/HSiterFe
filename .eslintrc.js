@@ -8,6 +8,7 @@ module.exports = {
 
         // 打印
         "no-console": "off",
+        "max-len": "off",
 
         // 缩进
         "indent": ["error", 4],
@@ -21,10 +22,12 @@ module.exports = {
         "react/no-did-mount-set-state": 'off',
         "react/prop-types": ['off'],
         "react/default-props-match-prop-types": ['off'],
+        "react/no-array-index-key": ['off'],
 
         // dom与界面
         "jsx-a11y/click-events-have-key-events": 'off',
         "jsx-a11y/no-static-element-interactions": "off",
+        "jsx-a11y/label-has-for": "off",
     },
     "globals": {
 

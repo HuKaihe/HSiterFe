@@ -11,9 +11,17 @@ export default {
     },
     set(key, value) {
         if (!(key in globalData)) {
-            throw new Error(`key${key}未在store初始化时进行设置，请在init的地方进行添加`);
+            throw new Error(`key:${key}未在store初始化时进行设置，请在init的地方进行添加`);
         }
         globalData[key] = value;
+    },
+    setObj(obj) {
+        Object.keys(obj).forEach((key) => {
+            if (!(key in globalData)) {
+                throw new Error(`key:${key}未在store初始化时进行设置，请在init的地方进行添加`);
+            }
+            globalData[key] = obj[key];
+        });
     },
     get(key) {
         return globalData[key];

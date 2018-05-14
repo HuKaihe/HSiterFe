@@ -16,3 +16,14 @@ export function toggleNewComponentModal(state = false, action) {
     }
     return state;
 }
+
+export function toggleComponentConfigPanel(state = false, action) {
+    const { type } = action;
+    if (type === 'openComponentConfigPanel') {
+        return true;
+    }
+    if (type === 'closeComponentConfigPanel') {
+        return false;
+    }
+    return state;
+}

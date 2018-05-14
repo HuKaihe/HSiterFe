@@ -4,6 +4,10 @@ export function getRandomString() {
     return Math.random().toString(36).substr(2) + new Date().getTime();
 }
 
+export function deepCloneObj(obj) {
+    return JSON.parse(JSON.stringify(obj));
+}
+
 export function post(url, data = {}, headers = { 'Content-Type': 'application/json' }) {
     return fetch(url, {
         method: 'POST',

@@ -1,0 +1,84 @@
+.hsiter-config-panel-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 200;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    &.visible {
+        display: block;
+    }
+}
+
+.hsiter-config-panel {
+    position: fixed;
+    right: -600px;
+    top: 0;
+    overflow: hidden;
+    width: 450px;
+    height: 100%;
+    box-shadow: 2px 2px 6px @gray_6;
+    background-color: @gray_2;
+    animation: slideRightIn 0.25s forwards;
+    @keyframes slideRightIn {
+        from {
+            right: -600px;
+        }
+        to {
+            right: 0;
+        }
+    }
+    &.slideOutRight {
+        animation: slideOutRight 0.25s forwards;
+        @keyframes slideOutRight {
+            from {
+                right: 0px;
+            }
+            to {
+                right: -600px;
+            }
+        }
+    }
+    .component-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 50px;
+        padding: 10px 20px;
+        font-size: 20px;
+        .icon {
+            font-size: 15px;
+        }
+    }
+}
+
+.hsiter-config-panel-form {
+    overflow: auto;
+    position: relative;
+    right: -15px;
+    height: calc(100% - 100px);
+    width: 100%;
+    padding: 0 20px 20px 0;
+}
+
+.hsiter-config-panel-footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding-left: 250px;
+    background-color: #f2f3f7;
+    box-shadow: 2px 2px 3px grey;
+}
+
+.test {
+    height: 1000px;
+    background: red;
+    width: 100px;
+}

@@ -1,10 +1,10 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import ComponentModal from '../../containers/NewComponentModal/ComponentModal';
+import ComponentModal from '../../containers/ComponentModal';
 import NewAppComponent from './AppComponent';
 import NewLayoutComponent from './LayoutComponent';
 
-function NewComponent(props) {
+function NewComponent() {
     const tabs = [
         {
             key: 'appcomponenttab',
@@ -28,7 +28,6 @@ function NewComponent(props) {
         <ComponentModal
             tabs={tabs}
             copy={copy}
-            componentInfoList={props.componentInfoList}
         />
     );
 }

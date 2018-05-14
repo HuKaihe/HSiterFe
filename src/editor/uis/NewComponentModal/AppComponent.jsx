@@ -18,7 +18,7 @@ class AppComponent extends Component {
         this.setState({
             activeComponentId: id,
         });
-        globalStore.set('newComponentInfoId', id);
+        globalStore.set('newComponentTypeId', id);
     }
 
     render() {

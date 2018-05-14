@@ -5,7 +5,8 @@ import { BackTop } from 'antd';
 import GlobalTop from '../../global/GlobalTop/GlobalTop';
 import EditorToolBar from './EditorToolbar';
 import EditorWorkspace from './EditorWorkspace';
-import NewComponentModal from './NewComponentModal/NewComponentModal';
+import NewComponentModal from '../uis/NewComponentModal/NewComponentModal';
+import ConfigPanel from './ConfigPanel';
 
 class HSiter extends Component {
     static propTypes = {
@@ -29,6 +30,7 @@ class HSiter extends Component {
                 <EditorWorkspace />
                 <NewComponentModal />
                 <BackTop />
+                <ConfigPanel />
             </div>
         );
     }

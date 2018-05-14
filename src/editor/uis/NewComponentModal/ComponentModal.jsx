@@ -29,7 +29,7 @@ function ComponentModal(props) {
                 closable={false}
                 visible={isNewComponentModalDisplayed}
                 onOk={() => {
-                    if (!globalStore.get('newComponentInfoId')) {
+                    if (!globalStore.get('newComponentTypeId')) {
                         message.error('请选择一个元素');
                         return;
                     }

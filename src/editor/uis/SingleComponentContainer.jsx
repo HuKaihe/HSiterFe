@@ -1,7 +1,5 @@
 import classames from 'classnames';
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-import globalStore from '../../service/globalStore';
 
 class SingleComponentContainer extends Component {
     static propTypes = {}
@@ -35,8 +33,8 @@ class SingleComponentContainer extends Component {
             moveComponentUp,
             moveComponentDown,
             deleteComponent,
-            editComponent,
             openNewComponentModal,
+            openComponentConfigPanel,
         } = this.props;
 
 
@@ -47,12 +45,19 @@ class SingleComponentContainer extends Component {
 
         return (
             <div id={id} className="hisite-single-component-container">
-                <div className="hisite-component-mask" >
+                <div
+                    className="hisite-component-mask"
+                    onClick={() => {
+                        openComponentConfigPanel({
+                            configComponentId: id,
+                        });
+                    }}
+                >
                     <div
                         className="hisite-add-component before"
-                        onClick={() => {
-                            globalStore.set('newComponentOrder', index);
-                            openNewComponentModal();
+                        onClick={(e) => {
+                            openNewComponentModal(index);
+                            e.stopPropagation();
                         }}
                     >
                         <i className="fa fa-plus" />
@@ -61,10 +66,11 @@ class SingleComponentContainer extends Component {
                         <li>
                             <button
                                 className={canCompMoveUp ? '' : 'disabled'}
-                                onClick={() => {
+                                onClick={(e) => {
                                     if (canCompMoveUp) {
                                         moveComponentUp(id, index);
                                     }
+                                    e.stopPropagation();
                                 }}
                             >
                                 <i className="fa fa-arrow-up" />
@@ -73,24 +79,33 @@ class SingleComponentContainer extends Component {
                         <li>
                             <button
                                 className={canCompMoveDown ? '' : 'disabled'}
-                                onClick={() => {
+                                onClick={(e) => {
                                     if (canCompMoveDown) {
                                         moveComponentDown(id, index);
                                     }
+                                    e.stopPropagation();
                                 }}
                             >
                                 <i className="fa fa-arrow-down" />
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => { editComponent(id); }}>
+                            <button onClick={() => {
+                                openComponentConfigPanel({
+                                    configComponentId: id,
+                                });
+                            }}
+                            >
                                 <i className="fa fa-gear" />
                             </button>
                         </li>
                         <li>
                             <button
                                 className="hisite-remove"
-                                onClick={() => { deleteComponent(id, index); }}
+                                onClick={(e) => {
+                                    deleteComponent(id, index);
+                                    e.stopPropagation();
+                                }}
                             >
                                 <i className="fa fa-trash-o" />
                             </button>
@@ -99,8 +114,7 @@ class SingleComponentContainer extends Component {
                     <div
                         className="hisite-add-component after"
                         onClick={() => {
-                            globalStore.set('newComponentOrder', index + 1);
-                            openNewComponentModal();
+                            openNewComponentModal(index + 1);
                         }}
                     >
                         <i className="fa fa-plus" />

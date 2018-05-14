@@ -28,8 +28,8 @@ const HTMLTemplate = {
         'https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css',
     ],
     scripts: [
-        'https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js',
-        'https://cdn.bootcss.com/layer/3.1.0/layer.js',
+        // 'https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js',
+        // 'https://cdn.bootcss.com/layer/3.1.0/layer.js',
     ],
 };
 

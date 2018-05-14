@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import scrollIntoView from 'scroll-into-view';
 
 import SingleComponentContainer from '../uis/SingleComponentContainer';
+import globalStore from '../../service/globalStore';
 
 const mapStateToProps = (state, ownProps) => ({
     index: ownProps.index,
@@ -10,7 +11,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
 
-    openNewComponentModal: () => {
+    openNewComponentModal: (order) => {
+        globalStore.set('newComponentOrder', order);
         dispatch({
             type: 'openNewComponentModal',
         });
@@ -46,13 +48,14 @@ const mapDispatchToProps = dispatch => ({
         });
     },
 
-    editComponent: (id) => {
+    openComponentConfigPanel: (configInfo) => {
+        globalStore.setObj(configInfo);
+        scrollIntoView(document.getElementById(configInfo.configComponentId));
+        // 启用简单的动画效果
         dispatch({
-            type: 'editComponent',
-            id,
+            type: 'openComponentConfigPanel',
         });
     },
-
 });
 
 
