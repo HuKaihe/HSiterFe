@@ -47,7 +47,7 @@ function addNewComponent({
         componentSchema: newComponentSchema,
     };
     setSchemaRecord(newPageSchema);
-    console.log(newPageSchema);
+    console.log('add', newPageSchema);
     return newPageSchema;
 }
 
@@ -65,6 +65,7 @@ function moveComponentUp({ id = '', order = 0 }, state) {
         layoutSchema: newLayoutSchema,
         componentSchema,
     };
+    console.log('move up', newPageSchema);
     setSchemaRecord(newPageSchema);
     return newPageSchema;
 }
@@ -83,21 +84,28 @@ function moveComponentDown({ id = '', order = 0 }, state) {
         layoutSchema: newLayoutSchema,
         componentSchema,
     };
+    console.log('move down', newPageSchema);
     setSchemaRecord(newPageSchema);
     return newPageSchema;
 }
 
 // 删除元素
-function deleteComponent({ order = 0 }, state) {
-    const { layoutSchema: oldLayoutSchema, oldComponentSchema } = state;
+function deleteComponent({ id }, state) {
+    const { layoutSchema: oldLayoutSchema, componentSchema: oldComponentSchema } = state;
+
+    const componentOrder = oldLayoutSchema.findIndex(item => item.id === id);
+    const componentDataOrder = oldComponentSchema.findIndex(item => item.id === id);
+
     const newLayoutSchema = [...oldLayoutSchema];
     const newComponentSchema = [...oldComponentSchema];
-    newLayoutSchema.splice(order, 1);
-    newComponentSchema.splice(order, 1);
+    newLayoutSchema.splice(componentOrder, 1);
+    newComponentSchema.splice(componentDataOrder, 1);
+
     const newPageSchema = {
         layoutSchema: newLayoutSchema,
         componentSchema: newComponentSchema,
     };
+    console.log('delete', newPageSchema);
     setSchemaRecord(newPageSchema);
     return newPageSchema;
 }

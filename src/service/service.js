@@ -8,6 +8,10 @@ export function deepCloneObj(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
 
+export function objContentCompare(obj1, obj2) {
+    return JSON.stringify(obj1) === JSON.stringify(obj2);
+}
+
 export function post(url, data = {}, headers = { 'Content-Type': 'application/json' }) {
     return fetch(url, {
         method: 'POST',

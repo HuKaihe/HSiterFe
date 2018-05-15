@@ -3,6 +3,7 @@ import { Tooltip, Button } from 'antd';
 // import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import ConfigForm from './ConfigForm';
+import { objContentCompare, deepCloneObj } from '../../service/service';
 
 class ConfigPanel extends Component {
     static propTypes = {}
@@ -11,6 +12,13 @@ class ConfigPanel extends Component {
 
     state = {
         componentData: {},
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            componentData: nextProps.componentData,
+        });
+        this.initialData = deepCloneObj(nextProps.componentData);
     }
 
     setComponentData = (newComponentData) => {
@@ -37,6 +45,7 @@ class ConfigPanel extends Component {
             configComponentId,
             componentData,
         } = this.props;
+
         const {
             title,
             desc,
@@ -77,9 +86,12 @@ class ConfigPanel extends Component {
                             取消修改
                         </Button>
                         <Button
+                            disabled={objContentCompare(this.state.componentData, this.initialData)}
                             type="primary"
                             onClick={() => {
-                                // console.log(configComponentId, this.state.componentData);
+                                if (objContentCompare(this.state.componentData, this.initialData)) {
+                                    return;
+                                }
                                 editComponent(configComponentId, this.state.componentData);
                                 this.closePanel();
                             }}

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import scrollIntoView from 'scroll-into-view';
-
+import { message } from 'antd';
 import SingleComponentContainer from '../uis/SingleComponentContainer';
 import globalStore from '../../service/globalStore';
 
@@ -24,6 +24,8 @@ const mapDispatchToProps = dispatch => ({
             id,
             order,
         });
+        message.success('顺序改变成功');
+
         setTimeout(() => {
             scrollIntoView(document.getElementById(id));
         }, 100);
@@ -35,17 +37,19 @@ const mapDispatchToProps = dispatch => ({
             id,
             order,
         });
+        message.success('顺序改变成功');
+
         setTimeout(() => {
             scrollIntoView(document.getElementById(id));
         }, 100);
     },
 
-    deleteComponent: (id, order) => {
+    deleteComponent: (id) => {
         dispatch({
             type: 'deleteComponent',
             id,
-            order,
         });
+        message.success('删除成功');
     },
 
     openComponentConfigPanel: (configInfo) => {

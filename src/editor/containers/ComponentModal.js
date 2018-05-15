@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import scrollIntoView from 'scroll-into-view';
+import { message } from 'antd';
 import ComponentModal from '../uis/NewComponentModal/ComponentModal';
 import { getRandomString } from '../../service/service';
 import globalStore from '../../service/globalStore';
@@ -28,6 +29,7 @@ const mapDispatchToProps = dispatch => ({
             name: newComponentName,
             order: globalStore.get('newComponentOrder'),
         });
+        message.success('新增元素成功');
         setTimeout(() => {
             scrollIntoView(document.getElementById(id));
         }, 100);

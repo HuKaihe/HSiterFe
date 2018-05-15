@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { message } from 'antd';
 import ConfigPanel from '../uis/ConfigPanel';
 import globalStore from '../../service/globalStore';
 
@@ -29,6 +30,7 @@ const mapDispatchToProps = dispatch => ({
             id,
             componentData,
         });
+        message.success('修改元素属性成功');
     },
 });
 

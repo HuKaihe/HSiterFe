@@ -1,5 +1,8 @@
 import classames from 'classnames';
 import React, { Component } from 'react';
+import { Modal } from 'antd';
+
+const { confirm } = Modal;
 
 class SingleComponentContainer extends Component {
     static propTypes = {}
@@ -62,7 +65,7 @@ class SingleComponentContainer extends Component {
                     >
                         <i className="fa fa-plus" />
                     </div>
-                    <ul className={operateBarCls}>
+                    <ul className={operateBarCls} >
                         <li>
                             <button
                                 className={canCompMoveUp ? '' : 'disabled'}
@@ -103,7 +106,16 @@ class SingleComponentContainer extends Component {
                             <button
                                 className="hisite-remove"
                                 onClick={(e) => {
-                                    deleteComponent(id, index);
+                                    confirm({
+                                        title: '删除提示',
+                                        content: '确定要删除该组件吗？（如果删除失误，可通过撤销返回）',
+                                        okText: '确定',
+                                        okType: 'danger',
+                                        cancelText: '取消',
+                                        onOk() {
+                                            deleteComponent(id, index);
+                                        },
+                                    });
                                     e.stopPropagation();
                                 }}
                             >
@@ -113,8 +125,9 @@ class SingleComponentContainer extends Component {
                     </ul>
                     <div
                         className="hisite-add-component after"
-                        onClick={() => {
+                        onClick={(e) => {
                             openNewComponentModal(index + 1);
+                            e.stopPropagation();
                         }}
                     >
                         <i className="fa fa-plus" />
