@@ -16,9 +16,9 @@ class ConfigPanel extends Component {
 
     componentWillReceiveProps(nextProps) {
         this.setState({
-            componentData: nextProps.componentData,
+            componentData: nextProps.componentData || {},
         });
-        this.initialData = deepCloneObj(nextProps.componentData);
+        this.initialData = deepCloneObj(nextProps.componentData || {});
     }
 
     setComponentData = (newComponentData) => {

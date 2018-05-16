@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { message } from 'antd';
 import ConfigPanel from '../uis/ConfigPanel';
 import globalStore from '../../service/globalStore';
+import { deepCloneObj } from '../../service/service';
 
 const mapStateToProps = (state) => {
     const configComponentId = globalStore.get('configComponentId');
@@ -14,7 +15,7 @@ const mapStateToProps = (state) => {
         isComponentConfigPanelDisplayed: state.isComponentConfigPanelDisplayed,
         configComponentTypeInfo,
         configComponentId,
-        componentData,
+        componentData: deepCloneObj(componentData),
     };
 };
 

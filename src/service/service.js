@@ -4,11 +4,11 @@ export function getRandomString() {
     return Math.random().toString(36).substr(2) + new Date().getTime();
 }
 
-export function deepCloneObj(obj) {
+export function deepCloneObj(obj = {}) {
     return JSON.parse(JSON.stringify(obj));
 }
 
-export function objContentCompare(obj1, obj2) {
+export function objContentCompare(obj1 = {}, obj2 = {}) {
     return JSON.stringify(obj1) === JSON.stringify(obj2);
 }
 

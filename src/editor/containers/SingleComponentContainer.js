@@ -24,7 +24,7 @@ const mapDispatchToProps = dispatch => ({
             id,
             order,
         });
-        message.success('顺序改变成功');
+        message.success('顺序修改成功');
 
         setTimeout(() => {
             scrollIntoView(document.getElementById(id));
@@ -37,7 +37,7 @@ const mapDispatchToProps = dispatch => ({
             id,
             order,
         });
-        message.success('顺序改变成功');
+        message.success('顺序修改成功');
 
         setTimeout(() => {
             scrollIntoView(document.getElementById(id));
@@ -49,7 +49,7 @@ const mapDispatchToProps = dispatch => ({
             type: 'deleteComponent',
             id,
         });
-        message.success('删除成功');
+        message.success('元素删除成功');
     },
 
     openComponentConfigPanel: (configInfo) => {
