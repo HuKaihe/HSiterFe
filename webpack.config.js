@@ -40,6 +40,7 @@ module.exports = {
         editor: './src/editor/index.js',
         // page_manager: './src/page_manager/index.js',
         // home: './src/home/index.js',
+        test: './src/test/index.js',
     },
 
     output: {
@@ -103,6 +104,12 @@ module.exports = {
             title: 'HSiter editor',
             filename: 'editor.html',
             chunks: ['editor'],
+            ...HTMLTemplate,
+        }),
+        new HtmlWebpackPlugin({
+            title: 'HSiter test',
+            filename: 'test.html',
+            chunks: ['test'],
             ...HTMLTemplate,
         }),
         ...(onServer ? [] : [new CleanWebpackPlugin([path.join(__dirname, 'build')])]),
