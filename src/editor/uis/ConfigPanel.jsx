@@ -11,6 +11,7 @@ class ConfigPanel extends Component {
     static defaultProps = {}
 
     state = {
+        hasError: false,
         componentData: {},
     }
 
@@ -24,6 +25,12 @@ class ConfigPanel extends Component {
     setComponentData = (newComponentData) => {
         this.setState({
             componentData: newComponentData,
+        });
+    }
+
+    checkError = (hasError) => {
+        this.setState({
+            hasError,
         });
     }
 
@@ -79,6 +86,7 @@ class ConfigPanel extends Component {
                     </div>
                     <ConfigForm
                         setComponentData={this.setComponentData}
+                        checkError={this.checkError}
                         componentData={this.state.componentData}
                         configComponentTypeInfo={configComponentTypeInfo}
                     />
@@ -89,10 +97,10 @@ class ConfigPanel extends Component {
                             取消修改
                         </Button>
                         <Button
-                            disabled={objContentCompare(this.state.componentData, this.initialData)}
+                            disabled={objContentCompare(this.state.componentData, this.initialData) || this.state.hasError}
                             type="primary"
                             onClick={() => {
-                                if (objContentCompare(this.state.componentData, this.initialData)) {
+                                if (objContentCompare(this.state.componentData, this.initialData) || this.state.hasError) {
                                     return;
                                 }
                                 console.log(this.state.componentData);

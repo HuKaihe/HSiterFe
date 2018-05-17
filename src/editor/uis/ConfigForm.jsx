@@ -25,6 +25,11 @@ class ConfigForm extends Component {
         this.setState(componentData);
     }
     setCustomControlValue = (newCustomControlValue) => {
+        if (Object.keys(newCustomControlValue)[0] === 'error') {
+            this.props.checkError(true);
+            return;
+        }
+        this.props.checkError(false);
         this.setState(newCustomControlValue);
         this.props.setComponentData(this.state);
     }
@@ -83,6 +88,12 @@ const WrappedConfigForm = Form.create({
         const changedField = {
             [changedFieldKey]: changedFieldValue,
         };
+        const error = Object.values(changedFields)[0].errors;
+        if (error) {
+            props.checkError(true);
+            return;
+        }
+        props.checkError(false);
         props.setComponentData({ ...props.componentData, ...changedField });
     },
 })(ConfigForm);

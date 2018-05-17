@@ -63,7 +63,7 @@
     width: 100%;
     padding: 0 20px 20px 0;
     .tip-icon {
-        margin-right: 5px;
+        margin-left: 7px;
         color: @gray_6;
     }
     // 复写
@@ -72,6 +72,12 @@
         .ant-form-item-label {
             text-align: left;
         }
+    }
+    .ant-form-explain {
+        font-size: 12px;
+    }
+    .ant-form-item-required:before {
+        color: #188fff;
     }
 }
 
@@ -93,7 +99,6 @@
             width: 50%;
             margin-bottom: 5px;
             .array-item-label {
-                margin-bottom: 5px;
                 font-size: 12px;
             }
         }

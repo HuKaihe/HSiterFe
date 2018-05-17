@@ -59,10 +59,16 @@ const componentTypeInfoList = [{
                     title: {
                         label: '卡片标题',
                         tip: '右边的文字',
+                        rules: [{
+                            required: true, message: '模块标题不得为空',
+                        }],
                     },
                     url: {
                         label: '卡片链接',
                         tip: '用户点击卡片时跳转的页面链接',
+                        rules: [{
+                            required: true, message: '模块标题不得为空', type: 'url',
+                        }],
                     },
                     pictureUrl: {
                         label: '左边图片的URL',
