@@ -2,12 +2,17 @@ import React from 'react';
 import { Input, Tooltip, Form, Switch } from 'antd';
 
 const FormItem = Form.Item;
+const { TextArea } = Input;
+
 const controlMap = {
     switch: {
         Control: Switch,
         controlDecorator: {
             valuePropName: 'checked',
         },
+    },
+    textArea: {
+        Control: TextArea,
     },
 };
 
@@ -31,15 +36,26 @@ function ArrayControl(props) {
                                     const {
                                         tip,
                                         label,
-                                        rules,
                                         control,
+                                        width,
                                     } = fieldConfig;
                                     const {
                                         Control = Input,
                                         controlDecorator,
                                     } = controlMap[control] || {};
+                                    // 去除空格
+                                    const rules = fieldConfig.rules && fieldConfig.rules.map((i) => {
+                                        const rule = i;
+                                        rule.transform = (value) => {
+                                            if (typeof value === 'string') {
+                                                return value.trim();
+                                            }
+                                            return value;
+                                        };
+                                        return rule;
+                                    });
                                     return (
-                                        <div className="arr-item" key={field}>
+                                        <div className="arr-item" key={field} style={{ width }}>
                                             <FormItem
                                                 label={(
                                                     <span className="array-item-label">

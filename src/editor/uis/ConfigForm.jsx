@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Form, Switch, Input } from 'antd';
-import ArrayControl from './Forms/ArrayControl';
+import ArrayControl from './Controls/ArrayControl';
 
 const FormItem = Form.Item;
+const { TextArea } = Input;
+
 const controlMap = {
     switch: {
         Control: Switch,
@@ -13,6 +15,9 @@ const controlMap = {
     arrayControl: {
         Control: ArrayControl,
         type: 'custom',
+    },
+    textArea: {
+        Control: TextArea,
     },
 };
 
@@ -38,6 +43,7 @@ class ConfigForm extends Component {
         const {
             componentData = {},
             configComponentTypeInfo = {},
+            configComponentId,
         } = this.props;
         const { configSchema = {} } = configComponentTypeInfo;
         const configKeys = Object.keys(configSchema) || [];
@@ -66,7 +72,7 @@ class ConfigForm extends Component {
                                 {...config.layout}
                             >
                                 {
-                                    getFieldDecorator(key, {
+                                    getFieldDecorator(`${configComponentId}_${key}`, {
                                         initialValue: controlData,
                                         rules: config.rules,
                                         ...controlDecorator,
@@ -85,8 +91,9 @@ const WrappedConfigForm = Form.create({
     onFieldsChange: (props, changedFields) => {
         const changedFieldKey = Object.keys(changedFields)[0];
         const changedFieldValue = changedFields[changedFieldKey].value;
+        const realKey = changedFieldKey.split('_')[1];
         const changedField = {
-            [changedFieldKey]: changedFieldValue,
+            [realKey]: changedFieldValue,
         };
         const error = Object.values(changedFields)[0].errors;
         if (error) {

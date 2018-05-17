@@ -4,10 +4,10 @@ import './HKHBlogNav.less';
 function HBlogNav(props) {
     const { navInfo, customClass } = props;
     const getNavUnit = ({
-        title, desc, icon, id,
+        title, desc, icon, url, id,
     }) => (
         <li className="nav-item" key={id}>
-            <a href="/" target="_blank">
+            <a href={url} target="_blank">
                 <i className={`icon fa ${icon}`} />
                 <div className="nav-item-right" >
                     <div className="title">
@@ -19,7 +19,6 @@ function HBlogNav(props) {
                 </div>
             </a>
         </li>
-
     );
     return (
         <ul className={`HKHBlogNav ${customClass}`}>

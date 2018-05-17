@@ -13,8 +13,8 @@ import { deepCloneObj } from '../service/service';
 const pageSchema = {
     // layoutSchema: [],
     // componentSchema: [],
-    layoutSchema: [{ id: 'mmekx19vd81526119444508', name: 'HotCollection' }],
-    componentSchema: [{ id: 'mmekx19vd81526119444508', componentData: deepCloneObj(componentTypeInfoList[2].defaultData), componentTypeId: 'HotCollection' }],
+    layoutSchema: [{ id: 'mmekx19vd81526119444508', name: 'HKHBlogBanner' }],
+    componentSchema: [{ id: 'mmekx19vd81526119444508', componentData: deepCloneObj(componentTypeInfoList[1].defaultData), componentTypeId: 'HKHBlogBanner' }],
 };
 
 // react全局状态存储到redux store中

@@ -88,6 +88,7 @@ class ConfigPanel extends Component {
                         setComponentData={this.setComponentData}
                         checkError={this.checkError}
                         componentData={this.state.componentData}
+                        configComponentId={configComponentId}
                         configComponentTypeInfo={configComponentTypeInfo}
                     />
                     <div className="hsiter-config-panel-footer">
