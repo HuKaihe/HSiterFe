@@ -7,7 +7,9 @@ function HotCollection(props) {
     const { moduleTitle, cards = [] } = props;
     return (
         <div className="HComponent HotCollection">
-            <div className="title">{moduleTitle}</div>
+            {
+                props.showTitle && <div className="title">{moduleTitle}</div>
+            }
             <div className="card-container">
                 {
                     cards.map(item => (

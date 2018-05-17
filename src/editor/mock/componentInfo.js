@@ -31,7 +31,47 @@ const componentTypeInfoList = [{
     title: 'HKHBlog专栏集合',
     collection: 'HKHBlog',
     desc: 'HKHBlog专栏集合，适合通过链接引导用户至不同页面',
-    configSchema: 'hello config',
+    configSchema: {
+        showTitle: {
+            label: '是否展示标题',
+            control: 'switch',
+            layout: {
+                labelCol: { span: 6 },
+                wrapperCol: { span: 12 },
+            },
+            valuePropName: 'checked',
+        },
+        moduleTitle: {
+            label: '模块标题',
+            rules: [{
+                required: true, message: '模块标题不得为空',
+            }],
+            layout: {
+                labelCol: { span: 6 },
+                wrapperCol: { span: 17 },
+            },
+        },
+        cards: {
+            label: '卡片集合',
+            control: 'arrayControl',
+            customProps: {
+                arrUnit: {
+                    title: {
+                        label: '卡片标题',
+                        tip: '右边的文字',
+                    },
+                    url: {
+                        label: '卡片链接',
+                        tip: '用户点击卡片时跳转的页面链接',
+                    },
+                    pictureUrl: {
+                        label: '左边图片的URL',
+                        tip: '因为服务器容量有限，暂时不支持图片上传功能',
+                    },
+                },
+            },
+        },
+    },
     defaultData: {
         cards: [
             {
@@ -62,8 +102,6 @@ const componentTypeInfoList = [{
         showTitle: true,
         moduleTitle: '热门集合',
     },
-    showTitle: true,
-    moduleTitle: '热门集合',
     author: '恩言',
     github: '',
     npm: '',

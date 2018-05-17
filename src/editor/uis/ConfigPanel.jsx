@@ -43,7 +43,6 @@ class ConfigPanel extends Component {
         const {
             editComponent,
             configComponentId,
-            componentData,
         } = this.props;
 
         const {
@@ -70,13 +69,17 @@ class ConfigPanel extends Component {
                         {
                             title
                         }
-                        <Tooltip title={desc} placement="left">
-                            <i className="fa fa-info-circle icon" />
-                        </Tooltip>
+                        {
+                            desc &&
+                            <Tooltip title={desc} placement="left">
+                                <i className="fa fa-info-circle icon" />
+                            </Tooltip>
+                        }
+
                     </div>
                     <ConfigForm
                         setComponentData={this.setComponentData}
-                        componentData={componentData}
+                        componentData={this.state.componentData}
                         configComponentTypeInfo={configComponentTypeInfo}
                     />
                     <div className="hsiter-config-panel-footer">
@@ -92,6 +95,7 @@ class ConfigPanel extends Component {
                                 if (objContentCompare(this.state.componentData, this.initialData)) {
                                     return;
                                 }
+                                console.log(this.state.componentData);
                                 editComponent(configComponentId, this.state.componentData);
                                 this.closePanel();
                             }}

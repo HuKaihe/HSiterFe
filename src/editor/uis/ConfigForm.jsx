@@ -1,65 +1,90 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'antd';
+import { Form, Switch, Input } from 'antd';
 import ArrayControl from './Forms/ArrayControl';
-import globalStore from '../../service/globalStore';
 
 const FormItem = Form.Item;
+const controlMap = {
+    switch: {
+        Control: Switch,
+        controlDecorator: {
+            valuePropName: 'checked',
+        },
+    },
+    arrayControl: {
+        Control: ArrayControl,
+        type: 'custom',
+    },
+};
 
-class HorizontalLoginForm extends Component {
+class ConfigForm extends Component {
+    // state中放置自定义控件的数据
     state = {
     }
     componentWillReceiveProps = (nextProps) => {
         const { componentData } = nextProps;
         this.setState(componentData);
     }
-    setArrayControlValue = (newArrControlValue) => {
-        this.setState(newArrControlValue);
+    setCustomControlValue = (newCustomControlValue) => {
+        this.setState(newCustomControlValue);
         this.props.setComponentData(this.state);
-        console.log(globalStore.get('componentTypeInfoList')[2].defaultData.cards);
-    }
-    handleSubmit = (e) => {
-        e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                this.props.setComponentData({
-                    cards: [],
-                });
-                console.log('Received values of form: ', values);
-            }
-        });
     }
     render() {
-        const {
-            getFieldDecorator, getFieldsError, getFieldError, isFieldTouched,
-        } = this.props.form;
+        const { getFieldDecorator } = this.props.form;
         const {
             componentData = {},
+            configComponentTypeInfo = {},
         } = this.props;
+        const { configSchema = {} } = configComponentTypeInfo;
+        const configKeys = Object.keys(configSchema) || [];
         return (
-            <Form onSubmit={this.handleSubmit} className="hsiter-config-panel-form">
+            <Form className="hsiter-config-panel-form">
                 {
-                    <FormItem
-                        label="卡片集合"
-                    >
-                        {
-                            getFieldDecorator('cards', {
-                                initialValue: componentData.cards,
-                            })(<ArrayControl
-                                arrKey="cards"
-                                setArrayControlValue={this.setArrayControlValue}
-                            />)
+                    configKeys.map((key) => {
+                        const config = configSchema[key];
+                        const controlData = componentData[key];
+                        const {
+                            Control = Input,
+                            controlDecorator,
+                            type,
+                        } = controlMap[config.control] || {};
+                        let customProps = {};
+                        if (type === 'custom') {
+                            customProps.customKey = key;
+                            customProps.setCustomControlValue = this.setCustomControlValue;
+                            customProps = { ...customProps, ...config.customProps };
                         }
-                    </FormItem>
+                        return (
+                            <FormItem
+                                key={key}
+                                label={config.label}
+                                help={config.help}
+                                {...config.layout}
+                            >
+                                {
+                                    getFieldDecorator(key, {
+                                        initialValue: controlData,
+                                        rules: config.rules,
+                                        ...controlDecorator,
+                                    })(<Control {...customProps} />)
+                                }
+                            </FormItem>
+                        );
+                    })
                 }
             </Form>
         );
     }
 }
 
-const WrappedHorizontalLoginForm = Form.create({
+const WrappedConfigForm = Form.create({
     onFieldsChange: (props, changedFields) => {
-        props.setComponentData({ ...props.componentData, ...changedFields });
+        const changedFieldKey = Object.keys(changedFields)[0];
+        const changedFieldValue = changedFields[changedFieldKey].value;
+        const changedField = {
+            [changedFieldKey]: changedFieldValue,
+        };
+        props.setComponentData({ ...props.componentData, ...changedField });
     },
-})(HorizontalLoginForm);
+})(ConfigForm);
 
-export default WrappedHorizontalLoginForm;
+export default WrappedConfigForm;

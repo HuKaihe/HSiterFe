@@ -50,6 +50,7 @@
         font-size: 20px;
         .icon {
             font-size: 15px;
+            color: @gray_6;
         }
     }
 }
@@ -61,6 +62,42 @@
     height: calc(100% - 100px);
     width: 100%;
     padding: 0 20px 20px 0;
+    .tip-icon {
+        margin-right: 5px;
+        color: @gray_6;
+    }
+    // 复写
+    .ant-form-item {
+        margin-bottom: 0;
+        .ant-form-item-label {
+            text-align: left;
+        }
+    }
+}
+
+.hsiter-form-custom-control {
+    &.hsiter-arr-control {
+        .arr-obj {
+            display: flex;
+            justify-content: start;
+            flex-wrap: wrap;
+            border-bottom: 1px solid @gray_3;
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+        .arr-item {
+            display: flex;
+            flex-direction: column;
+            padding: 0 5px;
+            width: 50%;
+            margin-bottom: 5px;
+            .array-item-label {
+                margin-bottom: 5px;
+                font-size: 12px;
+            }
+        }
+    }
 }
 
 .hsiter-config-panel-footer {

@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { Input } from 'antd';
+import { Input, Tooltip } from 'antd';
 
 
 export default class ArrayControl extends Component {
     state = {
+    }
+
+    componentWillMount() {
+        const { value } = this.props;
+        this.setState({ value });
     }
 
     componentWillReceiveProps(nextProps) {
@@ -15,50 +20,57 @@ export default class ArrayControl extends Component {
         const { value } = this.state;
         const changedValue = e.target.value;
         const group = value.find(item => id === item.id);
-        const { arrKey } = this.props;
+        const { customKey } = this.props;
         group[prop] = changedValue;
         this.setState({
             value,
         });
-        this.props.setArrayControlValue({
-            [arrKey]: value,
+        this.props.setCustomControlValue({
+            [customKey]: value,
         });
-        // Should provide an event to pass value to Form.
-        // const { onChange } = this.props;
-        // if (onChange) {
-        // }
     }
     render() {
-        const unit = {
-            title: '卡片标题',
-            url: '卡片链接',
-            pictureUrl: '卡片图片链接',
-        };
+        const { arrUnit } = this.props;
         const arrValue = this.state.value || [];
-
+        if (arrValue.length === 0) {
+            arrValue.push({});
+        }
         return (
-            <div className="hsiter-form-control hsiter-arr-control">
+            <div className="hsiter-form-custom-control hsiter-arr-control">
                 {
-                    arrValue.map(item => (
-                        <div key={item.id} className="arr-obj" >
-                            {
-                                Object.keys(unit).map(prop => (
-                                    <div className="arr-item" key={prop}>
-                                        <label>
-                                            <div className="array-item-label">{unit[prop]}</div>
-                                            <Input
-                                                type="text"
-                                                value={item[prop]}
-                                                onChange={
-                                                    (e) => { this.triggerChange(e, item.id, prop); }
-                                                }
-                                            />
-                                        </label>
-                                    </div>
-                                ))
-                            }
-                        </div>
-                    ))
+                    arrValue.map((item) => {
+                        const arrFields = Object.keys(arrUnit);
+                        return (
+                            <div key={item.id} className="arr-obj" >
+                                {
+                                    arrFields.map(field => (
+                                        <div className="arr-item" key={field}>
+                                            <label>
+                                                <div className="array-item-label">
+                                                    {
+                                                        arrUnit[field].tip &&
+                                                        <Tooltip title={arrUnit[field].tip}>
+                                                            <i className="fa fa-info-circle tip-icon" />
+                                                        </Tooltip>
+                                                    }
+                                                    {arrUnit[field].label}
+                                                </div>
+                                                <Input
+                                                    type="text"
+                                                    value={item[field]}
+                                                    onChange={
+                                                        (e) => {
+                                                            this.triggerChange(e, item.id, field);
+                                                        }
+                                                    }
+                                                />
+                                            </label>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        );
+                    })
                 }
             </div>
         );
