@@ -18,7 +18,7 @@ const controlMap = {
 
 function ArrayControl(props) {
     const { getFieldDecorator } = props.form;
-    const { arrUnit } = props;
+    const { arrUnit, configComponentId } = props;
     const arrValue = props.value || [];
     if (arrValue.length === 0) {
         arrValue.push({});
@@ -71,7 +71,7 @@ function ArrayControl(props) {
                                                 colon={false}
                                             >
                                                 {
-                                                    getFieldDecorator(`${item.id}_${field}`, {
+                                                    getFieldDecorator(`${configComponentId}_${item.id}_${field}`, {
                                                         // initialValue: item[field],
                                                         rules,
                                                         ...controlDecorator,
@@ -95,31 +95,36 @@ const WrappedArrayControl = Form.create({
         const { value, customKey } = props;
         const changedKey = Object.keys(changedFields)[0];
         const changedValue = changedFields[changedKey].value;
-        const id = changedKey.split('_')[0];
-        const field = changedKey.split('_')[1];
+        const id = changedKey.split('_')[1];
+        const field = changedKey.split('_')[2];
         const group = value.find(item => id === item.id);
         group[field] = changedValue;
         const error = Object.values(changedFields)[0].errors;
         if (error) {
-            props.setCustomControlValue({
-                error,
+            props.setError({
+                [changedKey]: error,
             });
             return;
         }
+        props.setError({
+            [changedKey]: undefined,
+        });
         props.setCustomControlValue({
             [customKey]: value,
         });
     },
     mapPropsToFields(props) {
         const result = {};
-        const { arrUnit } = props;
+        const { arrUnit, configComponentId, errorMap } = props;
         const arrFields = Object.keys(arrUnit) || [];
         const arrValue = props.value || [];
         arrValue.forEach((item) => {
             arrFields.forEach((field) => {
                 const controlData = item[field];
-                result[`${item.id}_${field}`] = Form.createFormField({
+                const controlKey = `${configComponentId}_${item.id}_${field}`;
+                result[controlKey] = Form.createFormField({
                     value: controlData,
+                    errors: errorMap[controlKey],
                 });
             });
         });

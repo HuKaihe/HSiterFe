@@ -8,6 +8,11 @@ export function deepCloneObj(obj = {}) {
     return JSON.parse(JSON.stringify(obj));
 }
 
+export function isObjPropsAllUnvalid(obj = {}) {
+    const values = Object.values(obj);
+    return values.every(i => !i === true);
+}
+
 export function objContentCompare(obj1 = {}, obj2 = {}) {
     return JSON.stringify(obj1) === JSON.stringify(obj2);
 }

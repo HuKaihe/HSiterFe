@@ -3,7 +3,7 @@ import { Tooltip, Button } from 'antd';
 // import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import ConfigForm from './ConfigForm';
-import { objContentCompare, deepCloneObj } from '../../service/service';
+import { objContentCompare, deepCloneObj, isObjPropsAllUnvalid } from '../../service/service';
 
 class ConfigPanel extends Component {
     static propTypes = {}
@@ -11,7 +11,7 @@ class ConfigPanel extends Component {
     static defaultProps = {}
 
     state = {
-        hasError: false,
+        errorMap: {},
         componentData: {},
     }
 
@@ -26,6 +26,7 @@ class ConfigPanel extends Component {
         this.setState({
             componentData: nextProps.componentData || {},
             configComponentId: nextProps.configComponentId,
+            errorMap: {},
         });
         this.initialData = deepCloneObj(nextProps.componentData || {});
     }
@@ -36,9 +37,11 @@ class ConfigPanel extends Component {
         });
     }
 
-    checkError = (hasError) => {
-        this.setState({
-            hasError,
+    setError = (errorObj) => {
+        this.setState(pre => ({
+            errorMap: { ...pre.errorMap, ...errorObj },
+        }), () => {
+            console.log(this.state.errorMap);
         });
     }
 
@@ -94,7 +97,8 @@ class ConfigPanel extends Component {
                     </div>
                     <ConfigForm
                         setComponentData={this.setComponentData}
-                        checkError={this.checkError}
+                        setError={this.setError}
+                        errorMap={this.state.errorMap}
                         componentData={this.state.componentData}
                         configComponentId={configComponentId}
                         configComponentTypeInfo={configComponentTypeInfo}
@@ -108,10 +112,20 @@ class ConfigPanel extends Component {
                             </Button>
                         </Tooltip>
                         <Button
-                            disabled={objContentCompare(this.state.componentData, this.initialData) || this.state.hasError}
+                            disabled={
+                                !(
+                                    !objContentCompare(this.state.componentData, this.initialData) &&
+                                    isObjPropsAllUnvalid(this.state.errorMap)
+                                )
+                            }
                             type="primary"
                             onClick={() => {
-                                if (objContentCompare(this.state.componentData, this.initialData) || this.state.hasError) {
+                                if (
+                                    !(
+                                        !objContentCompare(this.state.componentData, this.initialData) &&
+                                        isObjPropsAllUnvalid(this.state.errorMap)
+                                    )
+                                ) {
                                     return;
                                 }
                                 console.log(this.state.componentData);

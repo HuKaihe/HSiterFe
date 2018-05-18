@@ -22,30 +22,34 @@ const controlMap = {
 };
 
 class ConfigForm extends Component {
-    // state中放置自定义控件的数据
     state = {
     }
+
     componentWillReceiveProps = (nextProps) => {
         const { componentData } = nextProps;
-        this.setState(componentData);
-        const configPanelEl = document.getElementById('hsiter-config-panel-form');
-        configPanelEl.scrollTop = 0;
+        this.setState(componentData, () => {
+            if (this.configComponentId !== nextProps.configComponentId) {
+                document.getElementById('hsiter-config-panel-form').scrollTop = 0;
+                this.configComponentId = nextProps.configComponentId;
+            }
+        });
     }
+
     setCustomControlValue = (newCustomControlValue) => {
-        if (Object.keys(newCustomControlValue)[0] === 'error') {
-            this.props.checkError(true);
-            return;
-        }
-        this.props.checkError(false);
         this.setState(newCustomControlValue);
         this.props.setComponentData(this.state);
     }
+
+    configComponentId = ''; // configComponentId用作直接渲染DOM，和React无关，故暂时不放置到state中
+
     render() {
         const { getFieldDecorator } = this.props.form;
         const {
             // componentData = {},
             configComponentTypeInfo = {},
             configComponentId,
+            errorMap,
+            setError,
         } = this.props;
         const { configSchema = {} } = configComponentTypeInfo;
         const configKeys = Object.keys(configSchema) || [];
@@ -63,6 +67,9 @@ class ConfigForm extends Component {
                         let customProps = {};
                         if (type === 'custom') {
                             customProps.customKey = key;
+                            customProps.configComponentId = configComponentId;
+                            customProps.errorMap = errorMap;
+                            customProps.setError = setError;
                             customProps.setCustomControlValue = this.setCustomControlValue;
                             customProps = { ...customProps, ...config.customProps };
                         }
@@ -99,10 +106,14 @@ const WrappedConfigForm = Form.create({
         };
         const error = Object.values(changedFields)[0].errors;
         if (error) {
-            props.checkError(true);
+            props.setError({
+                [changedFieldKey]: error,
+            });
             return;
         }
-        props.checkError(false);
+        props.setError({
+            [changedFieldKey]: undefined,
+        });
         props.setComponentData({ ...props.componentData, ...changedField });
     },
     mapPropsToFields(props) {
@@ -117,6 +128,7 @@ const WrappedConfigForm = Form.create({
         configKeys.forEach((key) => {
             const controlData = componentData[key];
             result[`${configComponentId}_${key}`] = Form.createFormField({
+                errors: props.errorMap[`${configComponentId}_${key}`],
                 value: controlData,
             });
         });
