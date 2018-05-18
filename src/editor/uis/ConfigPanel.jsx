@@ -129,7 +129,7 @@ class ConfigPanel extends Component {
                                     return;
                                 }
                                 console.log(this.state.componentData);
-                                editComponent(configComponentId, this.state.componentData);
+                                editComponent(configComponentId, deepCloneObj(this.state.componentData));
                                 this.closePanel();
                             }}
                         >
