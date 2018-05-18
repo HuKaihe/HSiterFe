@@ -11,10 +11,10 @@ import { componentTypeInfoList } from './mock/componentInfo';
 import { deepCloneObj } from '../service/service';
 
 const pageSchema = {
-    // layoutSchema: [],
-    // componentSchema: [],
-    layoutSchema: [{ id: 'mmekx19vd81526119444508', name: 'HKHBlogBanner' }],
-    componentSchema: [{ id: 'mmekx19vd81526119444508', componentData: deepCloneObj(componentTypeInfoList[1].defaultData), componentTypeId: 'HKHBlogBanner' }],
+    layoutSchema: [],
+    componentSchema: [],
+    // layoutSchema: [{ id: 'mmekx19vd81526119444508', name: 'HotCollection' }],
+    // componentSchema: [{ id: 'mmekx19vd81526119444508', componentData: deepCloneObj(componentTypeInfoList[2].defaultData), componentTypeId: 'HotCollection' }],
 };
 
 // react全局状态存储到redux store中

@@ -16,8 +16,16 @@ class ConfigPanel extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        if (nextProps.isComponentConfigPanelDisplayed === false) {
+            return;
+        }
+        if (nextProps.configComponentId === this.state.configComponentId) {
+            this.initialData = deepCloneObj(nextProps.componentData || {});
+            return;
+        }
         this.setState({
             componentData: nextProps.componentData || {},
+            configComponentId: nextProps.configComponentId,
         });
         this.initialData = deepCloneObj(nextProps.componentData || {});
     }
@@ -92,11 +100,13 @@ class ConfigPanel extends Component {
                         configComponentTypeInfo={configComponentTypeInfo}
                     />
                     <div className="hsiter-config-panel-footer">
-                        <Button
-                            onClick={this.closePanel}
-                        >
+                        <Tooltip title="在您点击另一个元素之前，配置面版将保持您当前操作的状态">
+                            <Button
+                                onClick={this.closePanel}
+                            >
                             取消修改
-                        </Button>
+                            </Button>
+                        </Tooltip>
                         <Button
                             disabled={objContentCompare(this.state.componentData, this.initialData) || this.state.hasError}
                             type="primary"

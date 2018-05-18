@@ -28,6 +28,8 @@ class ConfigForm extends Component {
     componentWillReceiveProps = (nextProps) => {
         const { componentData } = nextProps;
         this.setState(componentData);
+        const configPanelEl = document.getElementById('hsiter-config-panel-form');
+        configPanelEl.scrollTop = 0;
     }
     setCustomControlValue = (newCustomControlValue) => {
         if (Object.keys(newCustomControlValue)[0] === 'error') {
@@ -41,18 +43,18 @@ class ConfigForm extends Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         const {
-            componentData = {},
+            // componentData = {},
             configComponentTypeInfo = {},
             configComponentId,
         } = this.props;
         const { configSchema = {} } = configComponentTypeInfo;
         const configKeys = Object.keys(configSchema) || [];
         return (
-            <Form className="hsiter-config-panel-form">
+            <Form className="hsiter-config-panel-form" id="hsiter-config-panel-form">
                 {
                     configKeys.map((key) => {
                         const config = configSchema[key];
-                        const controlData = componentData[key];
+                        // const controlData = componentData[key];
                         const {
                             Control = Input,
                             controlDecorator,
@@ -73,7 +75,7 @@ class ConfigForm extends Component {
                             >
                                 {
                                     getFieldDecorator(`${configComponentId}_${key}`, {
-                                        initialValue: controlData,
+                                        // initialValue: controlData,
                                         rules: config.rules,
                                         ...controlDecorator,
                                     })(<Control {...customProps} />)
@@ -102,6 +104,23 @@ const WrappedConfigForm = Form.create({
         }
         props.checkError(false);
         props.setComponentData({ ...props.componentData, ...changedField });
+    },
+    mapPropsToFields(props) {
+        const result = {};
+        const {
+            componentData = {},
+            configComponentTypeInfo = {},
+            configComponentId,
+        } = props;
+        const { configSchema = {} } = configComponentTypeInfo;
+        const configKeys = Object.keys(configSchema) || [];
+        configKeys.forEach((key) => {
+            const controlData = componentData[key];
+            result[`${configComponentId}_${key}`] = Form.createFormField({
+                value: controlData,
+            });
+        });
+        return result;
     },
 })(ConfigForm);
 

@@ -72,7 +72,7 @@ function ArrayControl(props) {
                                             >
                                                 {
                                                     getFieldDecorator(`${item.id}_${field}`, {
-                                                        initialValue: item[field],
+                                                        // initialValue: item[field],
                                                         rules,
                                                         ...controlDecorator,
                                                     })(<Control />)
@@ -109,6 +109,21 @@ const WrappedArrayControl = Form.create({
         props.setCustomControlValue({
             [customKey]: value,
         });
+    },
+    mapPropsToFields(props) {
+        const result = {};
+        const { arrUnit } = props;
+        const arrFields = Object.keys(arrUnit) || [];
+        const arrValue = props.value || [];
+        arrValue.forEach((item) => {
+            arrFields.forEach((field) => {
+                const controlData = item[field];
+                result[`${item.id}_${field}`] = Form.createFormField({
+                    value: controlData,
+                });
+            });
+        });
+        return result;
     },
 })(ArrayControl);
 

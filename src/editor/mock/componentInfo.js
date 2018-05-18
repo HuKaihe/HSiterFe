@@ -19,6 +19,28 @@ const componentTypeInfoList = [{
     desc: 'HKHBlog的大型轮播主图，可以根据需要选择是否包含下部的导航栏',
     collection: 'HKHBlog',
     configSchema: {
+        cardsInfo: {
+            label: '轮播主图信息',
+            control: 'arrayControl',
+            customProps: {
+                arrUnit: {
+                    title: {
+                        label: '标题',
+                        tip: '标题',
+                        rules: [{
+                            required: true, message: '标题不得为空',
+                        }],
+                        width: '70%',
+                    },
+                    paragraphs: {
+                        label: '内容',
+                        tip: '支持以换行分段',
+                        control: 'textArea',
+                        width: '100%',
+                    },
+                },
+            },
+        },
         navInfo: {
             label: '导航',
             control: 'arrayControl',
@@ -53,28 +75,6 @@ const componentTypeInfoList = [{
                     desc: {
                         label: '导航描述',
                         tip: '对导航项的描述',
-                    },
-                },
-            },
-        },
-        cardsInfo: {
-            label: '导航',
-            control: 'arrayControl',
-            customProps: {
-                arrUnit: {
-                    title: {
-                        label: '导航标题',
-                        tip: '导航项标题',
-                        rules: [{
-                            required: true, message: '导航项标题不得为空',
-                        }],
-                        width: '70%',
-                    },
-                    paragraphs: {
-                        label: '导航描述',
-                        tip: '对导航项的描述, 支持以换行分段',
-                        control: 'textArea',
-                        width: '100%',
                     },
                 },
             },
