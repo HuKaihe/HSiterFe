@@ -1,8 +1,6 @@
 import React from 'react';
 import { Carousel } from 'antd';
-import './images/bg_1.jpg';
-import './images/bg_2.jpg';
-import './images/bg_3.jpg';
+import classnames from 'classnames';
 
 import HKHBlogNav from './HKHBlogNav';
 import './HKHBlogBanner.less';
@@ -11,10 +9,15 @@ import './HKHBlogBanner.less';
 export default function (props) {
     const { navInfo, cardsInfo } = props;
 
+    const pieceCls = classnames({
+        'banner-piece': true,
+        'big-banner-piece': !props.showNav,
+    });
+
     const getBannerPiece = ({ title, paragraphs, id }) => {
         const splitedParagraphs = paragraphs.split('\n');
         return (
-            <div key={id} className="banner-piece">
+            <div key={id} className={pieceCls}>
                 <div className="title">{title}</div>
                 <div className="desc">
                     {
@@ -27,15 +30,15 @@ export default function (props) {
 
     return (
         <div className="HComponent HKHBlogBanner">
-            <HKHBlogNav navInfo={navInfo} customClass="nav" />
+            {
+                props.showNav && <HKHBlogNav navInfo={navInfo} customClass="nav" />
+            }
             <div className="cover" />
-            <div className="carousel-container">
-                <Carousel autoplay>
-                    {
-                        cardsInfo.map(item => getBannerPiece(item))
-                    }
-                </Carousel>
-            </div>
+            <Carousel autoplay>
+                {
+                    cardsInfo.map(item => getBannerPiece(item))
+                }
+            </Carousel>
 
         </div>
     );

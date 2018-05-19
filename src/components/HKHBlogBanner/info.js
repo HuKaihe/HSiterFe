@@ -6,6 +6,15 @@ export default {
     desc: 'HKHBlog的大型轮播主图，可以根据需要选择是否包含下部的导航栏',
     collection: 'HKHBlog',
     config_schema: {
+        showNav: {
+            label: '是否展示导航',
+            control: 'switch',
+            layout: {
+                labelCol: { span: 6 },
+                wrapperCol: { span: 12 },
+            },
+            valuePropName: 'checked',
+        },
         cardsInfo: {
             label: '轮播主图信息',
             control: 'arrayControl',
@@ -68,6 +77,7 @@ export default {
         },
     },
     default_data: {
+        showNav: true,
         navInfo: [
             {
                 id: 'nav1',
