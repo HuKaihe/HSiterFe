@@ -11611,6 +11611,11 @@ body {
 #app .hsiter-config-panel-form .ant-form-item-required:before {
   color: #188fff;
 }
+#app .hsiter-config-panel-form textarea {
+  height: 150px;
+  max-height: 225px;
+  resize: none;
+}
 #app .hsiter-form-custom-control.hsiter-arr-control .arr-obj {
   display: flex;
   justify-content: start;

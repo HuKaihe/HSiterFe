@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+// import classnames from 'classnames';
 // import PropTypes from 'prop-types';
 import SingleComponentContainer from '../containers/SingleComponentContainer';
 import globalStore from '../../service/globalStore';

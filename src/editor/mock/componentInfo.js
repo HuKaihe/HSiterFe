@@ -141,7 +141,7 @@ const componentTypeInfoList = [{
     img: 'http://fontawesome.hukaihe.com/public/image/HotCollection_s.png',
     title: 'HKHBlog专栏集合',
     collection: 'HKHBlog',
-    desc: 'HKHBlog专栏集合，适合通过链接引导用户至不同页面',
+    desc: 'HKHBlog专栏集合，适合在这里设置链接，将引导用户至不同页面',
     configSchema: {
         showTitle: {
             label: '是否展示标题',
