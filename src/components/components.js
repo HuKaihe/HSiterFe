@@ -1,9 +1,9 @@
 import HKHBlogBanner from './HKHBlogBanner/HKHBlogBanner';
-import HotCollection from './HotCollection/HotCollection';
-import HNav from './HNav/HNav';
+import HKHBlogCollection from './HKHBlogCollection/HKHBlogCollection';
+import AntDesignNav from './AntDesignNav/AntDesignNav';
 
 export default {
     HKHBlogBanner,
-    HotCollection,
-    HNav,
+    HKHBlogCollection,
+    AntDesignNav,
 };

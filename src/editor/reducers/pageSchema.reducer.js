@@ -25,7 +25,7 @@ function setSchemaRecord(schema) {
 
 // 添加新元素
 function addNewComponent({
-    id = '', name = '', order = 0, defaultData, newComponentTypeId,
+    id = '', name = '', order = 0, default_data, newComponentTypeId,
 }, state) {
     const { layoutSchema: oldLayoutSchema, componentSchema: oldComponentSchema } = state;
     const newLayoutSchema = [...oldLayoutSchema];
@@ -38,7 +38,7 @@ function addNewComponent({
     const newComponentData = {
         id,
         componentTypeId: newComponentTypeId,
-        componentData: deepCloneObj(defaultData) || {},
+        componentData: deepCloneObj(default_data) || {},
     };
     newLayoutSchema.splice(order, 0, newComponent);
     newComponentSchema.push(newComponentData);

@@ -19,12 +19,12 @@ const mapDispatchToProps = dispatch => ({
         const id = getRandomString();
         const {
             name: newComponentName,
-            defaultData,
+            default_data,
         } = newComponentInfo;
         dispatch({
             type: 'addNewComponent',
             id,
-            defaultData,
+            default_data,
             newComponentTypeId,
             name: newComponentName,
             order: globalStore.get('newComponentOrder'),

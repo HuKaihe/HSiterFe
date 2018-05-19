@@ -51,13 +51,13 @@ class ConfigForm extends Component {
             errorMap,
             setError,
         } = this.props;
-        const { configSchema = {} } = configComponentTypeInfo;
-        const configKeys = Object.keys(configSchema) || [];
+        const { config_schema = {} } = configComponentTypeInfo;
+        const configKeys = Object.keys(config_schema) || [];
         return (
             <Form className="hsiter-config-panel-form" id="hsiter-config-panel-form">
                 {
                     configKeys.map((key) => {
-                        const config = configSchema[key];
+                        const config = config_schema[key];
                         // const controlData = componentData[key];
                         const {
                             Control = Input,
@@ -123,8 +123,8 @@ const WrappedConfigForm = Form.create({
             configComponentTypeInfo = {},
             configComponentId,
         } = props;
-        const { configSchema = {} } = configComponentTypeInfo;
-        const configKeys = Object.keys(configSchema) || [];
+        const { config_schema = {} } = configComponentTypeInfo;
+        const configKeys = Object.keys(config_schema) || [];
         configKeys.forEach((key) => {
             const controlData = componentData[key];
             result[`${configComponentId}_${key}`] = Form.createFormField({

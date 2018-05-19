@@ -14,12 +14,12 @@ const pageSchema = {
     layoutSchema: [],
     componentSchema: [],
     // layoutSchema: [
-    //     { id: 'mmekx19vd81526119444508', name: 'HotCollection' },
-    //     { id: 'mmekx19vd81526119444509', name: 'HotCollection' },
+    //     { id: 'mmekx19vd81526119444508', name: 'HKHBlogCollection' },
+    //     { id: 'mmekx19vd81526119444509', name: 'HKHBlogCollection' },
     // ],
     // componentSchema: [
-    //     { id: 'mmekx19vd81526119444508', componentData: deepCloneObj(componentTypeInfoList[2].defaultData), componentTypeId: 'HotCollection' },
-    //     { id: 'mmekx19vd81526119444509', componentData: deepCloneObj(componentTypeInfoList[2].defaultData), componentTypeId: 'HotCollection' },
+    //     { id: 'mmekx19vd81526119444508', componentData: deepCloneObj(componentTypeInfoList[2].default_data), componentTypeId: 'HKHBlogCollection' },
+    //     { id: 'mmekx19vd81526119444509', componentData: deepCloneObj(componentTypeInfoList[2].default_data), componentTypeId: 'HKHBlogCollection' },
     // ],
 };
 

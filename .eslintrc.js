@@ -6,6 +6,8 @@ module.exports = {
     },
     "rules": {
 
+        "camelcase": "off",
+
         // 打印
         "no-console": "off",
         "max-len": "off",

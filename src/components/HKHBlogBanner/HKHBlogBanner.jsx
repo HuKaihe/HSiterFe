@@ -29,11 +29,14 @@ export default function (props) {
         <div className="HComponent HKHBlogBanner">
             <HKHBlogNav navInfo={navInfo} customClass="nav" />
             <div className="cover" />
-            <Carousel autoplay>
-                {
-                    cardsInfo.map(item => getBannerPiece(item))
-                }
-            </Carousel>
+            <div className="carousel-container">
+                <Carousel autoplay>
+                    {
+                        cardsInfo.map(item => getBannerPiece(item))
+                    }
+                </Carousel>
+            </div>
+
         </div>
     );
 }
