@@ -22,7 +22,7 @@ function ComponentModal(props) {
         <div>
             <Modal
                 width="1250px"
-                getContainer={() => document.getElementById('app')}
+                getContainer={() => document.getElementById('hisiter-editor-app')}
                 bodyStyle={{ padding: '10px 15px' }}
                 className="component-modal"
                 wrapClassName="vertical-center-modal"

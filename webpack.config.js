@@ -38,7 +38,7 @@ module.exports = {
 
     entry: {
         editor: './src/editor/index.js',
-        // page_manager: './src/page_manager/index.js',
+        pageManager: './src/pageManager/index.js',
         // home: './src/home/index.js',
         test: './src/test/index.js',
     },
@@ -104,6 +104,12 @@ module.exports = {
             title: 'HSiter editor',
             filename: 'editor.html',
             chunks: ['editor'],
+            ...HTMLTemplate,
+        }),
+        new HtmlWebpackPlugin({
+            title: 'HSiter Page Manager',
+            filename: 'pageManager.html',
+            chunks: ['pageManager'],
             ...HTMLTemplate,
         }),
         new HtmlWebpackPlugin({

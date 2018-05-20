@@ -11549,7 +11549,7 @@ body {
   right: -600px;
   top: 0;
   overflow: hidden;
-  width: 450px;
+  width: 500px;
   height: 100%;
   box-shadow: 2px 2px 6px #938D8D;
   background-color: #F2F3F7;
@@ -11621,16 +11621,14 @@ body {
   justify-content: start;
   flex-wrap: wrap;
   border-bottom: 1px solid #E8E8E8;
+  padding: 10px 5px;
 }
 #app .hsiter-form-custom-control.hsiter-arr-control .arr-obj:last-child {
   border-bottom: none;
 }
 #app .hsiter-form-custom-control.hsiter-arr-control .arr-item {
-  display: flex;
-  flex-direction: column;
   padding: 0 5px;
   width: 50%;
-  margin-bottom: 5px;
 }
 #app .hsiter-form-custom-control.hsiter-arr-control .arr-item .array-item-label {
   font-size: 12px;
@@ -11682,6 +11680,7 @@ body {
   position: relative;
   width: 100%;
   height: 515px;
+  overflow: hidden;
   color: #ffffff;
 }
 .HComponent.HKHBlogBanner .banner-piece .title {
@@ -11695,6 +11694,9 @@ body {
   padding-left: 40px;
   line-height: 2;
   font-size: 15px;
+}
+.HComponent.HKHBlogBanner .banner-piece.big-banner-piece {
+  height: 600px;
 }
 ul,
 li {
