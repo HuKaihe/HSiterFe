@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import EditorToolbar from '../uis/EditorToolbar';
 
-const mapStateToProps = () => ({
-
+const mapStateToProps = state => ({
+    page_schema: state.page_schema,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -15,12 +15,6 @@ const mapDispatchToProps = dispatch => ({
     forward: () => {
         dispatch({
             type: 'forward',
-        });
-    },
-
-    save: () => {
-        dispatch({
-            type: 'save',
         });
     },
 });

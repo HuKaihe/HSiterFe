@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import pageSchema from './pageSchema.reducer';
+import page_schema from './pageSchema.reducer';
 import {
     arrDisposable,
     toggleNewComponentModal,
@@ -8,7 +8,7 @@ import {
 } from './others.reducer';
 
 const editorReducer = combineReducers({
-    pageSchema,
+    page_schema,
     componentInfoGroup: arrDisposable,
     isNewComponentModalDisplayed: toggleNewComponentModal,
     isComponentConfigPanelDisplayed: toggleComponentConfigPanel,

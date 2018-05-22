@@ -1,4 +1,4 @@
-import { deepCloneObj, post } from '../../service/service';
+import { deepCloneObj } from '../../service/service';
 
 let schemaRecord = [
     {
@@ -45,6 +45,7 @@ function addNewComponent({
     const newPageSchema = {
         layoutSchema: newLayoutSchema,
         componentSchema: newComponentSchema,
+        baseConfig: state.baseConfig,
     };
     setSchemaRecord(newPageSchema);
     console.log('add', newPageSchema);
@@ -64,6 +65,7 @@ function moveComponentUp({ id = '', order = 0 }, state) {
     const newPageSchema = {
         layoutSchema: newLayoutSchema,
         componentSchema,
+        baseConfig: state.baseConfig,
     };
     console.log('move up', newPageSchema);
     setSchemaRecord(newPageSchema);
@@ -83,6 +85,7 @@ function moveComponentDown({ id = '', order = 0 }, state) {
     const newPageSchema = {
         layoutSchema: newLayoutSchema,
         componentSchema,
+        baseConfig: state.baseConfig,
     };
     console.log('move down', newPageSchema);
     setSchemaRecord(newPageSchema);
@@ -104,6 +107,7 @@ function deleteComponent({ id }, state) {
     const newPageSchema = {
         layoutSchema: newLayoutSchema,
         componentSchema: newComponentSchema,
+        baseConfig: state.baseConfig,
     };
     console.log('delete', newPageSchema);
     setSchemaRecord(newPageSchema);
@@ -119,6 +123,7 @@ function editComponent({ id, componentData }, state) {
     const newPageSchema = {
         layoutSchema,
         componentSchema: newComponentSchema,
+        baseConfig: state.baseConfig,
     };
     setSchemaRecord(newPageSchema);
     return newPageSchema;
@@ -151,15 +156,8 @@ function forward() {
     return schemaRecord[recordPointer];
 }
 
-function save(state) {
-    console.log('save');
-    post('/editor/save', {
-        page_schema: state,
-        id: window.pageId,
-    });
-}
 
-export default function pageSchema(state = {}, action) {
+export default function page_schema(state = {}, action) {
     const { type } = action;
     const map = {
         addNewComponent,
@@ -169,7 +167,6 @@ export default function pageSchema(state = {}, action) {
         editComponent,
         undo,
         forward,
-        save,
     };
     const operate = map[type] || (() => { });
     return operate(action, state) || state;

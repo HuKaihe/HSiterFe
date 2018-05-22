@@ -80,7 +80,7 @@ function PageCard(props) {
                                 okType: 'danger',
                                 cancelText: '取消',
                                 onOk() {
-                                    props.deletePage(props.cardInfo.id);
+                                    props.deletePage(props.cardInfo.page_id);
                                 },
                             });
                         }}
@@ -127,7 +127,7 @@ function PageCard(props) {
                     type="primary"
                     className="start-edit-btn"
                     onClick={() => {
-                        window.open(`/editor?page=${props.cardInfo.code}`);
+                        window.open(`/editor?page=${props.cardInfo.page_id}`);
                     }}
                 >
                     <i className="fa fa-wrench icon" />

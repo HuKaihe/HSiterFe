@@ -6,7 +6,7 @@ import { deepCloneObj } from '../../service/service';
 
 const mapStateToProps = (state) => {
     const configComponentId = globalStore.get('configComponentId');
-    const configComponent = state.pageSchema.componentSchema.find(item => item.id === configComponentId) || {};
+    const configComponent = state.page_schema.componentSchema.find(item => item.id === configComponentId) || {};
     const componentTypeInfoList = globalStore.get('componentTypeInfoList');
     const configComponentTypeId = configComponent.componentTypeId;
     const configComponentTypeInfo = componentTypeInfoList.find(item => item.id === configComponentTypeId);

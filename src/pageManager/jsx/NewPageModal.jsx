@@ -5,6 +5,15 @@ import { post } from '../../service/service';
 const FormItem = Form.Item;
 const { Option } = Select;
 
+const formItemLayout = {
+    labelCol: {
+        span: 6,
+    },
+    wrapperCol: {
+        span: 18,
+    },
+};
+
 class NewPageModal extends React.Component {
     state = {}
     componentWillReceiveProps(nextProp) {
@@ -31,9 +40,9 @@ class NewPageModal extends React.Component {
                 page_type: values.page_type,
                 page_collection: values.page_collection,
             }).then((({ payload }) => {
-                const { pageList, pageCode } = payload;
+                const { pageList, page_id } = payload;
                 this.props.updatePageList(pageList);
-                window.open(`/editor?page=${pageCode}`);
+                window.open(`/editor?page=${page_id}`);
             })).then(() => {
                 this.props.showNewPageModal(false);
             });
@@ -54,6 +63,7 @@ class NewPageModal extends React.Component {
             >
                 <Form>
                     <FormItem
+                        {...formItemLayout}
                         label={this.getLabelWithTip('页面名称', '页面名称是您查找页面的重要凭据，请尽量使用一个有意义的名称')}
                         colon={false}
                     >
@@ -64,6 +74,20 @@ class NewPageModal extends React.Component {
                         }
                     </FormItem>
                     <FormItem
+                        {...formItemLayout}
+                        label={this.getLabelWithTip('页面链接', '您希望作为您访问地址的链接')}
+                        colon={false}
+                    >
+                        {
+                            getFieldDecorator('href', {
+                                rules: [
+                                    { pattern: /^([A-Za-z0-9]|_|-)+$/, message: 'url只支持英文、数字及下划线' },
+                                ],
+                            })(<Input addonBefore="hsiter.hukaihe.com/hukaihe/" placeholder="页面链接" />)
+                        }
+                    </FormItem>
+                    <FormItem
+                        {...formItemLayout}
                         label={this.getLabelWithTip('页面集合', '对页面进行简单的归档。可以点击【新建页面】左边的【新建集合】创建新的集合')}
                         colon={false}
                     >
@@ -75,6 +99,7 @@ class NewPageModal extends React.Component {
                         }
                     </FormItem>
                     <FormItem
+                        {...formItemLayout}
                         label={this.getLabelWithTip('标记', '根据您的喜好对页面进行个性化分类')}
                         colon={false}
                     >

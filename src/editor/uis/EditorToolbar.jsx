@@ -1,13 +1,29 @@
 import React from 'react';
-import { Affix } from 'antd';
+import { Affix, message } from 'antd';
+import { post } from '../../service/service';
+import globalStore from '../../service/globalStore';
+
 // import PropTypes from 'prop-types';
 
 function EditorToolbar(props) {
     const {
         undo,
         forward,
-        save,
+        page_schema,
     } = props;
+
+    const save = () => {
+        post('/editor/save', {
+            page_schema: JSON.stringify(page_schema),
+            page_id: globalStore.get('pageInfo').page_id,
+        }).then(({ code }) => {
+            if (code === 200) {
+                message.success('保存成功');
+                return;
+            }
+            message.error('保存失败');
+        });
+    };
 
     return (
         <Affix className="editor-tool-bar-affix">

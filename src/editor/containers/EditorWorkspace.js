@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import EditorWorkspace from '../uis/EditorWorkspace';
 
 const mapStateToProps = state => ({
-    layoutSchema: state.pageSchema.layoutSchema,
-    componentSchema: state.pageSchema.componentSchema,
+    layoutSchema: state.page_schema.layoutSchema,
+    componentSchema: state.page_schema.componentSchema,
 });
 
 const mapDispatchToProps = dispatch => ({
