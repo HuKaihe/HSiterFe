@@ -6,6 +6,7 @@ function EditorToolbar(props) {
     const {
         undo,
         forward,
+        save,
     } = props;
 
     return (
@@ -61,7 +62,10 @@ function EditorToolbar(props) {
                     </ul>
                     <ul className="page-list">
                         <li>
-                            <button className="btn">
+                            <button
+                                className="btn"
+                                onClick={save}
+                            >
                                 <i className="icon fa fa-save" />
                                 <span className="text">保存</span>
                             </button>

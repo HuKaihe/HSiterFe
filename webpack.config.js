@@ -84,7 +84,7 @@ module.exports = {
                             context: 'src',
                             output: '/build',
                             publicPath: '/',
-                            name: 'images/[name].[ext]',
+                            name: 'images/[name][hash].[ext]',
                         },
                     },
                     {

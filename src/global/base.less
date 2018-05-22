@@ -8,6 +8,7 @@
 @gray_4: #D8D8D8;
 @gray_5: #938D8D;
 @gray_6: #938D8D;
+@blue: #2592fc;
 @blue_hover: #62C3F3;
 @blue_main: #66CACA;
 @blue_main_hover: #5FBAB9;
@@ -36,7 +37,7 @@ button {
     cursor: pointer;
 }
 
-.hisite-remove:hover{
+.hsiter-remove:hover {
     color: @red;
 }
 
@@ -70,7 +71,52 @@ body {
     align-items: center;
 }
 
+.hsiter-btn {
+    .center;
+    height: 30px;
+    padding: 2px 10px;
+    color: @white;
+    background-color: @blue_main;
+    border-radius: 3px;
+    transition: all 0.5s;
+    i {
+        margin-right: 5px;
+        font-size: 13px;
+    }
+    .text {
+        font-size: 13px;
+    }
+    &:hover {
+        background-color: @blue_main_hover;
+        color: @white;
+    }
+}
+
+.hsiter-icon {
+    margin-left: 15px;
+    color: @gray_5;
+}
+
+.spin-icon {
+    transition: all 0.5s;
+    &:hover .icon {
+        animation: rotate 2s infinite;
+        @keyframes rotate {
+            from {
+                transform: rotateY(0deg)
+            }
+            to {
+                transform: rotateY(360deg)
+            }
+        }
+    }
+}
+
 // 复写ant样式
 .ant-tooltip {
     font-size: 12px
+}
+
+.ant-modal-title {
+    font-weight: lighter;
 }

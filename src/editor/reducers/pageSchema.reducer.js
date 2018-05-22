@@ -1,4 +1,4 @@
-import { deepCloneObj } from '../../service/service';
+import { deepCloneObj, post } from '../../service/service';
 
 let schemaRecord = [
     {
@@ -151,6 +151,14 @@ function forward() {
     return schemaRecord[recordPointer];
 }
 
+function save(state) {
+    console.log('save');
+    post('/editor/save', {
+        page_schema: state,
+        id: window.pageId,
+    });
+}
+
 export default function pageSchema(state = {}, action) {
     const { type } = action;
     const map = {
@@ -161,6 +169,7 @@ export default function pageSchema(state = {}, action) {
         editComponent,
         undo,
         forward,
+        save,
     };
     const operate = map[type] || (() => { });
     return operate(action, state) || state;

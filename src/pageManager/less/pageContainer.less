@@ -1,0 +1,95 @@
+.hsiter-page-container {
+    display: flex;
+    flex-wrap: wrap;
+    .no-page {
+        width: 500px;
+        height: 300px;
+        margin: 20px auto;
+        border-radius: 150px;
+        text-align: center;
+        background: url(../images/none_bg.jpg) center / cover;
+    }
+}
+
+.page-card-container {
+    .center;
+    width: 25%;
+    height: 225px;
+}
+
+.hsiter-page-card {
+    position: relative;
+    width: 90%;
+    min-width: 285px;
+    box-shadow: 2px 3px 3px @gray_4;
+    border-radius: 5px;
+    font-size: 13px;
+    .btn-remove {
+        position: absolute;
+        top: 5px;
+        right: 8px;
+        font-size: 15px;
+        color: @gray_4;
+        background-color: transparent;
+        &:hover {
+            color: @red;
+        }
+    }
+    .page-card-info {
+        position: relative;
+        height: 160px;
+        border-radius: 5px 5px 0 0;
+        color: @white;
+        background: url('../images/card_bg_1.jpg') center / cover;
+        &.red-card {
+            background: url('../images/card_bg_2.jpg') center / cover;
+        }
+        &.yellow-card {
+            background: url('../images/card_bg_3.jpg') center / cover;
+        }
+        .card-info-cover {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px 5px 0 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            .info-list {
+                padding: 15px;
+                height: 100%;
+                li {
+                    overflow: hidden;
+                    margin-bottom: 10px;
+                    white-space: normal;
+                    text-overflow: ellipsis;
+                    .icon {
+                        margin-right: 15px;
+                    }
+                }
+            }
+        }
+    }
+    .page-card-tool-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        height: 47px;
+        padding: 6px 15px;
+        .tool-list {
+            display: flex;
+            li {
+                margin-right: 25px;
+                color: @gray_6;
+                font-size: 14px;
+            }
+        }
+        .start-edit-btn {
+            padding: 0 10px;
+            i {
+                margin-right: 5px;
+            }
+            .spin-icon;
+        }
+    }
+}

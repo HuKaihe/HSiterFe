@@ -17,7 +17,7 @@ class HSiterEditor extends Component {
     render() {
         return (
             <div id="hisiter-editor-app" className="hisiter-editor-app">
-                <GlobalTop />
+                <GlobalTop activeNavItemId="editor" />
                 <EditorToolBar />
                 <EditorWorkspace />
                 <NewComponentModal />

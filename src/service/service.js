@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+import fetch from 'cross-fetch';
 
 export function getRandomString() {
     return Math.random().toString(36).substr(2) + new Date().getTime();

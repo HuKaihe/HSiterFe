@@ -3521,6 +3521,135 @@ mark {
 /* stylelint-disable no-duplicate-selectors */
 /* stylelint-disable declaration-bang-space-before,no-duplicate-selectors */
 /* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+.ant-tooltip {
+  font-family: "Monospaced Number", "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.65);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  z-index: 1060;
+  display: block;
+  visibility: visible;
+}
+.ant-tooltip-hidden {
+  display: none;
+}
+.ant-tooltip-placement-top,
+.ant-tooltip-placement-topLeft,
+.ant-tooltip-placement-topRight {
+  padding-bottom: 8px;
+}
+.ant-tooltip-placement-right,
+.ant-tooltip-placement-rightTop,
+.ant-tooltip-placement-rightBottom {
+  padding-left: 8px;
+}
+.ant-tooltip-placement-bottom,
+.ant-tooltip-placement-bottomLeft,
+.ant-tooltip-placement-bottomRight {
+  padding-top: 8px;
+}
+.ant-tooltip-placement-left,
+.ant-tooltip-placement-leftTop,
+.ant-tooltip-placement-leftBottom {
+  padding-right: 8px;
+}
+.ant-tooltip-inner {
+  max-width: 250px;
+  padding: 6px 8px;
+  color: #fff;
+  text-align: left;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  min-height: 32px;
+}
+.ant-tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+.ant-tooltip-placement-top .ant-tooltip-arrow,
+.ant-tooltip-placement-topLeft .ant-tooltip-arrow,
+.ant-tooltip-placement-topRight .ant-tooltip-arrow {
+  bottom: 3px;
+  border-width: 5px 5px 0;
+  border-top-color: rgba(0, 0, 0, 0.75);
+}
+.ant-tooltip-placement-top .ant-tooltip-arrow {
+  left: 50%;
+  margin-left: -5px;
+}
+.ant-tooltip-placement-topLeft .ant-tooltip-arrow {
+  left: 16px;
+}
+.ant-tooltip-placement-topRight .ant-tooltip-arrow {
+  right: 16px;
+}
+.ant-tooltip-placement-right .ant-tooltip-arrow,
+.ant-tooltip-placement-rightTop .ant-tooltip-arrow,
+.ant-tooltip-placement-rightBottom .ant-tooltip-arrow {
+  left: 3px;
+  border-width: 5px 5px 5px 0;
+  border-right-color: rgba(0, 0, 0, 0.75);
+}
+.ant-tooltip-placement-right .ant-tooltip-arrow {
+  top: 50%;
+  margin-top: -5px;
+}
+.ant-tooltip-placement-rightTop .ant-tooltip-arrow {
+  top: 8px;
+}
+.ant-tooltip-placement-rightBottom .ant-tooltip-arrow {
+  bottom: 8px;
+}
+.ant-tooltip-placement-left .ant-tooltip-arrow,
+.ant-tooltip-placement-leftTop .ant-tooltip-arrow,
+.ant-tooltip-placement-leftBottom .ant-tooltip-arrow {
+  right: 3px;
+  border-width: 5px 0 5px 5px;
+  border-left-color: rgba(0, 0, 0, 0.75);
+}
+.ant-tooltip-placement-left .ant-tooltip-arrow {
+  top: 50%;
+  margin-top: -5px;
+}
+.ant-tooltip-placement-leftTop .ant-tooltip-arrow {
+  top: 8px;
+}
+.ant-tooltip-placement-leftBottom .ant-tooltip-arrow {
+  bottom: 8px;
+}
+.ant-tooltip-placement-bottom .ant-tooltip-arrow,
+.ant-tooltip-placement-bottomLeft .ant-tooltip-arrow,
+.ant-tooltip-placement-bottomRight .ant-tooltip-arrow {
+  top: 3px;
+  border-width: 0 5px 5px;
+  border-bottom-color: rgba(0, 0, 0, 0.75);
+}
+.ant-tooltip-placement-bottom .ant-tooltip-arrow {
+  left: 50%;
+  margin-left: -5px;
+}
+.ant-tooltip-placement-bottomLeft .ant-tooltip-arrow {
+  left: 16px;
+}
+.ant-tooltip-placement-bottomRight .ant-tooltip-arrow {
+  right: 16px;
+}
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+/* stylelint-disable no-duplicate-selectors */
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors */
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
 .ant-affix {
   position: fixed;
   z-index: 10;
@@ -5742,135 +5871,6 @@ a.ant-btn-sm {
 .ant-menu-dark .ant-menu-item-disabled > .ant-menu-submenu-title > .ant-menu-submenu-arrow:after,
 .ant-menu-dark .ant-menu-submenu-disabled > .ant-menu-submenu-title > .ant-menu-submenu-arrow:after {
   background: rgba(255, 255, 255, 0.35) !important;
-}
-/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
-/* stylelint-disable no-duplicate-selectors */
-/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors */
-/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
-.ant-tooltip {
-  font-family: "Monospaced Number", "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.5;
-  color: rgba(0, 0, 0, 0.65);
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  position: absolute;
-  z-index: 1060;
-  display: block;
-  visibility: visible;
-}
-.ant-tooltip-hidden {
-  display: none;
-}
-.ant-tooltip-placement-top,
-.ant-tooltip-placement-topLeft,
-.ant-tooltip-placement-topRight {
-  padding-bottom: 8px;
-}
-.ant-tooltip-placement-right,
-.ant-tooltip-placement-rightTop,
-.ant-tooltip-placement-rightBottom {
-  padding-left: 8px;
-}
-.ant-tooltip-placement-bottom,
-.ant-tooltip-placement-bottomLeft,
-.ant-tooltip-placement-bottomRight {
-  padding-top: 8px;
-}
-.ant-tooltip-placement-left,
-.ant-tooltip-placement-leftTop,
-.ant-tooltip-placement-leftBottom {
-  padding-right: 8px;
-}
-.ant-tooltip-inner {
-  max-width: 250px;
-  padding: 6px 8px;
-  color: #fff;
-  text-align: left;
-  text-decoration: none;
-  background-color: rgba(0, 0, 0, 0.75);
-  border-radius: 4px;
-  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  min-height: 32px;
-}
-.ant-tooltip-arrow {
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-}
-.ant-tooltip-placement-top .ant-tooltip-arrow,
-.ant-tooltip-placement-topLeft .ant-tooltip-arrow,
-.ant-tooltip-placement-topRight .ant-tooltip-arrow {
-  bottom: 3px;
-  border-width: 5px 5px 0;
-  border-top-color: rgba(0, 0, 0, 0.75);
-}
-.ant-tooltip-placement-top .ant-tooltip-arrow {
-  left: 50%;
-  margin-left: -5px;
-}
-.ant-tooltip-placement-topLeft .ant-tooltip-arrow {
-  left: 16px;
-}
-.ant-tooltip-placement-topRight .ant-tooltip-arrow {
-  right: 16px;
-}
-.ant-tooltip-placement-right .ant-tooltip-arrow,
-.ant-tooltip-placement-rightTop .ant-tooltip-arrow,
-.ant-tooltip-placement-rightBottom .ant-tooltip-arrow {
-  left: 3px;
-  border-width: 5px 5px 5px 0;
-  border-right-color: rgba(0, 0, 0, 0.75);
-}
-.ant-tooltip-placement-right .ant-tooltip-arrow {
-  top: 50%;
-  margin-top: -5px;
-}
-.ant-tooltip-placement-rightTop .ant-tooltip-arrow {
-  top: 8px;
-}
-.ant-tooltip-placement-rightBottom .ant-tooltip-arrow {
-  bottom: 8px;
-}
-.ant-tooltip-placement-left .ant-tooltip-arrow,
-.ant-tooltip-placement-leftTop .ant-tooltip-arrow,
-.ant-tooltip-placement-leftBottom .ant-tooltip-arrow {
-  right: 3px;
-  border-width: 5px 0 5px 5px;
-  border-left-color: rgba(0, 0, 0, 0.75);
-}
-.ant-tooltip-placement-left .ant-tooltip-arrow {
-  top: 50%;
-  margin-top: -5px;
-}
-.ant-tooltip-placement-leftTop .ant-tooltip-arrow {
-  top: 8px;
-}
-.ant-tooltip-placement-leftBottom .ant-tooltip-arrow {
-  bottom: 8px;
-}
-.ant-tooltip-placement-bottom .ant-tooltip-arrow,
-.ant-tooltip-placement-bottomLeft .ant-tooltip-arrow,
-.ant-tooltip-placement-bottomRight .ant-tooltip-arrow {
-  top: 3px;
-  border-width: 0 5px 5px;
-  border-bottom-color: rgba(0, 0, 0, 0.75);
-}
-.ant-tooltip-placement-bottom .ant-tooltip-arrow {
-  left: 50%;
-  margin-left: -5px;
-}
-.ant-tooltip-placement-bottomLeft .ant-tooltip-arrow {
-  left: 16px;
-}
-.ant-tooltip-placement-bottomRight .ant-tooltip-arrow {
-  right: 16px;
 }
 /* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
 /* stylelint-disable no-duplicate-selectors */
@@ -11174,7 +11174,7 @@ button {
   outline: none;
   cursor: pointer;
 }
-.hisite-remove:hover {
+.hsiter-remove:hover {
   color: #FF6A59;
 }
 .text-tip {
@@ -11201,42 +11201,36 @@ body {
   justify-content: center;
   align-items: center;
 }
-.ant-tooltip {
-  font-size: 12px;
-}
-#app {
-  overflow: hidden;
-  min-width: 1300px;
-}
-#app .editor-tool-bar-affix .ant-affix {
-  z-index: 105;
-}
-#app .editor-tool-bar {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px;
-  background-color: #4A4A4A;
-  color: #ffffff;
-}
-#app .editor-tool-bar .left,
-#app .editor-tool-bar .right,
-#app .editor-tool-bar ul,
-#app .editor-tool-bar li {
-  display: flex;
-}
-#app .editor-tool-bar li {
-  margin-left: 15px;
-}
-#app .editor-tool-bar .btn {
+.hsiter-btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 2px;
   height: 30px;
+  padding: 2px 10px;
   color: #ffffff;
+  background-color: #66CACA;
+  border-radius: 3px;
   transition: all 0.5s;
 }
-#app .editor-tool-bar .btn:hover .icon {
+.hsiter-btn i {
+  margin-right: 5px;
+  font-size: 13px;
+}
+.hsiter-btn .text {
+  font-size: 13px;
+}
+.hsiter-btn:hover {
+  background-color: #5FBAB9;
+  color: #ffffff;
+}
+.hsiter-icon {
+  margin-left: 15px;
+  color: #938D8D;
+}
+.spin-icon {
+  transition: all 0.5s;
+}
+.spin-icon:hover .icon {
   animation: rotate 2s infinite;
 }
 @keyframes rotate {
@@ -11247,41 +11241,90 @@ body {
     transform: rotateY(360deg);
   }
 }
-#app .editor-tool-bar .btn .icon {
+.ant-tooltip {
+  font-size: 12px;
+}
+.ant-modal-title {
+  font-weight: lighter;
+}
+.hisiter-editor-app {
+  overflow: hidden;
+  min-width: 1300px;
+}
+.hisiter-editor-app .editor-tool-bar-affix .ant-affix {
+  z-index: 105;
+}
+.hisiter-editor-app .editor-tool-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: #4A4A4A;
+  color: #ffffff;
+}
+.hisiter-editor-app .editor-tool-bar .left,
+.hisiter-editor-app .editor-tool-bar .right,
+.hisiter-editor-app .editor-tool-bar ul,
+.hisiter-editor-app .editor-tool-bar li {
+  display: flex;
+}
+.hisiter-editor-app .editor-tool-bar li {
+  margin-left: 15px;
+}
+.hisiter-editor-app .editor-tool-bar .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2px;
+  height: 30px;
+  color: #ffffff;
+  transition: all 0.5s;
+}
+.hisiter-editor-app .editor-tool-bar .btn:hover .icon {
+  animation: rotate 2s infinite;
+}
+@keyframes rotate {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+.hisiter-editor-app .editor-tool-bar .btn .icon {
   margin-right: 5px;
   font-size: 13px;
 }
-#app .editor-tool-bar .btn .text {
+.hisiter-editor-app .editor-tool-bar .btn .text {
   font-size: 12px;
 }
-#app .editor-tool-bar .setting-list {
+.hisiter-editor-app .editor-tool-bar .setting-list {
   padding-right: 15px;
   border-right: 1px solid #938D8D;
 }
-#app .editor-tool-bar .other-tool-list {
+.hisiter-editor-app .editor-tool-bar .other-tool-list {
   margin-right: 15px;
 }
-#app .editor-tool-bar .page-list {
+.hisiter-editor-app .editor-tool-bar .page-list {
   border-left: 1px solid #938D8D;
   margin-right: 5px;
 }
-#app .editor-tool-bar .publish {
+.hisiter-editor-app .editor-tool-bar .publish {
   background-color: #66CACA;
   border-radius: 3px;
   padding: 2px 15px;
 }
-#app .editor-tool-bar .publish .icon {
+.hisiter-editor-app .editor-tool-bar .publish .icon {
   margin-right: 5px;
   font-size: 13px;
 }
-#app .editor-tool-bar .publish .text {
+.hisiter-editor-app .editor-tool-bar .publish .text {
   font-size: 13px;
 }
-#app .editor-tool-bar .publish:hover {
+.hisiter-editor-app .editor-tool-bar .publish:hover {
   background-color: #5FBAB9;
   color: #ffffff;
 }
-#app .hsite-editor {
+.hisiter-editor-app .hsite-editor {
   display: flex;
   flex-direction: column;
   min-width: 1300px;
@@ -11291,7 +11334,7 @@ body {
   padding: 3px 3px 50px 3px;
   background-color: #ffffff;
 }
-#app .hsite-editor .hsite-new-component-bottom {
+.hisiter-editor-app .hsite-editor .hsite-new-component-bottom {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11305,11 +11348,11 @@ body {
   cursor: pointer;
   transition: all 0.25s;
 }
-#app .hsite-editor .hsite-new-component-bottom:hover {
+.hisiter-editor-app .hsite-editor .hsite-new-component-bottom:hover {
   background-color: #66CACA;
   color: #ffffff;
 }
-#app .hsite-editor .hisite-single-component-container {
+.hisiter-editor-app .hsite-editor .hsiter-single-component-container {
   position: relative;
   cursor: pointer;
   margin-top: 10px;
@@ -11319,10 +11362,10 @@ body {
   flex-direction: column;
   justify-content: center;
 }
-#app .hsite-editor .hisite-single-component-container .hsiter-my-component-container.active {
+.hisiter-editor-app .hsite-editor .hsiter-single-component-container .hsiter-my-component-container.active {
   border: 2px solid #66CACA;
 }
-#app .hsite-editor .hisite-single-component-container .hisite-component-mask {
+.hisiter-editor-app .hsite-editor .hsiter-single-component-container .hsiter-component-mask {
   position: absolute;
   top: 0;
   left: 0;
@@ -11332,7 +11375,7 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
 }
-#app .hsite-editor .hisite-single-component-container .hisite-component-mask .hisite-component-editor-bar {
+.hisiter-editor-app .hsite-editor .hsiter-single-component-container .hsiter-component-mask .hsiter-component-editor-bar {
   position: absolute;
   right: 5px;
   top: 15px;
@@ -11340,7 +11383,7 @@ body {
   border-radius: 5px;
   background-color: #ffffff;
 }
-#app .hsite-editor .hisite-single-component-container .hisite-component-mask .hisite-component-editor-bar li {
+.hisiter-editor-app .hsite-editor .hsiter-single-component-container .hsiter-component-mask .hsiter-component-editor-bar li {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11348,25 +11391,25 @@ body {
   font-size: 15px;
   color: #938D8D;
 }
-#app .hsite-editor .hisite-single-component-container .hisite-component-mask .hisite-component-editor-bar li button {
+.hisiter-editor-app .hsite-editor .hsiter-single-component-container .hsiter-component-mask .hsiter-component-editor-bar li button {
   width: 100%;
   height: 100%;
 }
-#app .hsite-editor .hisite-single-component-container .hisite-component-mask .hisite-component-editor-bar li .disabled {
+.hisiter-editor-app .hsite-editor .hsiter-single-component-container .hsiter-component-mask .hsiter-component-editor-bar li .disabled {
   color: #F2F3F7;
 }
-#app .hsite-editor .hisite-single-component-container .hisite-component-mask .hisite-component-editor-bar li:hover {
+.hisiter-editor-app .hsite-editor .hsiter-single-component-container .hsiter-component-mask .hsiter-component-editor-bar li:hover {
   color: #62C3F3;
 }
-#app .hsite-editor .hisite-single-component-container .hisite-component-mask .hisite-component-editor-bar.transverse {
+.hisiter-editor-app .hsite-editor .hsiter-single-component-container .hsiter-component-mask .hsiter-component-editor-bar.transverse {
   display: flex;
   top: 13px;
   min-width: 120px;
 }
-#app .hsite-editor .hisite-single-component-container .hisite-component-mask .hisite-component-editor-bar.transverse li {
+.hisiter-editor-app .hsite-editor .hsiter-single-component-container .hsiter-component-mask .hsiter-component-editor-bar.transverse li {
   width: 30px;
 }
-#app .hsite-editor .hisite-single-component-container .hisite-component-mask .hisite-add-component {
+.hisiter-editor-app .hsite-editor .hsiter-single-component-container .hsiter-component-mask .hsiter-add-component {
   position: absolute;
   z-index: 100;
   right: -9px;
@@ -11380,45 +11423,45 @@ body {
   background-color: #4A4A4A;
   opacity: 0.7;
 }
-#app .hsite-editor .hisite-single-component-container .hisite-component-mask .hisite-add-component.before {
+.hisiter-editor-app .hsite-editor .hsiter-single-component-container .hsiter-component-mask .hsiter-add-component.before {
   top: -11px;
 }
-#app .hsite-editor .hisite-single-component-container .hisite-component-mask .hisite-add-component.after {
+.hisiter-editor-app .hsite-editor .hsiter-single-component-container .hsiter-component-mask .hsiter-add-component.after {
   bottom: -11px;
 }
-#app .hsite-editor .hisite-single-component-container .hisite-component-mask .hisite-add-component:hover {
+.hisiter-editor-app .hsite-editor .hsiter-single-component-container .hsiter-component-mask .hsiter-add-component:hover {
   opacity: 1;
   background-color: #66CACA;
 }
-#app .hsite-editor .hisite-single-component-container .hisite-component-mask:hover {
+.hisiter-editor-app .hsite-editor .hsiter-single-component-container .hsiter-component-mask:hover {
   opacity: 1;
 }
-#app .component-modal .new-app-component .component-menu-item {
+.hisiter-editor-app .component-modal .new-app-component .component-menu-item {
   width: 205px;
   text-align: left;
 }
-#app .component-modal .new-app-component .component-menu-item .logo-img {
+.hisiter-editor-app .component-modal .new-app-component .component-menu-item .logo-img {
   width: 20px;
   height: 20px;
   margin-right: 30px;
 }
-#app .component-modal .new-app-component .component-menu-item .splitter {
+.hisiter-editor-app .component-modal .new-app-component .component-menu-item .splitter {
   height: 1px;
   margin-top: 15px;
   background: #E8E8E8;
 }
-#app .component-modal .new-app-component .component-menu-item i {
+.hisiter-editor-app .component-modal .new-app-component .component-menu-item i {
   margin-right: 30px;
   font-size: 20px;
 }
-#app .component-modal .new-app-component .component-menu-panel {
+.hisiter-editor-app .component-modal .new-app-component .component-menu-panel {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   overflow: auto;
   height: 500px;
 }
-#app .component-modal .new-app-component .component-card {
+.hisiter-editor-app .component-modal .new-app-component .component-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -11433,20 +11476,20 @@ body {
   color: #4A4A4A;
   cursor: pointer;
 }
-#app .component-modal .new-app-component .component-card:hover {
+.hisiter-editor-app .component-modal .new-app-component .component-card:hover {
   box-shadow: 9px 9px 8px #D8D8D8;
   left: -1px;
   top: -1px;
 }
-#app .component-modal .new-app-component .component-card.active {
+.hisiter-editor-app .component-modal .new-app-component .component-card.active {
   border: 2px solid #66CACA;
 }
-#app .component-modal .new-app-component .component-card.active:hover {
+.hisiter-editor-app .component-modal .new-app-component .component-card.active:hover {
   left: 0;
   top: 0;
   box-shadow: none;
 }
-#app .component-modal .new-app-component .component-card .cover-img {
+.hisiter-editor-app .component-modal .new-app-component .component-card .cover-img {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11454,15 +11497,15 @@ body {
   height: 155px;
   background-color: #F2F3F7;
 }
-#app .component-modal .new-app-component .component-card .cover-img img {
+.hisiter-editor-app .component-modal .new-app-component .component-card .cover-img img {
   max-width: 100%;
   max-height: 100%;
 }
-#app .component-modal .new-app-component .component-card .component-title {
+.hisiter-editor-app .component-modal .new-app-component .component-card .component-title {
   font-size: 15px;
   text-align: center;
 }
-#app .component-modal .new-app-component .component-card .component-desc {
+.hisiter-editor-app .component-modal .new-app-component .component-card .component-desc {
   font-size: 12px;
   text-align: center;
   width: 100%;
@@ -11470,68 +11513,68 @@ body {
   overflow: hidden;
   white-space: nowrap;
 }
-#app .component-modal .new-app-component .component-card .component-info {
+.hisiter-editor-app .component-modal .new-app-component .component-card .component-info {
   display: flex;
   justify-content: flex-end;
   width: 100%;
   font-size: 15px;
 }
-#app .component-modal .new-app-component .component-card .component-info li {
+.hisiter-editor-app .component-modal .new-app-component .component-card .component-info li {
   margin: 0 10px;
 }
-#app .component-modal .layout-component {
+.hisiter-editor-app .component-modal .layout-component {
   height: 500px;
   overflow: auto;
 }
-#app .component-modal .wait-to-be-online {
+.hisiter-editor-app .component-modal .wait-to-be-online {
   width: 100%;
   margin-top: 20px;
   font-size: 20px;
   text-align: center;
   font-weight: lighter;
 }
-#app .component-modal .tab-title {
+.hisiter-editor-app .component-modal .tab-title {
   color: #66CACA;
 }
-#app .component-modal .tab-title i {
+.hisiter-editor-app .component-modal .tab-title i {
   margin-right: 5px;
 }
-#app .component-modal .ant-tabs-ink-bar {
+.hisiter-editor-app .component-modal .ant-tabs-ink-bar {
   background-color: #66CACA;
 }
-#app .component-modal .new-app-component .ant-tabs-bar {
+.hisiter-editor-app .component-modal .new-app-component .ant-tabs-bar {
   height: 500px;
   padding-top: 15px;
   background-color: #F2F3F7;
   color: #938D8D;
 }
-#app .component-modal .new-app-component .ant-tabs-bar .ant-tabs-tab {
+.hisiter-editor-app .component-modal .new-app-component .ant-tabs-bar .ant-tabs-tab {
   margin-bottom: 5px;
 }
-#app .component-modal .new-app-component .ant-tabs-bar .ant-tabs-tab.ant-tabs-tab-active {
+.hisiter-editor-app .component-modal .new-app-component .ant-tabs-bar .ant-tabs-tab.ant-tabs-tab-active {
   color: #66CACA;
 }
-#app .component-modal .new-app-component .ant-tabs-bar .ant-tabs-tab:hover {
+.hisiter-editor-app .component-modal .new-app-component .ant-tabs-bar .ant-tabs-tab:hover {
   color: #66CACA;
 }
-#app .vertical-center-modal {
+.hisiter-editor-app .vertical-center-modal {
   text-align: center;
   white-space: nowrap;
 }
-#app .vertical-center-modal:before {
+.hisiter-editor-app .vertical-center-modal:before {
   content: '';
   display: inline-block;
   height: 100%;
   vertical-align: middle;
   width: 0;
 }
-#app .vertical-center-modal .ant-modal {
+.hisiter-editor-app .vertical-center-modal .ant-modal {
   display: inline-block;
   vertical-align: middle;
   top: 0;
   text-align: left;
 }
-#app .hsiter-config-panel-container {
+.hisiter-editor-app .hsiter-config-panel-container {
   position: fixed;
   left: 0;
   top: 0;
@@ -11541,10 +11584,10 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 }
-#app .hsiter-config-panel-container.visible {
+.hisiter-editor-app .hsiter-config-panel-container.visible {
   display: block;
 }
-#app .hsiter-config-panel {
+.hisiter-editor-app .hsiter-config-panel {
   position: fixed;
   right: -600px;
   top: 0;
@@ -11563,7 +11606,7 @@ body {
     right: 0;
   }
 }
-#app .hsiter-config-panel.slideOutRight {
+.hisiter-editor-app .hsiter-config-panel.slideOutRight {
   animation: slideOutRight 0.25s forwards;
 }
 @keyframes slideOutRight {
@@ -11574,7 +11617,7 @@ body {
     right: -600px;
   }
 }
-#app .hsiter-config-panel .component-title {
+.hisiter-editor-app .hsiter-config-panel .component-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11582,11 +11625,11 @@ body {
   padding: 10px 20px;
   font-size: 20px;
 }
-#app .hsiter-config-panel .component-title .icon {
+.hisiter-editor-app .hsiter-config-panel .component-title .icon {
   font-size: 15px;
   color: #938D8D;
 }
-#app .hsiter-config-panel-form {
+.hisiter-editor-app .hsiter-config-panel-form {
   overflow: auto;
   position: relative;
   right: -15px;
@@ -11594,59 +11637,61 @@ body {
   width: 100%;
   padding: 0 20px 20px 0;
 }
-#app .hsiter-config-panel-form .tip-icon {
+.hisiter-editor-app .hsiter-config-panel-form .tip-icon {
   margin-left: 7px;
   color: #938D8D;
 }
-#app .hsiter-config-panel-form .ant-form-item {
+.hisiter-editor-app .hsiter-config-panel-form .ant-form-item {
   margin-bottom: 0;
 }
-#app .hsiter-config-panel-form .ant-form-item .ant-form-item-label {
+.hisiter-editor-app .hsiter-config-panel-form .ant-form-item .ant-form-item-label {
   text-align: left;
 }
-#app .hsiter-config-panel-form .ant-form-explain,
-#app .hsiter-config-panel-form .ant-form-extra {
+.hisiter-editor-app .hsiter-config-panel-form .ant-form-explain,
+.hisiter-editor-app .hsiter-config-panel-form .ant-form-extra {
   font-size: 12px;
 }
-#app .hsiter-config-panel-form .ant-form-item-required:before {
+.hisiter-editor-app .hsiter-config-panel-form .ant-form-item-required:before {
   color: #188fff;
 }
-#app .hsiter-config-panel-form textarea {
+.hisiter-editor-app .hsiter-config-panel-form textarea {
   height: 150px;
   max-height: 225px;
   resize: none;
 }
-#app .hsiter-form-custom-control.hsiter-arr-control .arr-obj {
+.hisiter-editor-app .hsiter-form-custom-control.hsiter-arr-control .arr-obj {
   display: flex;
   justify-content: start;
   flex-wrap: wrap;
   border-bottom: 1px solid #E8E8E8;
   padding: 10px 5px;
 }
-#app .hsiter-form-custom-control.hsiter-arr-control .arr-obj:last-child {
+.hisiter-editor-app .hsiter-form-custom-control.hsiter-arr-control .arr-obj:last-child {
   border-bottom: none;
 }
-#app .hsiter-form-custom-control.hsiter-arr-control .arr-item {
+.hisiter-editor-app .hsiter-form-custom-control.hsiter-arr-control .arr-item {
   padding: 0 5px;
   width: 50%;
 }
-#app .hsiter-form-custom-control.hsiter-arr-control .arr-item .array-item-label {
+.hisiter-editor-app .hsiter-form-custom-control.hsiter-arr-control .arr-item .array-item-label {
   font-size: 12px;
 }
-#app .hsiter-config-panel-footer {
+.hisiter-editor-app .hsiter-config-panel-footer {
   position: absolute;
   bottom: 0;
   right: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
   width: 100%;
   height: 50px;
-  padding-left: 250px;
   background-color: #f2f3f7;
   box-shadow: 2px 2px 3px grey;
 }
-#app .test {
+.hisiter-editor-app .hsiter-config-panel-footer button {
+  margin-right: 20px;
+}
+.hisiter-editor-app .test {
   height: 1000px;
   background: red;
   width: 100px;
@@ -11657,7 +11702,7 @@ body {
   min-width: 900px;
   height: 600px;
   margin: 0 auto;
-  background: url(/images/bg.jpg) center / cover fixed;
+  background: url(/images/bg12ffe6b9546d9b56aecd2905f3925b0d.jpg) center / cover fixed;
 }
 .HComponent.HKHBlogBanner .nav {
   position: absolute;
@@ -11712,7 +11757,7 @@ button {
   outline: none;
   cursor: pointer;
 }
-.hisite-remove:hover {
+.hsiter-remove:hover {
   color: #FF6A59;
 }
 .text-tip {
@@ -11739,8 +11784,51 @@ body {
   justify-content: center;
   align-items: center;
 }
+.hsiter-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  padding: 2px 10px;
+  color: #ffffff;
+  background-color: #66CACA;
+  border-radius: 3px;
+  transition: all 0.5s;
+}
+.hsiter-btn i {
+  margin-right: 5px;
+  font-size: 13px;
+}
+.hsiter-btn .text {
+  font-size: 13px;
+}
+.hsiter-btn:hover {
+  background-color: #5FBAB9;
+  color: #ffffff;
+}
+.hsiter-icon {
+  margin-left: 15px;
+  color: #938D8D;
+}
+.spin-icon {
+  transition: all 0.5s;
+}
+.spin-icon:hover .icon {
+  animation: rotate 2s infinite;
+}
+@keyframes rotate {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
 .ant-tooltip {
   font-size: 12px;
+}
+.ant-modal-title {
+  font-weight: lighter;
 }
 .global-top {
   display: flex;
@@ -11760,7 +11848,7 @@ body {
 .global-top .logo .logo-img {
   width: 39px;
   height: 37px;
-  background: url(/images/logo.png) center / 39px 37px;
+  background: url(/images/logo061cd69c5ff08275009bebc986a03217.png) center / 39px 37px;
 }
 .global-top .logo .logo-text {
   margin-left: 10px;

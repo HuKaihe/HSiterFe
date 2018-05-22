@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import EditorToolbar from '../uis/EditorToolbar';
 
-
 const mapStateToProps = () => ({
 
 });
@@ -16,6 +15,12 @@ const mapDispatchToProps = dispatch => ({
     forward: () => {
         dispatch({
             type: 'forward',
+        });
+    },
+
+    save: () => {
+        dispatch({
+            type: 'save',
         });
     },
 });

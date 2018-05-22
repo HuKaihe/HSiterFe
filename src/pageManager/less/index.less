@@ -1,7 +1,16 @@
+
 @import (multiple) "../../global/base.less";
+body {
+    background-color: @white;
+}
 // ** App **
-.hister-page-manager-app {
+.hsiter-page-manager-app {
     overflow: hidden;
     min-width: 1300px;
-    @import url('./operateBar.less');
+    @import url('./pageTopBar.less');
+    @import url('./pageContainer.less');
+    // 复写ant样式
+    .ant-form-item {
+        margin-bottom: 5px;
+    }
 }

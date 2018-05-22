@@ -42,14 +42,14 @@ class SingleComponentContainer extends Component {
 
 
         const operateBarCls = classames({
-            'hisite-component-editor-bar': true,
+            'hsiter-component-editor-bar': true,
             transverse: this.state.transverse,
         });
 
         return (
-            <div id={id} className="hisite-single-component-container">
+            <div id={id} className="hsiter-single-component-container">
                 <div
-                    className="hisite-component-mask"
+                    className="hsiter-component-mask"
                     onClick={() => {
                         openComponentConfigPanel({
                             configComponentId: id,
@@ -57,7 +57,7 @@ class SingleComponentContainer extends Component {
                     }}
                 >
                     <div
-                        className="hisite-add-component before"
+                        className="hsiter-add-component before"
                         onClick={(e) => {
                             openNewComponentModal(index);
                             e.stopPropagation();
@@ -104,7 +104,7 @@ class SingleComponentContainer extends Component {
                         </li>
                         <li>
                             <button
-                                className="hisite-remove"
+                                className="hsiter-remove"
                                 onClick={(e) => {
                                     confirm({
                                         title: '删除提示',
@@ -124,7 +124,7 @@ class SingleComponentContainer extends Component {
                         </li>
                     </ul>
                     <div
-                        className="hisite-add-component after"
+                        className="hsiter-add-component after"
                         onClick={(e) => {
                             openNewComponentModal(index + 1);
                             e.stopPropagation();
