@@ -1,5 +1,5 @@
 export default {
-    id: 'AntDesignNav',
+    id: 3,
     name: 'AntDesignNav',
     title: 'AntDesign菜单导航',
     img: 'http://fontawesome.hukaihe.com/public/image/AntMenuNav_s.png',
@@ -26,6 +26,7 @@ export default {
                         rules: [{
                             required: true, message: '标题不得为空',
                         }],
+                        defaultData: '新的标题',
                     },
                     disabled: {
                         label: '不可点击',
@@ -38,7 +39,11 @@ export default {
                     },
                     url: {
                         label: '导航链接',
+                        defaultData: 'http://www.alibaba.com',
                         rules: [
+                            {
+                                required: true, message: '链接不得为空',
+                            },
                             {
                                 type: 'url', message: '导航链接必须是标准的URL格式',
                             },
@@ -47,6 +52,7 @@ export default {
                     icon: {
                         label: '导航图标',
                         tip: '支持fontawesome，请以“fa-”开头',
+                        defaultData: 'fa-github',
                     },
                 },
             },

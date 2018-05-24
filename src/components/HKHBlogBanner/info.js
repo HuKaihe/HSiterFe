@@ -1,5 +1,5 @@
 export default {
-    id: 'HKHBlogBanner',
+    id: 1,
     name: 'HKHBlogBanner',
     title: 'HKHBlog轮播主图',
     img: 'http://fontawesome.hukaihe.com/public/image/HKHBlogBanner_s.png',
@@ -27,12 +27,14 @@ export default {
                             required: true, message: '标题不得为空',
                         }],
                         width: '70%',
+                        defaultData: '标题',
                     },
                     paragraphs: {
                         label: '内容',
                         tip: '支持以换行分段',
                         control: 'textArea',
                         width: '100%',
+                        defaultData: '',
                     },
                 },
             },
@@ -48,6 +50,7 @@ export default {
                         rules: [{
                             required: true, message: '卡片图标不得为空',
                         }],
+                        defaultData: 'fa-github',
                     },
                     title: {
                         label: '导航标题',
@@ -55,6 +58,7 @@ export default {
                         rules: [{
                             required: true, message: '导航项标题不得为空',
                         }],
+                        defaultData: '标题',
                     },
                     url: {
                         label: '导航项链接',
@@ -67,6 +71,7 @@ export default {
                                 message: '须为标准URL格式', type: 'url',
                             },
                         ],
+                        defaultData: 'http://www.alibaba.com',
                     },
                     desc: {
                         label: '导航描述',

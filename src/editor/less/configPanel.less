@@ -65,15 +65,15 @@
     .tip-icon {
         margin-left: 7px;
         color: @gray_6;
-    }
-    // 复写
+    } // 复写
     .ant-form-item {
         margin-bottom: 0;
         .ant-form-item-label {
             text-align: left;
         }
     }
-    .ant-form-explain, .ant-form-extra {
+    .ant-form-explain,
+    .ant-form-extra {
         font-size: 12px;
     }
     .ant-form-item-required:before {
@@ -89,12 +89,13 @@
 .hsiter-form-custom-control {
     &.hsiter-arr-control {
         .arr-obj {
+            position: relative;
             display: flex;
             justify-content: start;
             flex-wrap: wrap;
             border-bottom: 1px solid @gray_3;
             padding: 10px 5px;
-            &:last-child {
+            &:last-of-type {
                 border-bottom: none;
             }
         }
@@ -105,6 +106,29 @@
                 font-size: 12px;
             }
         }
+        .add-new-arr-obj {
+            display: block;
+            width: 200px;
+            margin: 10px auto;
+        }
+        .remove-arr-obj, .drag-arr-obj {
+            position: absolute;
+            right: 10px;
+            top: 3px;
+            z-index: 5;
+            font-size: 15px;
+            color: @gray_4;
+            cursor: pointer;
+            &:hover {
+                color: @red;
+            }
+        }
+        .drag-arr-obj {
+            right: 37px;
+            font-size: 12px;
+            &:hover {color: @blue_hover;}
+        }
+
     }
 }
 

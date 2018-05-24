@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Tooltip, Button } from 'antd';
+import { Tooltip, Button, Modal } from 'antd';
 // import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import ConfigForm from './ConfigForm';
@@ -53,6 +53,27 @@ class ConfigPanel extends Component {
         }, 300);
     }
 
+    cancelEdit = () => {
+        if (!(!objContentCompare(this.state.componentData, this.initialData) && isObjPropsAllUnvalid(this.state.errorMap))) {
+            this.closePanel();
+            return;
+        }
+        const reactObj = this;
+        Modal.confirm({
+            title: '确定要取消修改吗?',
+            content: '检测到您做了一些修改，点击取消后您修改的数据将被清空，且无法撤回',
+            okText: '确定',
+            okType: 'danger',
+            cancelText: '再编辑一下',
+            onOk() {
+                reactObj.setState({
+                    configComponentId: '',
+                });
+                reactObj.closePanel();
+            },
+        });
+    }
+
     render() {
         const {
             isComponentConfigPanelDisplayed,
@@ -104,9 +125,9 @@ class ConfigPanel extends Component {
                         configComponentTypeInfo={configComponentTypeInfo}
                     />
                     <div className="hsiter-config-panel-footer">
-                        <Tooltip title="在您点击另一个元素之前，配置面版将保持您当前操作的状态">
+                        <Tooltip title="点击【取消修改】将清空您的操作状态；如果您希望在您点击另一个元素之前，配置面版保持您当前操作的状态，请直接点击页面的半透明蒙版来关闭配置面板">
                             <Button
-                                onClick={this.closePanel}
+                                onClick={this.cancelEdit}
                             >
                             取消修改
                             </Button>

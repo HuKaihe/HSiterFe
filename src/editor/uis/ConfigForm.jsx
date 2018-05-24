@@ -5,22 +5,6 @@ import ArrayControl from './Controls/ArrayControl';
 const FormItem = Form.Item;
 const { TextArea } = Input;
 
-const controlMap = {
-    switch: {
-        Control: Switch,
-        controlDecorator: {
-            valuePropName: 'checked',
-        },
-    },
-    arrayControl: {
-        Control: ArrayControl,
-        type: 'custom',
-    },
-    textArea: {
-        Control: TextArea,
-    },
-};
-
 class ConfigForm extends Component {
     state = {
     }
@@ -36,11 +20,29 @@ class ConfigForm extends Component {
     }
 
     setCustomControlValue = (newCustomControlValue) => {
-        this.setState(newCustomControlValue);
-        this.props.setComponentData(this.state);
+        this.setState(newCustomControlValue, () => {
+            this.props.setComponentData(this.state);
+        });
     }
 
+
     configComponentId = ''; // configComponentId用作直接渲染DOM，和React无关，故暂时不放置到state中
+
+    controlMap = {
+        switch: {
+            Control: Switch,
+            controlDecorator: {
+                valuePropName: 'checked',
+            },
+        },
+        arrayControl: {
+            Control: ArrayControl,
+            type: 'custom',
+        },
+        textArea: {
+            Control: TextArea,
+        },
+    };
 
     render() {
         const { getFieldDecorator } = this.props.form;
@@ -63,10 +65,11 @@ class ConfigForm extends Component {
                             Control = Input,
                             controlDecorator,
                             type,
-                        } = controlMap[config.control] || {};
+                        } = this.controlMap[config.control] || {};
                         let customProps = {};
                         if (type === 'custom') {
                             customProps.customKey = key;
+                            customProps.title = config.label;
                             customProps.configComponentId = configComponentId;
                             customProps.errorMap = errorMap;
                             customProps.setError = setError;

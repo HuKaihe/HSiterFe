@@ -75,7 +75,7 @@ function PageCard(props) {
                         onClick={() => {
                             confirm({
                                 title: '你确定要删除这个页面吗?',
-                                content: '删除的页面将被暂时放入废纸篓中',
+                                content: '页面删除将无法恢复',
                                 okText: '确定删除',
                                 okType: 'danger',
                                 cancelText: '取消',

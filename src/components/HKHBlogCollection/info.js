@@ -1,5 +1,5 @@
 export default {
-    id: 'HKHBlogCollection',
+    id: 2,
     name: 'HKHBlogCollection',
     img: 'http://fontawesome.hukaihe.com/public/image/HotCollection_s.png',
     title: 'HKHBlog专栏集合',
@@ -37,6 +37,7 @@ export default {
                         rules: [{
                             required: true, message: '卡片文字不得为空',
                         }],
+                        defaultData: '新的卡片',
                     },
                     url: {
                         label: '卡片链接',
@@ -44,6 +45,7 @@ export default {
                         rules: [{
                             required: true, message: '卡片链接不得为空', type: 'url',
                         }],
+                        defaultData: 'http://hsiter.hukaihe.com',
                     },
                     pictureUrl: {
                         label: '图片URL',
@@ -56,14 +58,17 @@ export default {
                                 message: '须为标准URL格式', type: 'url',
                             },
                         ],
+                        defaultData: 'https://t.alipayobjects.com/images/rmsweb/T16xRhXkxbXXXXXXXX.svg',
                     },
                 },
+
             },
         },
     },
     default_data: {
         cards: [
             {
+
                 id: 'card1',
                 title: 'React',
                 url: 'http://www.baidu.com',
@@ -89,7 +94,7 @@ export default {
             },
         ],
         showTitle: true,
-        moduleTitle: '热门集合',
+        moduleTitle: '技术专栏',
     },
     author: '恩言',
     github: '',

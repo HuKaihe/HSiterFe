@@ -1,11 +1,6 @@
 import { deepCloneObj } from '../../service/service';
 
-let schemaRecord = [
-    {
-        layoutSchema: [],
-        componentSchema: [],
-    },
-];
+let schemaRecord = [];
 let recordPointer = 0;
 
 function setSchemaRecord(schema) {
@@ -168,6 +163,10 @@ export default function page_schema(state = {}, action) {
         undo,
         forward,
     };
+    if (schemaRecord.length === 0 && state.layoutSchema) {
+        schemaRecord.push(state);
+    }
+    // console.log(schemaRecord);
     const operate = map[type] || (() => { });
     return operate(action, state) || state;
 }

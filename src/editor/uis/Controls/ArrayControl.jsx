@@ -1,5 +1,7 @@
 import React from 'react';
-import { Input, Tooltip, Form, Switch } from 'antd';
+import { Input, Tooltip, Form, Switch, Button, message } from 'antd';
+
+import { getRandomString } from '../../../service/service';
 
 const FormItem = Form.Item;
 const { TextArea } = Input;
@@ -18,18 +20,154 @@ const controlMap = {
 
 function ArrayControl(props) {
     const { getFieldDecorator } = props.form;
-    const { arrUnit, configComponentId } = props;
+    const {
+        title, arrUnit, configComponentId, customKey, max = 5, min = 1,
+    } = props;
     const arrValue = props.value || [];
+
+    // 处理元素拖拽
+    const dragInfo = {
+        parent: configComponentId,
+        dragId: '',
+        dropId: '',
+        before: true,
+    };
+
+    const addNewArrObj = (init = false) => {
+        const originArr = props.value;
+        if (originArr.length + 1 > max) {
+            message.error(`${title}最多可以填加${max}个元素`);
+            return;
+        }
+        const arrFields = Object.keys(arrUnit);
+        const newArrObj = {
+            id: getRandomString(),
+        };
+        arrFields.forEach((field) => {
+            newArrObj[field] = arrUnit[field].defaultData;
+        });
+        props.setCustomControlValue({
+            [props.customKey]: [...props.value, newArrObj],
+        });
+        if (!init) {
+            message.success('添加元素成功');
+        }
+        setTimeout(() => {
+            props.form.validateFields((errors) => {
+                if (!errors) {
+                    return;
+                }
+                const errorKeys = Object.keys(errors);
+                const errorCollection = {};
+                errorKeys.forEach((errKey) => {
+                    errorCollection[errKey] = errors[errKey].errors.map(i => ({ ...i, message: '' }));
+                });
+                console.log(errorCollection);
+                props.setError(errorCollection);
+            });
+        }, 100);
+    };
+
+    const removeArrObj = (itemId) => {
+        const newArrValue = arrValue.filter(arrObj => arrObj.id !== itemId);
+        if (newArrValue.length < min) {
+            message.error(`${title}至少要有${min}个元素`);
+            return;
+        }
+        props.setCustomControlValue({
+            [customKey]: newArrValue,
+        });
+        message.success('添加元素成功');
+        // 清除错误
+        setTimeout(() => {
+            const arrFields = Object.keys(arrUnit);
+            const errorCollection = {};
+            arrFields.forEach((field) => {
+                errorCollection[`${configComponentId}_${itemId}_${field}`] = undefined;
+            });
+            props.setError(errorCollection);
+        }, 100);
+    };
+
+    const startDrag = (id) => {
+        dragInfo.dragId = id;
+    };
+
+    const calculateIndex = (event, id) => {
+        event.preventDefault();
+        if (arrValue.length < 2) {
+            return;
+        }
+        dragInfo.dropId = id;
+        const mouseY = event.clientY + document.getElementById('hsiter-config-panel-form').scrollTop;
+        let target = event.currentTarget;
+        const height = target.offsetHeight;
+        let top = 0;
+        while (target.offsetParent) {
+            top += target.offsetTop;
+            target = target.offsetParent;
+        }
+        // console.log('mouseY', mouseY);
+        // console.log('top + (height / 2)', top + (height / 2));
+        if (mouseY > (top + (height / 2))) {
+            dragInfo.before = false;
+            return;
+        }
+        dragInfo.before = true;
+    };
+
+    const handleCollectionRank = () => {
+        if (!dragInfo.dragId || dragInfo.dragId === dragInfo.dropId) {
+            return;
+        }
+        console.log(dragInfo);
+        if (arrValue.length < 2) {
+            return;
+        }
+        // console.log('draggingId', draggingId);
+        // console.log('draggingOrder', draggingOrder);
+        const arrItem = arrValue.find(item => item.id === dragInfo.dragId);
+        const originIndex = arrValue.findIndex(item => item.id === dragInfo.dragId);
+        arrValue.splice(originIndex, 1);
+        const dropIndex = arrValue.findIndex(item => item.id === dragInfo.dropId);
+        const newOrder = dropIndex + (dragInfo.before ? 0 : 1);
+
+        arrValue.splice(newOrder, 0, arrItem);
+        props.setCustomControlValue({
+            [customKey]: arrValue,
+        });
+    };
+
     if (arrValue.length === 0) {
-        arrValue.push({});
+        addNewArrObj(true);
     }
+
     return (
-        <div className="hsiter-form-custom-control hsiter-arr-control">
+        <div className="hsiter-form-custom-control hsiter-arr-control" onDrop={() => { handleCollectionRank(); }}>
             {
                 arrValue.map((item) => {
                     const arrFields = Object.keys(arrUnit);
                     return (
-                        <div key={item.id} className="arr-obj" >
+                        <div
+                            key={item.id}
+                            className="arr-obj"
+                            draggable
+                            onDragStart={() => { startDrag(item.id); }}
+                            onDragOver={(event) => { calculateIndex(event, item.id); }}
+                        >
+                            <button
+                                className="remove-arr-obj"
+                                onClick={() => {
+                                    removeArrObj(item.id);
+                                }}
+                            >
+                                <i className="fa fa-times" />
+                            </button>
+                            <button
+                                className="drag-arr-obj"
+                            >
+                                <i className="fa fa-arrows" />
+                            </button>
                             {
                                 arrFields.map((field) => {
                                     const fieldConfig = arrUnit[field];
@@ -86,6 +224,12 @@ function ArrayControl(props) {
                     );
                 })
             }
+            <Button
+                className="add-new-arr-obj"
+                onClick={() => addNewArrObj()}
+            >
+                添加新的数组项
+            </Button>
         </div>
     );
 }

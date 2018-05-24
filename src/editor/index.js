@@ -7,7 +7,7 @@ import App from './containers';
 import './less/index.less';
 import editorReducer from './reducers/index.reducer';
 import globalStore from '../service/globalStore';
-// import { componentTypeInfoList } from './mock/componentInfo';
+import { componentTypeInfoList } from './mock/componentInfo';
 import { deepCloneObj } from '../service/service';
 
 // const page_schema = {
