@@ -151,10 +151,19 @@ function ArrayControl(props) {
                         <div
                             key={item.id}
                             className="arr-obj"
-                            draggable
-                            onDragStart={() => { startDrag(item.id); }}
                             onDragOver={(event) => { calculateIndex(event, item.id); }}
                         >
+                            <div
+                                draggable
+                                onDragStart={() => { startDrag(item.id); }}
+                                className="drag-component-container"
+                            >
+                                <button
+                                    className="drag-arr-obj"
+                                >
+                                    <i className="fa fa-arrows" />
+                                </button>
+                            </div>
                             <button
                                 className="remove-arr-obj"
                                 onClick={() => {
@@ -163,11 +172,7 @@ function ArrayControl(props) {
                             >
                                 <i className="fa fa-times" />
                             </button>
-                            <button
-                                className="drag-arr-obj"
-                            >
-                                <i className="fa fa-arrows" />
-                            </button>
+
                             {
                                 arrFields.map((field) => {
                                     const fieldConfig = arrUnit[field];
