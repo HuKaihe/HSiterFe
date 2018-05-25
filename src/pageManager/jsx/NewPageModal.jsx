@@ -107,7 +107,7 @@ class NewPageModal extends React.Component {
                             getFieldDecorator('page_type', {
                                 rules: [{ required: true, message: '请填写页面名称' }],
                                 initialValue: 0,
-                            })((<Select><Option value={0}>蓝色</Option><Option value={1}>红色</Option><Option value={2}>黄色</Option></Select>))
+                            })((<Select><Option value={0}>蓝色</Option><Option value={1}>红色</Option><Option value={2}>黄色</Option><Option value={3}>绿色</Option></Select>))
                         }
                     </FormItem>
                 </Form>

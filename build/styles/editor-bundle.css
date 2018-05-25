@@ -11660,13 +11660,14 @@ body {
   resize: none;
 }
 .hisiter-editor-app .hsiter-form-custom-control.hsiter-arr-control .arr-obj {
+  position: relative;
   display: flex;
   justify-content: start;
   flex-wrap: wrap;
   border-bottom: 1px solid #E8E8E8;
   padding: 10px 5px;
 }
-.hisiter-editor-app .hsiter-form-custom-control.hsiter-arr-control .arr-obj:last-child {
+.hisiter-editor-app .hsiter-form-custom-control.hsiter-arr-control .arr-obj:last-of-type {
   border-bottom: none;
 }
 .hisiter-editor-app .hsiter-form-custom-control.hsiter-arr-control .arr-item {
@@ -11675,6 +11676,32 @@ body {
 }
 .hisiter-editor-app .hsiter-form-custom-control.hsiter-arr-control .arr-item .array-item-label {
   font-size: 12px;
+}
+.hisiter-editor-app .hsiter-form-custom-control.hsiter-arr-control .add-new-arr-obj {
+  display: block;
+  width: 200px;
+  margin: 10px auto;
+}
+.hisiter-editor-app .hsiter-form-custom-control.hsiter-arr-control .remove-arr-obj,
+.hisiter-editor-app .hsiter-form-custom-control.hsiter-arr-control .drag-arr-obj {
+  position: absolute;
+  right: 10px;
+  top: 3px;
+  z-index: 5;
+  font-size: 15px;
+  color: #D8D8D8;
+  cursor: pointer;
+}
+.hisiter-editor-app .hsiter-form-custom-control.hsiter-arr-control .remove-arr-obj:hover,
+.hisiter-editor-app .hsiter-form-custom-control.hsiter-arr-control .drag-arr-obj:hover {
+  color: #FF6A59;
+}
+.hisiter-editor-app .hsiter-form-custom-control.hsiter-arr-control .drag-arr-obj {
+  right: 37px;
+  font-size: 12px;
+}
+.hisiter-editor-app .hsiter-form-custom-control.hsiter-arr-control .drag-arr-obj:hover {
+  color: #62C3F3;
 }
 .hisiter-editor-app .hsiter-config-panel-footer {
   position: absolute;
@@ -11917,6 +11944,7 @@ body {
   height: 40px;
   border: 2px solid #ffffff;
   border-radius: 20px;
+  background: url(/images/profile283d15120fed09a20f5bf7fec46bfb21.png) center / cover;
 }
 
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZXMvZWRpdG9yLWJ1bmRsZS5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/

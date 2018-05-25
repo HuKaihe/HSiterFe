@@ -11,17 +11,22 @@ function EditorToolbar(props) {
         forward,
         page_schema,
     } = props;
+    const { page_id } = globalStore.get('pageInfo') || {};
 
-    const save = () => {
-        post('/editor/save', {
-            page_schema: JSON.stringify(page_schema),
-            page_id: globalStore.get('pageInfo').page_id,
-        }).then(({ code }) => {
-            if (code === 200) {
-                message.success('保存成功');
-                return;
-            }
-            message.error('保存失败');
+    const save = () => post('/editor/save', {
+        page_schema: JSON.stringify(page_schema),
+        page_id,
+    }).then(({ code }) => {
+        if (code === 200) {
+            message.success('保存成功');
+            return;
+        }
+        message.error('保存失败');
+    });
+
+    const preview = () => {
+        save().then(() => {
+            window.open(`/preview?page=${page_id}`);
         });
     };
 
@@ -93,7 +98,10 @@ function EditorToolbar(props) {
                             </button>
                         </li>
                         <li>
-                            <button className="btn">
+                            <button
+                                className="btn"
+                                onClick={preview}
+                            >
                                 <i className="icon fa fa-eye" />
                                 <span className="text">预览</span>
                             </button>

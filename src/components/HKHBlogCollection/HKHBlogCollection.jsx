@@ -12,7 +12,7 @@ function HKHBlogCollection(props) {
                 {
                     cards.map(item => (
                         <div className="card" key={item.id}>
-                            <a href={item.url}>
+                            <a href={item.url} target="_blank">
                                 <img className="picture" src={item.pictureUrl} alt={item.title} />
                                 <div className="intro">{item.title}</div>
                             </a>

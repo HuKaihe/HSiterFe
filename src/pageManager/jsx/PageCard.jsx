@@ -46,7 +46,9 @@ function PageCard(props) {
             title: '预览页面',
             icon: 'fa-eye',
             href: '',
-            listener: () => {},
+            listener: () => {
+                window.open(`/preview?page=${props.cardInfo.page_id}`);
+            },
         },
         {
             id: 'page_data',
@@ -64,6 +66,7 @@ function PageCard(props) {
     const cardCls = classnames({
         'red-card': props.cardInfo.page_type === 1,
         'yellow-card': props.cardInfo.page_type === 2,
+        'green-card': props.cardInfo.page_type === 3,
         'page-card-info': true,
     });
     return (

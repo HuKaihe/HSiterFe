@@ -39,6 +39,7 @@ module.exports = {
     entry: {
         editor: './src/editor/index.js',
         pageManager: './src/pageManager/index.js',
+        preview: './src/preview/index.js',
         // home: './src/home/index.js',
         test: './src/test/index.js',
     },
@@ -110,6 +111,12 @@ module.exports = {
             title: 'HSiter Page Manager',
             filename: 'pageManager.html',
             chunks: ['pageManager'],
+            ...HTMLTemplate,
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Page Preview',
+            filename: 'preview.html',
+            chunks: ['preview'],
             ...HTMLTemplate,
         }),
         new HtmlWebpackPlugin({

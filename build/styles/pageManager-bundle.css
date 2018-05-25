@@ -10230,6 +10230,9 @@ body {
 .hsiter-page-manager-app .hsiter-page-card .page-card-info.yellow-card {
   background: url(/images/card_bg_3249bc20c85095efde2e11664042ccd0a.jpg) center / cover;
 }
+.hsiter-page-manager-app .hsiter-page-card .page-card-info.green-card {
+  background: url(/images/card_bg_4769e359930b3efd601dfb447f1d05e41.jpg) center / cover;
+}
 .hsiter-page-manager-app .hsiter-page-card .page-card-info .card-info-cover {
   position: absolute;
   left: 0;
@@ -10286,7 +10289,7 @@ body {
   }
 }
 .hsiter-page-manager-app .ant-form-item {
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 ul,
 li {
@@ -10462,6 +10465,7 @@ body {
   height: 40px;
   border: 2px solid #ffffff;
   border-radius: 20px;
+  background: url(/images/profile283d15120fed09a20f5bf7fec46bfb21.png) center / cover;
 }
 
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZXMvcGFnZU1hbmFnZXItYnVuZGxlLmNzcyIsInNvdXJjZVJvb3QiOiIifQ==*/

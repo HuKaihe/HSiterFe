@@ -7,22 +7,8 @@ import App from './containers';
 import './less/index.less';
 import editorReducer from './reducers/index.reducer';
 import globalStore from '../service/globalStore';
-import { componentTypeInfoList } from './mock/componentInfo';
+import './mock/componentInfo';
 import { deepCloneObj } from '../service/service';
-
-// const page_schema = {
-//     layoutSchema: [],
-//     componentSchema: [],
-//     baseConfig: {},
-//     // layoutSchema: [
-//     //     { id: 'mmekx19vd81526119444508', name: 'HKHBlogCollection' },
-//     //     { id: 'mmekx19vd81526119444509', name: 'HKHBlogCollection' },
-//     // ],
-//     // componentSchema: [
-//     //     { id: 'mmekx19vd81526119444508', componentData: deepCloneObj(componentTypeInfoList[2].default_data), componentTypeId: 'HKHBlogCollection' },
-//     //     { id: 'mmekx19vd81526119444509', componentData: deepCloneObj(componentTypeInfoList[2].default_data), componentTypeId: 'HKHBlogCollection' },
-//     // ],
-// };
 
 // react全局状态存储到redux store中
 const store = createStore(editorReducer, {
@@ -45,6 +31,7 @@ globalStore.init({
 window.componentTypeInfoList = null;
 window.componentInfoGroup = null;
 window.pageInfo = null;
+window.page_schema = null;
 
 ReactDOM.render(
     <Provider store={store} >

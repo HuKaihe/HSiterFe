@@ -18,11 +18,13 @@ export default function (props) {
         const splitedParagraphs = paragraphs.split('\n');
         return (
             <div key={id} className={pieceCls}>
-                <div className="title">{title}</div>
-                <div className="desc">
-                    {
-                        splitedParagraphs.map((i, index) => <p key={index}>{i}</p>)
-                    }
+                <div className="content-container">
+                    <div className="title">{title}</div>
+                    <div className="desc">
+                        {
+                            splitedParagraphs.map((i, index) => <p key={index}>{i}</p>)
+                        }
+                    </div>
                 </div>
             </div>
         );
