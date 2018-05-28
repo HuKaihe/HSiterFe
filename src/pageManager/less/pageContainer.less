@@ -7,7 +7,7 @@
         margin: 40px auto;
         border-radius: 150px;
         text-align: center;
-        background: url(../images/none_bg.jpg) center / cover;
+        background: url(../images/no_page_bg.jpg) center / cover;
     }
 }
 
@@ -40,15 +40,11 @@
         height: 160px;
         border-radius: 5px 5px 0 0;
         color: @white;
-        background: url('../images/card_bg_1.jpg') center / cover;
-        &.red-card {
-            background: url('../images/card_bg_2.jpg') center / cover;
-        }
-        &.yellow-card {
-            background: url('../images/card_bg_3.jpg') center / cover;
-        }
-        &.green-card {
-            background: url('../images/card_bg_4.jpg') center / cover;
+        background-size: 100%;
+        background-position: center;
+        transition: all 0.25s;
+        &:hover {
+            background-size: 120%;
         }
         .card-info-cover {
             position: absolute;

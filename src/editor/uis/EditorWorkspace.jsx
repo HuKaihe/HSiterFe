@@ -16,10 +16,6 @@ function EditorWorkspace(props) {
                     const MyComponent = components[name];
                     const { componentData } = props.componentSchema.find(item =>
                         item.id === id) || {};
-                    // const myComponentContainerCls = classnames({
-                    //     'hsiter-my-component-container': 'true',
-                    //     active: id === props.currentComponentId,
-                    // });
                     return (
                         <SingleComponentContainer
                             key={id}
@@ -28,9 +24,7 @@ function EditorWorkspace(props) {
                             canCompMoveUp={index !== 0}
                             canCompMoveDown={index <= (compNums - 1)}
                         >
-                            {/* <div className={myComponentContainerCls}> */}
                             <MyComponent {...componentData} />
-                            {/* </div> */}
                         </SingleComponentContainer>
                     );
                 })

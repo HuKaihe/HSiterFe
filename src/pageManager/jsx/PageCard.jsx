@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, Tooltip, Modal } from 'antd';
-import classnames from 'classnames';
+import { Button, Tooltip, Modal, message } from 'antd';
 import moment from 'moment';
+import { post } from '../../service/service';
 
 const { confirm } = Modal;
 
@@ -34,12 +34,23 @@ const infoUnit = [
 
 
 function PageCard(props) {
+    const {
+        page_id,
+        page_type,
+    } = props.cardInfo;
+    const {
+        updatePageList,
+        showPageInfoModal,
+        deletePage,
+    } = props;
     const pageToolList = [
         {
             id: 'edit_page_info',
             title: '编辑页面信息',
             icon: 'fa-edit',
-            listener: () => {},
+            listener: () => {
+                showPageInfoModal(true, props.cardInfo);
+            },
         },
         {
             id: 'page_preview',
@@ -47,43 +58,53 @@ function PageCard(props) {
             icon: 'fa-eye',
             href: '',
             listener: () => {
-                window.open(`/preview?page=${props.cardInfo.page_id}`);
+                window.open(`/preview?page=${page_id}`);
             },
         },
         {
             id: 'page_data',
             title: '看看页面数据',
             icon: 'fa-area-chart',
-            listener: () => {},
+            listener: () => {
+                message.error('这个功能还没有开发，程序员GG表示已经累坏了');
+            },
         },
         {
             id: 'copy',
             title: '复制页面',
             icon: 'fa-clipboard',
-            listener: () => {},
+            listener: () => {
+                post('/pageManager/copyPage', { page_id }).then((({ payload }) => {
+                    const { pageList = [] } = payload;
+                    updatePageList(pageList);
+                    message.success('复制页面成功');
+                })).catch(() => {
+                    message.error('网络错误，请再次登后重试，如果仍有问题，不如喝杯茶休息一下吧');
+                });
+            },
         },
     ];
-    const cardCls = classnames({
-        'red-card': props.cardInfo.page_type === 1,
-        'yellow-card': props.cardInfo.page_type === 2,
-        'green-card': props.cardInfo.page_type === 3,
-        'page-card-info': true,
-    });
+
     return (
         <div className="hsiter-page-card">
-            <div className={cardCls}>
+            <div
+                className="page-card-info"
+                style={{
+                    backgroundImage: `url(/public/image/card_bg/card_bg_${page_type}.jpg)`,
+                }}
+            >
                 <div className="card-info-cover">
                     <button
                         className="btn-remove"
                         onClick={() => {
                             confirm({
                                 title: '你确定要删除这个页面吗?',
-                                content: '页面删除将无法恢复',
+                                content: '页面删除将无法恢复，请谨慎操作',
                                 okText: '确定删除',
                                 okType: 'danger',
                                 cancelText: '取消',
                                 onOk() {
-                                    props.deletePage(props.cardInfo.page_id);
+                                    deletePage(page_id);
                                 },
                             });
                         }}
@@ -130,7 +151,7 @@ function PageCard(props) {
                     type="primary"
                     className="start-edit-btn"
                     onClick={() => {
-                        window.open(`/editor?page=${props.cardInfo.page_id}`);
+                        window.open(`/editor?page=${page_id}`);
                     }}
                 >
                     <i className="fa fa-wrench icon" />

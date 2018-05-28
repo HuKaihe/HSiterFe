@@ -6,10 +6,12 @@ import PageCard from './PageCard';
 import { post } from '../../service/service';
 
 function PageContainer(props) {
+    const { showPageInfoModal, updatePageList } = props;
+    const { pageList } = props;
     const deletePage = (page_id) => {
         post('pageManager/deletePage', { page_id }).then(({ code, payload }) => {
             if (code === 200) {
-                props.updatePageList(payload.pageList);
+                updatePageList(payload.pageList);
                 message.success('删除成功');
             }
         });
@@ -17,13 +19,18 @@ function PageContainer(props) {
     return (
         <div className="hsiter-page-container">
             {
-                props.pageList.length === 0 ?
+                pageList.length === 0 ?
                     <div className="no-page" >
                         你一个页面都没有呢，点击右上角的【新建页面】创建一个吧~
                     </div> :
-                    props.pageList.map(page => (
-                        <div key={page.page_id} className="page-card-container">
-                            <PageCard cardInfo={page} deletePage={deletePage} />
+                    pageList.map(page => (
+                        <div key={page.page_id} className="page-card-container animated flipInX">
+                            <PageCard
+                                cardInfo={page}
+                                deletePage={deletePage}
+                                showPageInfoModal={showPageInfoModal}
+                                updatePageList={updatePageList}
+                            />
                         </div>
                     ))
             }

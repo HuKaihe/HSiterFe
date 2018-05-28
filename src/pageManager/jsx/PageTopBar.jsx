@@ -10,7 +10,7 @@ class PageTopBar extends Component {
     render() {
         const {
             searchPage,
-            showNewPageModal,
+            showPageInfoModal,
         } = this.props;
         return (
             <div className="hsiter-page-operate-bar">
@@ -42,7 +42,7 @@ class PageTopBar extends Component {
                     <li>
                         <button
                             className="new-page-btn hsiter-btn"
-                            onClick={() => showNewPageModal(true)}
+                            onClick={() => showPageInfoModal(true)}
                         >
                             <i className="fa fa-sticky-note-o icon" />
                             新建页面

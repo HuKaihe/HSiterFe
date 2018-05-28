@@ -142,7 +142,10 @@ class Signup extends Component {
                 >
                     {
                         getFieldDecorator('nickName', {
-                            rules: [{ required: true, message: '请亲为自己起一个昵称' }],
+                            rules: [
+                                { required: true, message: '请亲为自己起一个昵称' },
+                                { max: 15, message: '亲的昵称不宜超过15个字哦~' },
+                            ],
                         })(<Input placeholder="例如：恩言" />)
                     }
                 </FormItem>

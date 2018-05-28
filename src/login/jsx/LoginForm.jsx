@@ -13,6 +13,9 @@ class Login extends Component {
     // 提交表单
     handleSubmit = () => {
         const { validateFields } = this.props.form;
+        this.setState({
+            loginErrorTip: '',
+        });
         validateFields((err, values) => {
             if (err) {
                 return;
@@ -75,11 +78,15 @@ class Login extends Component {
                         })(<Input type="password" />)
                     }
                 </FormItem>
-                <div className="login-error-tip">
-                    {
-                        this.state.loginErrorTip
-                    }
-                </div>
+                {
+                    this.state.loginErrorTip &&
+                    <div className="login-error-tip animated bounceInLeft">
+                        {
+                            this.state.loginErrorTip
+                        }
+                    </div>
+                }
+
                 <FormItem
                     {...btnLayout}
                 >

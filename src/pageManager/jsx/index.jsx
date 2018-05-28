@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BackTop } from 'antd';
 import GlobalTop from '../../global/GlobalTop/GlobalTop';
 import PageTopBar from './PageTopBar';
-import NewPageModal from './NewPageModal';
+import PageInfoModal from './PageInfoModal';
 import PageContainer from './PageContainer';
 
 class HSiterPageManager extends Component {
@@ -11,9 +11,10 @@ class HSiterPageManager extends Component {
     static defaultProps = {
     }
     state = {
-        isNewPageModalDisplayed: false,
+        isPageInfoModalDisplayed: false,
         pageList: [],
         searchedPageList: null,
+        pageInfo: {},
     }
 
     componentWillMount() {
@@ -22,11 +23,13 @@ class HSiterPageManager extends Component {
         });
     }
 
-    showNewPageModal = (trigger = true) => {
+    showPageInfoModal = (trigger = true, pageInfo) => {
         this.setState({
-            isNewPageModalDisplayed: trigger,
+            isPageInfoModalDisplayed: trigger,
+            pageInfo: pageInfo || {},
         });
     }
+
     searchPage = (keyWord) => {
         if (!keyWord) {
             this.setState({
@@ -54,16 +57,18 @@ class HSiterPageManager extends Component {
                 />
                 <PageTopBar
                     searchPage={this.searchPage}
-                    showNewPageModal={this.showNewPageModal}
+                    showPageInfoModal={this.showPageInfoModal}
                 />
                 <PageContainer
                     pageList={this.state.searchedPageList || this.state.pageList}
                     updatePageList={this.updatePageList}
+                    showPageInfoModal={this.showPageInfoModal}
                 />
-                <NewPageModal
+                <PageInfoModal
                     updatePageList={this.updatePageList}
-                    showNewPageModal={this.showNewPageModal}
-                    visible={this.state.isNewPageModalDisplayed}
+                    showPageInfoModal={this.showPageInfoModal}
+                    pageInfo={this.state.pageInfo}
+                    visible={this.state.isPageInfoModalDisplayed}
                 />
                 <BackTop />
             </div>

@@ -38,8 +38,14 @@ class GlobalTop extends Component {
         <ul className="hsiter-account-operate-list">
             <li>
                 <button>
-                    <i className="fa fa-edit icon" />
+                    <i className="fa fa-id-badge icon" />
                     更改用户信息
+                </button>
+            </li>
+            <li>
+                <button>
+                    <i className="fa fa-key icon" />
+                    更改密码
                 </button>
             </li>
             <li>

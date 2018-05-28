@@ -19,6 +19,17 @@ class SingleComponentContainer extends Component {
         this.setState({
             transverse: height < 135,
         });
+        setTimeout(() => {
+            document.getElementById(nextProps.id).className = 'hsiter-single-component-container';
+        }, 1000);
+    }
+
+    animteComponentEnter = () => {
+        const { id } = this.props;
+        document.getElementById(id).className += ' animated bounceInRight';
+        setTimeout(() => {
+            document.getElementById(id).className = 'hsiter-single-component-container';
+        }, 1000);
     }
 
     render() {
@@ -47,7 +58,7 @@ class SingleComponentContainer extends Component {
         });
 
         return (
-            <div id={id} className="hsiter-single-component-container">
+            <div id={id} className="hsiter-single-component-container animated bounceInLeft">
                 <div
                     className="hsiter-component-mask"
                     onClick={() => {
@@ -72,6 +83,7 @@ class SingleComponentContainer extends Component {
                                 onClick={(e) => {
                                     if (canCompMoveUp) {
                                         moveComponentUp(id, index);
+                                        this.animteComponentEnter();
                                     }
                                     e.stopPropagation();
                                 }}
@@ -85,6 +97,7 @@ class SingleComponentContainer extends Component {
                                 onClick={(e) => {
                                     if (canCompMoveDown) {
                                         moveComponentDown(id, index);
+                                        this.animteComponentEnter();
                                     }
                                     e.stopPropagation();
                                 }}
