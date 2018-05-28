@@ -22,6 +22,8 @@ function EditorToolbar(props) {
             return;
         }
         message.error('保存失败');
+    }).catch(() => {
+        message.error('网络错误，请检查您的登录状态');
     });
 
     const preview = () => {

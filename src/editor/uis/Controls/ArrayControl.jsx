@@ -77,7 +77,7 @@ function ArrayControl(props) {
         props.setCustomControlValue({
             [customKey]: newArrValue,
         });
-        message.success('添加元素成功');
+        message.success('删除元素成功');
         // 清除错误
         setTimeout(() => {
             const arrFields = Object.keys(arrUnit);

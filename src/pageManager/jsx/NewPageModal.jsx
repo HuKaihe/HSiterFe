@@ -54,10 +54,10 @@ class NewPageModal extends React.Component {
             <Modal
                 getContainer={() => document.getElementById('hsiter-page-manager-app')}
                 className="hsiter-new-page-modal"
-                title="新增页面"
+                title="新建页面"
                 visible={this.props.visible}
                 onOk={this.addNewPage}
-                okText="确定新增"
+                okText="确定"
                 onCancel={this.handleCancel}
                 cancelText="取消"
             >
