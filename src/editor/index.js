@@ -22,6 +22,7 @@ const store = createStore(editorReducer, {
 globalStore.init({
     componentTypeInfoList: deepCloneObj(window.componentTypeInfoList),
     pageInfo: deepCloneObj(window.pageInfo),
+    user: deepCloneObj(window.user),
     newComponentTypeId: '',
     newComponentOrder: '',
     configComponentId: '',

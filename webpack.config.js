@@ -40,7 +40,8 @@ module.exports = {
         editor: './src/editor/index.js',
         pageManager: './src/pageManager/index.js',
         preview: './src/preview/index.js',
-        // home: './src/home/index.js',
+        signup: './src/signup/index.js',
+        login: './src/login/index.js',
         test: './src/test/index.js',
     },
 
@@ -117,6 +118,18 @@ module.exports = {
             title: 'Page Preview',
             filename: 'preview.html',
             chunks: ['preview'],
+            ...HTMLTemplate,
+        }),
+        new HtmlWebpackPlugin({
+            title: 'signup',
+            filename: 'signup.html',
+            chunks: ['signup'],
+            ...HTMLTemplate,
+        }),
+        new HtmlWebpackPlugin({
+            title: 'login',
+            filename: 'login.html',
+            chunks: ['login'],
             ...HTMLTemplate,
         }),
         new HtmlWebpackPlugin({

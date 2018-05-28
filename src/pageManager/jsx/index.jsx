@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { BackTop } from 'antd';
-
-import { deepCloneObj } from '../../service/service';
 import GlobalTop from '../../global/GlobalTop/GlobalTop';
 import PageTopBar from './PageTopBar';
 import NewPageModal from './NewPageModal';
@@ -20,7 +18,7 @@ class HSiterPageManager extends Component {
 
     componentWillMount() {
         this.setState({
-            pageList: deepCloneObj(window.pageList),
+            pageList: this.props.pageList,
         });
     }
 
@@ -51,7 +49,9 @@ class HSiterPageManager extends Component {
     render() {
         return (
             <div id="hsiter-page-manager-app" className="hsiter-page-manager-app">
-                <GlobalTop activeNav="pageManager" />
+                <GlobalTop
+                    activeNav="pageManager"
+                />
                 <PageTopBar
                     searchPage={this.searchPage}
                     showNewPageModal={this.showNewPageModal}

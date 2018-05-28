@@ -83,7 +83,7 @@ class NewPageModal extends React.Component {
                                 rules: [
                                     { pattern: /^([A-Za-z0-9]|_|-)+$/, message: 'url只支持英文、数字及下划线' },
                                 ],
-                            })(<Input addonBefore="hsiter.hukaihe.com/hukaihe/" placeholder="页面链接" />)
+                            })(<Input addonBefore="hsiter.hukaihe.com/pages/" placeholder="页面链接" />)
                         }
                     </FormItem>
                     <FormItem

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-import { Tooltip } from 'antd';
+import { Tooltip, Popover, message } from 'antd';
+import globalStore from '../../service/globalStore';
+import { post } from '../../service/service';
 
 import './GlobalTop.less';
 
@@ -33,8 +34,39 @@ class GlobalTop extends Component {
     state = {
     }
 
+    getAccountOperateList = () => (
+        <ul className="hsiter-account-operate-list">
+            <li>
+                <button>
+                    <i className="fa fa-edit icon" />
+                    更改用户信息
+                </button>
+            </li>
+            <li>
+                <button className="off" onClick={this.signout}>
+                    <i className="fa fa-power-off icon" />
+                    注销
+                </button>
+            </li>
+        </ul>
+    );
+
+    signout = () => {
+        post('/account/signout').then(({ code, msg }) => {
+            if (code === 200) {
+                window.location.href = '/login';
+                return;
+            }
+            message.error(msg);
+        }).catch(() => {
+            message.error('服务器开小差了，请亲稍后再试');
+        });
+    }
+
     render() {
         const { activeNav } = this.props;
+        const user = globalStore.get('user');
+        const hasLogin = !!user;
         return (
             <div className="global-top">
                 <div className="left">
@@ -76,7 +108,25 @@ class GlobalTop extends Component {
                         </li>
                     </ul>
                     <div className="user-module">
-                        <div className="user-profile" />
+                        {
+                            hasLogin ?
+                                <Popover
+                                    title={`欢迎，${user.nickname}`}
+                                    content={this.getAccountOperateList()}
+                                    placement="bottomLeft"
+                                >
+                                    <div
+                                        className="user-profile"
+                                        style={{
+                                            background: `url(${user.profile}) center / cover`,
+                                        }}
+                                    />
+                                </Popover> :
+                                <div className="account-href-list">
+                                    <a href="/login" className="account-href">登录</a>/
+                                    <a href="/signup" className="account-href">注册</a>
+                                </div>
+                        }
                     </div>
                 </div>
             </div>
