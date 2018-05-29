@@ -1,7 +1,18 @@
 import fetch from 'cross-fetch';
+import Encrypter from 'encrypter';
+
 
 export function getRandomString() {
     return Math.random().toString(36).substr(2) + new Date().getTime();
+}
+
+export function unencrypt(originKey, originData) {
+    if (typeof originData !== 'string') {
+        return JSON.parse(originData);
+    }
+    const encryptedKey = originKey.slice(1, 3) + originKey.slice(2, 3) + originKey.slice(7, 10);
+    const encrypter = new Encrypter(encryptedKey);
+    return encrypter.decrypt(originData);
 }
 
 export function deepCloneObj(obj = {}) {

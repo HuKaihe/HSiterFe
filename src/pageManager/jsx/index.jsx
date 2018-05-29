@@ -23,10 +23,13 @@ class HSiterPageManager extends Component {
         });
     }
 
-    showPageInfoModal = (trigger = true, pageInfo) => {
+    showPageInfoModal = (trigger, pageInfo) => {
         this.setState({
             isPageInfoModalDisplayed: trigger,
-            pageInfo: pageInfo || {},
+        }, () => {
+            this.setState({
+                pageInfo: pageInfo || {},
+            });
         });
     }
 

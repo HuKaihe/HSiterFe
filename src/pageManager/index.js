@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './jsx';
 import './less/index.less';
-import { deepCloneObj } from '../service/service';
+import { unencrypt } from '../service/service';
 import globalStore from '../service/globalStore';
 
-const pageList = deepCloneObj(window.pageList);
-
+const pageList = JSON.parse(unencrypt(window.ok, window.pageList));
+const user = JSON.parse(unencrypt(window.ok, window.user));
 globalStore.init({
-    user: deepCloneObj(window.user),
+    user,
 });
 
 ReactDOM.render(

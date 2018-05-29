@@ -7,22 +7,28 @@ import App from './containers';
 import './less/index.less';
 import editorReducer from './reducers/index.reducer';
 import globalStore from '../service/globalStore';
-import './mock/componentInfo';
-import { deepCloneObj } from '../service/service';
+// import './mock/componentInfo';
+import { unencrypt } from '../service/service';
+
+const page_schema = JSON.parse(unencrypt(window.ok, window.page_schema));
+const componentInfoGroup = JSON.parse(unencrypt(window.ok, window.componentInfoGroup));
+const componentTypeInfoList = JSON.parse(unencrypt(window.ok, window.componentTypeInfoList));
+const pageInfo = JSON.parse(unencrypt(window.ok, window.pageInfo));
+const user = JSON.parse(unencrypt(window.ok, window.user));
 
 // react全局状态存储到redux store中
 const store = createStore(editorReducer, {
-    page_schema: deepCloneObj(window.page_schema),
+    page_schema,
     isNewComponentModalDisplayed: false,
     isComponentConfigPanelDisplayed: false,
-    componentInfoGroup: window.componentInfoGroup,
+    componentInfoGroup,
 });
 
 // 将与UI完全无关、由事件触发的部分数据放到globalStore里管理
 globalStore.init({
-    componentTypeInfoList: deepCloneObj(window.componentTypeInfoList),
-    pageInfo: deepCloneObj(window.pageInfo),
-    user: deepCloneObj(window.user),
+    componentTypeInfoList,
+    pageInfo,
+    user,
     newComponentTypeId: '',
     newComponentOrder: '',
     configComponentId: '',
