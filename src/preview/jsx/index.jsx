@@ -1,4 +1,5 @@
 import React from 'react';
+import { BackTop } from 'antd';
 // Components
 import components from '../../components/components';
 
@@ -16,6 +17,7 @@ function EditorWorkspace(props) {
                     );
                 })
             }
+            <BackTop />
         </div>
     );
 }

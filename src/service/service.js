@@ -8,7 +8,7 @@ export function getRandomString() {
 
 export function unencrypt(originKey, originData) {
     if (typeof originData !== 'string') {
-        return JSON.parse(originData);
+        return JSON.stringify(originData);
     }
     const encryptedKey = originKey.slice(1, 3) + originKey.slice(2, 3) + originKey.slice(7, 10);
     const encrypter = new Encrypter(encryptedKey);

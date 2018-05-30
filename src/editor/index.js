@@ -7,7 +7,7 @@ import App from './containers';
 import './less/index.less';
 import editorReducer from './reducers/index.reducer';
 import globalStore from '../service/globalStore';
-// import './mock/componentInfo';
+import './mock/componentInfo';
 import { unencrypt } from '../service/service';
 
 const page_schema = JSON.parse(unencrypt(window.ok, window.page_schema));

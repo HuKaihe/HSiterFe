@@ -2,8 +2,33 @@
 @import (multiple) "../../global/base.less";
 body {
     background-color: @white;
+    position: relative;
 }
 // ** App **
 .hsiter-page-manager-app {
     overflow: hidden;
+}
+.hsiter-publisher {
+    .center;
+    flex-direction: column;
+    position: fixed;
+    z-index: 10000;
+    bottom: 120px;
+    right: 85px;
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    color: #ffffff;
+    background-color: #66CACA;
+    cursor: pointer;
+    &:hover {
+        background-color: @blue_main_hover;
+    }
+    .icon {
+        font-size: 25px;
+        margin-bottom: 5px;
+    }
+    span {
+        font-size: 12px;
+    }
 }

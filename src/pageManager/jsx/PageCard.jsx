@@ -56,7 +56,6 @@ function PageCard(props) {
             id: 'page_preview',
             title: '预览页面',
             icon: 'fa-eye',
-            href: '',
             listener: () => {
                 window.open(`/preview?page=${page_id}`);
             },

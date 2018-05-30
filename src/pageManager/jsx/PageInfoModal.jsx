@@ -127,7 +127,7 @@ class PageInfoModal extends React.Component {
                         colon={false}
                     >
                         {
-                            getFieldDecorator('href', {
+                            getFieldDecorator('page_url', {
                                 rules: [
                                     { pattern: /^([A-Za-z0-9]|_|-)+$/, message: 'url只支持英文、数字及下划线' },
                                     { max: 25, message: 'URL链接长度不得超过25个字符~' },
