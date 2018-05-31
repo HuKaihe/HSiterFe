@@ -72,6 +72,7 @@ class Signup extends Component {
             }
             post('/account/signup', values).then(({ code, msg }) => {
                 if (code === 200) {
+                    window.localStorage.clear();
                     window.location.href = '/pageManager';
                     return;
                 }

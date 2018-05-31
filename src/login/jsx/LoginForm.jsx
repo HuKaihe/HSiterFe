@@ -22,6 +22,7 @@ class Login extends Component {
             }
             post('/account/login', values).then(({ code, msg }) => {
                 if (code === 200) {
+                    window.localStorage.clear();
                     window.location.href = '/pageManager';
                     return;
                 }

@@ -60,6 +60,7 @@ class GlobalTop extends Component {
     signout = () => {
         post('/account/signout').then(({ code, msg }) => {
             if (code === 200) {
+                window.localStorage.clear();
                 window.location.href = '/login';
                 return;
             }
