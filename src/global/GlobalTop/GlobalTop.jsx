@@ -20,7 +20,7 @@ const globalNavInfo = [
     },
     {
         id: 'editor',
-        title: '编辑器',
+        title: '最近打开的页面编辑器',
         url: '/editor',
         icon: 'fa-laptop',
     },
@@ -73,6 +73,7 @@ class GlobalTop extends Component {
         const { activeNav } = this.props;
         const user = globalStore.get('user');
         const hasLogin = !!user;
+        const recent_page_id = localStorage.getItem('recent_page_id');
         return (
             <div className="global-top">
                 <div className="left">
@@ -82,20 +83,28 @@ class GlobalTop extends Component {
                     </div>
                     <ul className="nav">
                         {
-                            globalNavInfo.map(navInfo => (
-                                <li key={navInfo.id}>
-                                    <Tooltip title={navInfo.title} placement="bottom">
-                                        <a
-                                            href={navInfo.url}
-                                            target="_blank"
-                                            className={navInfo.id === activeNav ? 'active' : ''}
-                                        >
-                                            <i className={`fa ${navInfo.icon}`} />
-                                            <div className="cover" />
-                                        </a>
-                                    </Tooltip>
-                                </li>
-                            ))
+                            globalNavInfo.map((navInfo) => {
+                                if (navInfo.id === 'editor' && !recent_page_id) {
+                                    return null;
+                                }
+                                return (
+                                    <li key={navInfo.id}>
+                                        <Tooltip title={navInfo.title} placement="bottom">
+                                            <a
+                                                href={
+                                                    navInfo.id === 'editor' ?
+                                                        `${navInfo.url}?page=${recent_page_id}` : navInfo.url
+                                                }
+                                                target="_blank"
+                                                className={navInfo.id === activeNav ? 'active' : ''}
+                                            >
+                                                <i className={`fa ${navInfo.icon}`} />
+                                                <div className="cover" />
+                                            </a>
+                                        </Tooltip>
+                                    </li>
+                                );
+                            })
                         }
                     </ul>
                 </div>

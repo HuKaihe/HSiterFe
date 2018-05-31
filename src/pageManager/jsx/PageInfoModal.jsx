@@ -123,16 +123,17 @@ class PageInfoModal extends React.Component {
                     </FormItem>
                     <FormItem
                         {...formItemLayout}
-                        label={this.getLabelWithTip('页面链接', '选填，页面发布后，其他用户可以根据您填写的链接访问您的页面')}
+                        label={this.getLabelWithTip('页面链接', '页面发布后，其他用户可以根据您填写的链接访问您的页面；如果两个页面的链接相同，新发布的页面会把以前的替换掉')}
                         colon={false}
                     >
                         {
                             getFieldDecorator('page_url', {
                                 rules: [
+                                    { required: true, message: '请亲为自己的页面设置一个好记的一个URL吧' },
                                     { pattern: /^([A-Za-z0-9]|_|-)+$/, message: 'url只支持英文、数字及下划线' },
                                     { max: 25, message: 'URL链接长度不得超过25个字符~' },
                                 ],
-                            })(<Input addonBefore="hsiter.hukaihe.com/pages/" placeholder="页面链接" />)
+                            })(<Input addonBefore="hsiter.hukaihe.com/pages/文件集合ID/" placeholder="页面链接" />)
                         }
                     </FormItem>
                     <FormItem

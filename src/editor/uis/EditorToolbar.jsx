@@ -18,6 +18,7 @@ class EditorToolbar extends Component {
 
     componentWillReceiveProps(nextProps) {
         window.localStorage.setItem(this.page_id, JSON.stringify(nextProps.page_schema));
+        window.localStorage.setItem('recent_page_id', this.page_id);
     }
 
     page_id = globalStore.get('pageInfo').page_id;

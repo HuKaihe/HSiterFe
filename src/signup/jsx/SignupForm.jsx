@@ -141,7 +141,7 @@ class Signup extends Component {
                     {...layout}
                 >
                     {
-                        getFieldDecorator('nickName', {
+                        getFieldDecorator('nickname', {
                             rules: [
                                 { required: true, message: '请亲为自己起一个昵称' },
                                 { max: 15, message: '亲的昵称不宜超过15个字哦~' },

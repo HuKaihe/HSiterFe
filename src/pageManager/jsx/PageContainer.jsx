@@ -12,6 +12,7 @@ function PageContainer(props) {
         post('pageManager/deletePage', { page_id }).then(({ code, payload }) => {
             if (code === 200) {
                 updatePageList(payload.pageList);
+                window.localStorage.removeItem(page_id);
                 message.success('删除成功');
             }
         });

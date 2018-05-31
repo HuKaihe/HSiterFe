@@ -16,6 +16,8 @@ const componentTypeInfoList = JSON.parse(unencrypt(window.ok, window.componentTy
 const pageInfo = JSON.parse(unencrypt(window.ok, window.pageInfo));
 const user = JSON.parse(unencrypt(window.ok, window.user));
 
+window.localStorage.setItem('recent_page_id', pageInfo.page_id);
+
 // react全局状态存储到redux store中
 const store = createStore(editorReducer, {
     page_schema,

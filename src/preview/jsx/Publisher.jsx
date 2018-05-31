@@ -4,14 +4,12 @@ import { message } from 'antd';
 import { post } from '../../service/service';
 
 function Publisher(props) {
-    const { page_id, page_url, page_title } = props.pageInfo;
+    const { page_id } = props.pageInfo;
     const publishPage = () => {
         document.getElementById('publisher').remove();
         const bodyHTML = document.getElementsByTagName('body')[0].innerHTML;
         post('editor/publish', {
             page_id,
-            page_url,
-            page_title,
             bodyHTML,
         }).then(({ code, payload }) => {
             if (code !== 200) {
