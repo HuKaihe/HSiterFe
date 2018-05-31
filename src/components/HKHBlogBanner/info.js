@@ -15,6 +15,16 @@ export default {
             },
             valuePropName: 'checked',
         },
+        backgroundImage: {
+            label: '背景图',
+            rules: [{
+                required: true, message: '背景图不得为空',
+            }],
+            layout: {
+                labelCol: { span: 6 },
+                wrapperCol: { span: 18 },
+            },
+        },
         cardsInfo: {
             label: '轮播主图信息',
             control: 'arrayControl',
@@ -83,6 +93,7 @@ export default {
     },
     default_data: {
         showNav: true,
+        backgroundImage: 'http://localhost:8080/images/bg12ffe6b9546d9b56aecd2905f3925b0d.jpg',
         navInfo: [
             {
                 id: 'nav1',

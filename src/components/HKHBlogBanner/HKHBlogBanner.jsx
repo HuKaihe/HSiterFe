@@ -7,7 +7,7 @@ import './HKHBlogBanner.less';
 
 
 export default function (props) {
-    const { navInfo, cardsInfo } = props;
+    const { navInfo, cardsInfo, backgroundImage } = props;
 
     const pieceCls = classnames({
         'banner-piece': true,
@@ -31,7 +31,7 @@ export default function (props) {
     };
 
     return (
-        <div className="HComponent HKHBlogBanner">
+        <div className="HComponent HKHBlogBanner" style={{ backgroundImage: `url(${backgroundImage})` }}>
             {
                 props.showNav && <HKHBlogNav navInfo={navInfo} customClass="nav" />
             }

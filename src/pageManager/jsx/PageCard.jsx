@@ -56,10 +56,10 @@ function PageCard(props) {
         },
         {
             id: 'page_preview',
-            title: '预览页面',
+            title: '查看页面快照',
             icon: 'fa-eye',
             listener: () => {
-                window.open(`/preview?page=${page_id}`);
+                window.open(`/screenshot?page=${page_id}`);
             },
         },
         {

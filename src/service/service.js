@@ -28,6 +28,16 @@ export function objContentCompare(obj1 = {}, obj2 = {}) {
     return JSON.stringify(obj1) === JSON.stringify(obj2);
 }
 
+export function getQueryVariable(variable) {
+    const query = window.location.search.substring(1);
+    const vars = query.split('&');
+    for (let i = 0; i < vars.length; i += 1) {
+        const pair = vars[i].split('=');
+        if (pair[0] === variable) { return pair[1]; }
+    }
+    return false;
+}
+
 export function post(url, data = {}, headers = { 'Content-Type': 'application/json' }) {
     return fetch(url, {
         method: 'POST',
