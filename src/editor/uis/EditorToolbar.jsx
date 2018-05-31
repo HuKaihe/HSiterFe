@@ -1,5 +1,5 @@
 import React from 'react';
-import { Affix, message } from 'antd';
+import { Affix, message, Tooltip } from 'antd';
 import { post } from '../../service/service';
 import globalStore from '../../service/globalStore';
 
@@ -27,8 +27,14 @@ function EditorToolbar(props) {
     });
 
     const preview = () => {
+        window.sessionStorage.setItem('page_schema_cache', JSON.stringify(page_schema));
+        window.open(`/preview?page=${page_id}`);
+    };
+
+    const prePublish = () => {
+        window.sessionStorage.removeItem('page_schema_cache');
         save().then(() => {
-            window.open(`/preview?page=${page_id}`);
+            window.open(`/prePublish?page=${page_id}`);
         });
     };
 
@@ -65,13 +71,12 @@ function EditorToolbar(props) {
                             </button>
 
                         </li>
-                        <li>
+                        {/* <li>
                             <button className="btn">
                                 <i className="icon fa fa-download" />
                                 <span className="text">下载</span>
                             </button>
-
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
 
@@ -100,18 +105,24 @@ function EditorToolbar(props) {
                             </button>
                         </li>
                         <li>
-                            <button
-                                className="btn"
-                                onClick={preview}
-                            >
-                                <i className="icon fa fa-eye" />
-                                <span className="text">预览</span>
-                            </button>
+                            <Tooltip title="对页面进行简单预览，并不会对您页面当前的状态进行保存" placement="bottom">
+                                <button
+                                    className="btn"
+                                    onClick={preview}
+                                >
+                                    <i className="icon fa fa-eye" />
+                                    <span className="text">预览</span>
+                                </button>
+                            </Tooltip>
+
                         </li>
                         <li>
-                            <button className="btn publish">
+                            <button
+                                className="btn publish"
+                                onClick={prePublish}
+                            >
                                 <i className="icon fa fa-send-o" />
-                                <span className="text">发布</span>
+                                <span className="text">预发布</span>
                             </button>
                         </li>
                     </ul>

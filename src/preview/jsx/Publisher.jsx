@@ -29,7 +29,7 @@ function Publisher(props) {
     };
     return (
         <div className="hsiter-publisher spin-icon" onClick={publishPage}>
-            <i className="fa fa-paper-plane-o icon" />
+            <i className="fa fa-paper-plane icon" />
             <span>发布页面</span>
         </div>
     );

@@ -37,6 +37,8 @@ function PageCard(props) {
     const {
         page_id,
         page_type,
+        is_publish,
+        publish_url,
     } = props.cardInfo;
     const {
         updatePageList,
@@ -125,6 +127,19 @@ function PageCard(props) {
                                     }
                                 </li>
                             ))
+                        }
+                        {
+                            !!is_publish &&
+                            <li key="publish_url" className="publish-item spin-icon">
+                                <a href={is_publish ? publish_url : '#'} target="_blank">
+
+                                    <i className="fa fa-paper-plane icon" />
+                                    <span>
+                                            已发布(点此查看)
+                                    </span>
+                                </a>
+
+                            </li>
                         }
                     </ul>
                 </div>
