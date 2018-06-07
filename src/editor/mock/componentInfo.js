@@ -2,48 +2,69 @@ import AntDesignNavInfo from '../../components/AntDesignNav/info';
 import HKHBlogBannerInfo from '../../components/HKHBlogBanner/info';
 import HKHBlogCollectionInfo from '../../components/HKHBlogCollection/info';
 
+const containerData = {
+    margin: {
+        marginTop: '0px',
+        marginBottom: '0px',
+    },
+    padding: {
+        paddingTop: '0px',
+        paddingBottom: '0px',
+    },
+    size: {
+        width: '100%',
+        maxWidth: '100%',
+        minWidth: '1200px',
+    },
+    backgroundColor: '#ffffff',
+};
+
 const componentTypeInfoList = [
     HKHBlogCollectionInfo,
     HKHBlogBannerInfo,
     AntDesignNavInfo,
 ];
 
-const classification = [
-    {
-        title: '我的收藏',
-        icon: 'fa-star',
-        code: 'mycollection',
-        children: [],
-    },
-    {
-        title: 'web原生组件',
-        icon: 'fa-html5',
-        code: 'origin',
-        children: [],
-    },
-    {
-        title: 'HKH内置组件',
-        icon: 'fa-archive',
-        code: 'inner',
-        splitter: true,
-        children: [],
-    },
-    {
-        title: 'Ant Design',
-        img: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
-        code: 'antDesign',
-        children: [
+componentTypeInfoList.forEach((componentTypeInfo) => {
+    componentTypeInfo.default_data.container = containerData;
+});
 
-        ],
-    },
-    {
-        title: 'HKHBlog',
-        img: 'http://fontawesome.hukaihe.com/public/image/logo.png',
-        code: 'HKHBlog',
-        children: [
 
-        ],
-    },
+const classification = [{
+    title: '我的收藏',
+    icon: 'fa-star',
+    code: 'mycollection',
+    children: [],
+},
+{
+    title: 'web原生组件',
+    icon: 'fa-html5',
+    code: 'origin',
+    children: [],
+},
+{
+    title: 'HKH内置组件',
+    icon: 'fa-archive',
+    code: 'inner',
+    splitter: true,
+    children: [],
+},
+{
+    title: 'Ant Design',
+    img: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+    code: 'antDesign',
+    children: [
+
+    ],
+},
+{
+    title: 'HKHBlog',
+    img: 'http://fontawesome.hukaihe.com/public/image/logo.png',
+    code: 'HKHBlog',
+    children: [
+
+    ],
+},
 ];
 
 const componentInfoGroup = classification.map(item => ({

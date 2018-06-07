@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { Tooltip, Button, Modal } from 'antd';
+import { Tooltip, Button, Modal, Tabs } from 'antd';
 // import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import ConfigForm from './ConfigForm';
-import { objContentCompare, deepCloneObj, isObjPropsAllUnvalid } from '../../service/service';
+import ComponentConfigForm from './ComponentConfigForm';
+import ContainerConfigForm from './ContainerConfigForm';
+import { objContentCompare, deepCloneObj, isObjPropsAllUnvalid } from '../../../service/service';
+
+const { TabPane } = Tabs;
 
 class ConfigPanel extends Component {
     static propTypes = {}
@@ -35,6 +38,12 @@ class ConfigPanel extends Component {
         this.setState({
             componentData: newComponentData,
         });
+    }
+
+    setContainerData = (newContainerData) => {
+        this.setState(pre => ({
+            componentData: { ...pre.componentData, container: newContainerData },
+        }));
     }
 
     setError = (errorObj) => {
@@ -116,16 +125,31 @@ class ConfigPanel extends Component {
                         }
 
                     </div>
-                    <ConfigForm
-                        setComponentData={this.setComponentData}
-                        setError={this.setError}
-                        errorMap={this.state.errorMap}
-                        componentData={this.state.componentData}
-                        configComponentId={configComponentId}
-                        configComponentTypeInfo={configComponentTypeInfo}
-                    />
+                    <Tabs defaultActiveKey="component-config" size="small">
+                        <TabPane tab="元素属性配置" key="component-config">
+                            <ComponentConfigForm
+                                setComponentData={this.setComponentData}
+                                setError={this.setError}
+                                errorMap={this.state.errorMap}
+                                componentData={this.state.componentData}
+                                configComponentId={configComponentId}
+                                configComponentTypeInfo={configComponentTypeInfo}
+                            />
+                        </TabPane>
+                        <TabPane tab="容器属性配置" key="container-config">
+                            <ContainerConfigForm
+                                setContainerData={this.setContainerData}
+                                setError={this.setError}
+                                errorMap={this.state.errorMap}
+                                containerData={this.state.componentData.container}
+                                configComponentId={configComponentId}
+                                configComponentTypeInfo={configComponentTypeInfo}
+                            />
+                        </TabPane>
+                    </Tabs>
+
                     <div className="hsiter-config-panel-footer">
-                        <Tooltip title="点击【取消修改】将清空您的操作状态；如果您希望在您点击另一个元素之前，配置面版保持您当前操作的状态，请直接点击页面的半透明蒙版来关闭配置面板">
+                        <Tooltip title="点击【取消修改】将清空您的操作状态；如果您希望在您点击另一个元素之前，配置面版保持您当前操作的状态，请直接点击页面的半透明蒙版来暂时关闭配置面板">
                             <Button
                                 onClick={this.cancelEdit}
                             >

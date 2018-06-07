@@ -16,6 +16,15 @@ function EditorWorkspace(props) {
                     const MyComponent = components[name];
                     const { componentData } = props.componentSchema.find(item =>
                         item.id === id) || {};
+                    const containerData = componentData.container || {};
+                    const containerOutterStyle = {
+                        ...containerData.margin,
+                        ...containerData.padding,
+                        backgroundColor: containerData.backgroundColor,
+                    };
+                    const containerInnerStyle = {
+                        ...containerData.size,
+                    };
                     return (
                         <SingleComponentContainer
                             key={id}
@@ -24,7 +33,17 @@ function EditorWorkspace(props) {
                             canCompMoveUp={index !== 0}
                             canCompMoveDown={index <= (compNums - 1)}
                         >
-                            <MyComponent {...componentData} />
+                            <div
+                                className="component-container"
+                                style={containerOutterStyle}
+                            >
+                                <div
+                                    className="component-container-inner"
+                                    style={containerInnerStyle}
+                                >
+                                    <MyComponent {...componentData} />
+                                </div>
+                            </div>
                         </SingleComponentContainer>
                     );
                 })

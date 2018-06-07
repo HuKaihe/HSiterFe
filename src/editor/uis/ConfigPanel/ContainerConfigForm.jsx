@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
-import { Form, Switch, Input } from 'antd';
-import ArrayControl from './Controls/ArrayControl';
+import { Form, Input } from 'antd';
+import defaultContainerConfigSchema from './defaultContainerConfigSchema';
+import controlMap from './controlMap';
 
 const FormItem = Form.Item;
-const { TextArea } = Input;
 
-class ConfigForm extends Component {
+class ContainerConfigForm extends Component {
     state = {
     }
 
     componentWillReceiveProps = (nextProps) => {
-        const { componentData } = nextProps;
-        this.setState(componentData, () => {
+        const { containerData } = nextProps;
+        this.setState(containerData, () => {
             if (this.configComponentId !== nextProps.configComponentId) {
-                document.getElementById('hsiter-config-panel-form').scrollTop = 0;
+                document.getElementById('hsiter-container-config-form').scrollTop = 0;
                 this.configComponentId = nextProps.configComponentId;
             }
         });
@@ -21,52 +21,42 @@ class ConfigForm extends Component {
 
     setCustomControlValue = (newCustomControlValue) => {
         this.setState(newCustomControlValue, () => {
-            this.props.setComponentData(this.state);
+            // console.log(this.state);
+            this.props.setContainerData(this.state);
         });
     }
 
-
     configComponentId = ''; // configComponentId用作直接渲染DOM，和React无关，故暂时不放置到state中
-
-    controlMap = {
-        switch: {
-            Control: Switch,
-            controlDecorator: {
-                valuePropName: 'checked',
-            },
-        },
-        arrayControl: {
-            Control: ArrayControl,
-            type: 'custom',
-        },
-        textArea: {
-            Control: TextArea,
-        },
-    };
 
     render() {
         const { getFieldDecorator } = this.props.form;
         const {
-            // componentData = {},
             configComponentTypeInfo = {},
             configComponentId,
+        } = this.props;
+        const {
             errorMap,
             setError,
         } = this.props;
         const { config_schema = {} } = configComponentTypeInfo;
-        const configKeys = Object.keys(config_schema) || [];
+        const containerConfigSchema = config_schema.container || defaultContainerConfigSchema;
+        const configKeys = Object.keys(containerConfigSchema) || [];
+
         return (
-            <Form className="hsiter-config-panel-form" id="hsiter-config-panel-form">
+            <Form
+                className="hsiter-config-panel-form"
+                id="hsiter-container-config-form"
+            >
                 {
                     configKeys.map((key) => {
-                        const config = config_schema[key];
-                        // const controlData = componentData[key];
+                        const config = containerConfigSchema[key];
                         const {
                             Control = Input,
                             controlDecorator,
                             type,
-                        } = this.controlMap[config.control] || {};
+                        } = controlMap[config.control] || {};
                         let customProps = {};
+                        customProps = { ...customProps, ...config.customProps };
                         if (type === 'custom') {
                             customProps.customKey = key;
                             customProps.title = config.label;
@@ -74,18 +64,16 @@ class ConfigForm extends Component {
                             customProps.errorMap = errorMap;
                             customProps.setError = setError;
                             customProps.setCustomControlValue = this.setCustomControlValue;
-                            customProps = { ...customProps, ...config.customProps };
                         }
                         return (
                             <FormItem
-                                key={key}
+                                key={`${configComponentId}_container_${key}`}
                                 label={config.label}
                                 help={config.help}
                                 {...config.layout}
                             >
                                 {
-                                    getFieldDecorator(`${configComponentId}_${key}`, {
-                                        // initialValue: controlData,
+                                    getFieldDecorator(`${configComponentId}_container_${key}`, {
                                         rules: config.rules,
                                         ...controlDecorator,
                                     })(<Control {...customProps} />)
@@ -99,11 +87,11 @@ class ConfigForm extends Component {
     }
 }
 
-const WrappedConfigForm = Form.create({
+const WrappedContainerConfigForm = Form.create({
     onFieldsChange: (props, changedFields) => {
         const changedFieldKey = Object.keys(changedFields)[0];
         const changedFieldValue = changedFields[changedFieldKey].value;
-        const realKey = changedFieldKey.split('_')[1];
+        const realKey = changedFieldKey.split('_')[2];
         const changedField = {
             [realKey]: changedFieldValue,
         };
@@ -117,26 +105,28 @@ const WrappedConfigForm = Form.create({
         props.setError({
             [changedFieldKey]: undefined,
         });
-        props.setComponentData({ ...props.componentData, ...changedField });
+        props.setContainerData({ ...props.containerData, ...changedField });
     },
     mapPropsToFields(props) {
         const result = {};
         const {
-            componentData = {},
-            configComponentTypeInfo = {},
+            containerData = {},
             configComponentId,
+            configComponentTypeInfo,
         } = props;
         const { config_schema = {} } = configComponentTypeInfo;
-        const configKeys = Object.keys(config_schema) || [];
+        const containerConfigSchema = config_schema.container || defaultContainerConfigSchema;
+
+        const configKeys = Object.keys(containerConfigSchema) || [];
         configKeys.forEach((key) => {
-            const controlData = componentData[key];
-            result[`${configComponentId}_${key}`] = Form.createFormField({
-                errors: props.errorMap[`${configComponentId}_${key}`],
+            const controlData = containerData[key];
+            result[`${configComponentId}_container_${key}`] = Form.createFormField({
+                errors: props.errorMap[`${configComponentId}_container_${key}`],
                 value: controlData,
             });
         });
         return result;
     },
-})(ConfigForm);
+})(ContainerConfigForm);
 
-export default WrappedConfigForm;
+export default WrappedContainerConfigForm;

@@ -38,8 +38,29 @@ class EditorWorkspace extends Component {
                         const MyComponent = components[name];
                         const { componentData } = componentSchema.find(item =>
                             item.id === id) || {};
+                        const containerData = componentData.container || {};
+                        const containerOutterStyle = {
+                            ...containerData.margin,
+                            ...containerData.padding,
+                            backgroundColor: containerData.backgroundColor,
+                        };
+                        const containerInnerStyle = {
+                            ...containerData.size,
+                        };
+
                         return (
-                            <MyComponent key={id} {...componentData} />
+                            <div
+                                key={id}
+                                className="component-container"
+                                style={containerOutterStyle}
+                            >
+                                <div
+                                    className="component-container-inner"
+                                    style={containerInnerStyle}
+                                >
+                                    <MyComponent {...componentData} />
+                                </div>
+                            </div>
                         );
                     })
                 }

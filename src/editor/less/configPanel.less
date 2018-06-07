@@ -52,6 +52,22 @@
             font-size: 15px;
             color: @gray_6;
         }
+    } // 复写
+    .ant-tabs {
+        height: calc(100% - 50px);
+    }
+    .ant-tabs-content {
+        height: calc(100% - 35px);
+    }
+    .ant-tabs-tabpane {
+        height: 100%;
+    }
+    .ant-tabs-nav-wrap {
+        padding-left: 10px;
+        font-size: 13px;
+    }
+    .ant-tabs-tab {
+        margin-right: 5px;
     }
 }
 
@@ -59,7 +75,7 @@
     overflow: auto;
     position: relative;
     right: -15px;
-    height: calc(100% - 100px);
+    height: calc(100% - 60px);
     width: 100%;
     padding: 0 20px 20px 0;
     .tip-icon {
@@ -111,7 +127,8 @@
             width: 200px;
             margin: 10px auto;
         }
-        .remove-arr-obj, .drag-arr-obj {
+        .remove-arr-obj,
+        .drag-arr-obj {
             position: absolute;
             right: 10px;
             top: 3px;
@@ -139,7 +156,25 @@
                 }
             }
         }
-
+    }
+    &.hsiter-group-control {
+        position: relative;
+        display: flex;
+        justify-content: start;
+        flex-wrap: wrap;
+        border-bottom: 1px solid @gray_3;
+        padding: 10px 5px 20px 5px;
+        .group-item {
+            padding: 0 5px;
+            width: 50%;
+            .group-item-label {
+                font-size: 12px;
+            }
+        }
+        // 复写
+        .ant-form-item-label {
+            line-height: 2;
+        }
     }
 }
 

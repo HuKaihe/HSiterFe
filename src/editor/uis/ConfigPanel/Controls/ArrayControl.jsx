@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input, Tooltip, Form, Switch, Button, message } from 'antd';
 
-import { getRandomString } from '../../../service/service';
+import { getRandomString } from '../../../../service/service';
 
 const FormItem = Form.Item;
 const { TextArea } = Input;
@@ -99,7 +99,7 @@ function ArrayControl(props) {
             return;
         }
         dragInfo.dropId = id;
-        const mouseY = event.clientY + document.getElementById('hsiter-config-panel-form').scrollTop;
+        const mouseY = event.clientY + document.getElementById('hsiter-component-config-form').scrollTop;
         let target = event.currentTarget;
         const height = target.offsetHeight;
         let top = 0;

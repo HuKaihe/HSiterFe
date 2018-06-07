@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { message } from 'antd';
-import ConfigPanel from '../uis/ConfigPanel';
+import ConfigPanel from '../uis/ConfigPanel/ConfigPanel';
 import globalStore from '../../service/globalStore';
 import { deepCloneObj } from '../../service/service';
 
