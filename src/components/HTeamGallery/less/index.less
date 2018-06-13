@@ -1,0 +1,88 @@
+@import '../../../global/base.less';
+.HComponent.HTeamGallery {
+    overflow: hidden;
+    padding: 30px;
+    width: 100%;
+    .team-intro {
+        margin-bottom: 35px;
+        .gallery-title {
+            margin-bottom: 10px;
+            font-size: 35px;
+            text-align: center;
+            color: @black;
+            font-weight: bold;
+        }
+        .team-motto,
+        .team-contact {
+            font-size: 18px;
+            text-align: center;
+            color: @gray_5;
+        }
+        .team-contact {
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 14px;
+        }
+    }
+    .team-number-list {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        li {
+            width: 280px;
+            padding: 10px 30px;
+            &:hover .profile {
+                background-size: 130%;
+            }
+            .profile {
+                margin: 0 auto;
+                width: 200px;
+                height: 200px;
+                border-radius: 100px;
+                background-position: center;
+                background-size: 100%;
+                transition: all 0.25s;
+            }
+            .member-name {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+            .member-name {
+                margin-top: 10px;
+                font-size: 20px;
+                text-align: center;
+                color: @black;
+            }
+            .member-desc {
+                overflow: hidden;
+                height: 65px;
+                font-size: 14px;
+                text-align: center;
+                color: @gray_5;
+            }
+            .member-contact {
+                display: flex;
+                justify-content: space-around;
+                margin-top: 20px;
+                padding: 0 10px;
+                a {
+                    position: relative;
+                    top: 0;
+                    .center;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 20px;
+                    color: @white;
+                    font-size: 20px;
+                    background-color: @dark;
+                    transition: all 0.25s;
+                    &:hover {
+                        top: -5px;
+                    }
+                }
+            }
+        }
+    }
+}

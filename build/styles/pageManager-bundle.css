@@ -10219,6 +10219,9 @@ a {
   color: inherit;
   font-size: inherit;
 }
+a:link {
+  text-decoration: none;
+}
 html,
 body {
   margin: 0;
@@ -10279,6 +10282,9 @@ body {
 }
 .ant-modal-title {
   font-weight: lighter;
+}
+.ant-form-explain {
+  font-size: 12px;
 }
 body {
   background-color: #ffffff;
@@ -10368,10 +10374,10 @@ body {
 .hsiter-page-manager-app .hsiter-page-container .no-page {
   width: 500px;
   height: 300px;
-  margin: 20px auto;
+  margin: 40px auto;
   border-radius: 150px;
   text-align: center;
-  background: url(/images/none_bgd19086b8d1b0bf61bf9fd0ef01fd92ac.jpg) center / cover;
+  background: url(/images/no_page_bgf362ee7c91e2e36d53d73e21e1145b89.jpg) center / cover;
 }
 .hsiter-page-manager-app .page-card-container {
   display: flex;
@@ -10404,16 +10410,12 @@ body {
   height: 160px;
   border-radius: 5px 5px 0 0;
   color: #ffffff;
-  background: url(/images/card_bg_16676b03d364492becd2d9ccfe0effc14.jpg) center / cover;
+  background-size: 100%;
+  background-position: center;
+  transition: all 0.25s;
 }
-.hsiter-page-manager-app .hsiter-page-card .page-card-info.red-card {
-  background: url(/images/card_bg_28e2e1b3495b9e097721f078b72791c70.jpg) center / cover;
-}
-.hsiter-page-manager-app .hsiter-page-card .page-card-info.yellow-card {
-  background: url(/images/card_bg_3249bc20c85095efde2e11664042ccd0a.jpg) center / cover;
-}
-.hsiter-page-manager-app .hsiter-page-card .page-card-info.green-card {
-  background: url(/images/card_bg_4769e359930b3efd601dfb447f1d05e41.jpg) center / cover;
+.hsiter-page-manager-app .hsiter-page-card .page-card-info:hover {
+  background-size: 120%;
 }
 .hsiter-page-manager-app .hsiter-page-card .page-card-info .card-info-cover {
   position: absolute;
@@ -10436,6 +10438,9 @@ body {
 }
 .hsiter-page-manager-app .hsiter-page-card .page-card-info .card-info-cover .info-list li .icon {
   margin-right: 15px;
+}
+.hsiter-page-manager-app .hsiter-page-card .page-card-info .card-info-cover .info-list .publish-item {
+  text-align: right;
 }
 .hsiter-page-manager-app .hsiter-page-card .page-card-tool-bar {
   display: flex;
@@ -10501,6 +10506,9 @@ a {
   color: inherit;
   font-size: inherit;
 }
+a:link {
+  text-decoration: none;
+}
 html,
 body {
   margin: 0;
@@ -10561,6 +10569,9 @@ body {
 }
 .ant-modal-title {
   font-weight: lighter;
+}
+.ant-form-explain {
+  font-size: 12px;
 }
 .global-top {
   display: flex;
@@ -10646,38 +10657,46 @@ body {
   align-items: center;
   margin: 0 10px;
   color: #fff;
+  font-size: 12px;
 }
 .global-top .user-module .user-profile {
-  display: inline-block;
-  vertical-align: middle;
   width: 40px;
   height: 40px;
-  margin-left: 10px;
   border: 2px solid #938D8D;
   border-radius: 20px;
 }
-.global-top .user-module .signup {
-  font-size: 12px;
+.global-top .user-module .account-href-list {
+  width: 60px;
 }
-.hsiter-user-operate-list {
-  width: 120px;
+.global-top .user-module .account-href {
+  transition: all 0.1s;
 }
-.hsiter-user-operate-list button {
+.global-top .user-module .account-href:hover {
+  font-size: 14px;
+}
+.hsiter-account-operate-list {
+  padding-left: 5px;
+}
+.hsiter-account-operate-list button {
   display: inline-block;
   width: 100%;
   height: 100%;
   text-align: left;
   color: #938D8D;
   line-height: 2;
+  font-size: 12px;
 }
-.hsiter-user-operate-list button:hover {
+.hsiter-account-operate-list button:hover {
   color: #62C3F3;
 }
-.hsiter-user-operate-list button.off:hover {
+.hsiter-account-operate-list button.off:hover {
   color: #FF6A59;
 }
-.hsiter-user-operate-list button .icon {
+.hsiter-account-operate-list button .icon {
   margin-right: 10px;
+}
+.ant-popover-title {
+  font-weight: lighter;
 }
 
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZXMvcGFnZU1hbmFnZXItYnVuZGxlLmNzcyIsInNvdXJjZVJvb3QiOiIifQ==*/

@@ -176,6 +176,7 @@ function ArrayControl(props) {
                             {
                                 arrFields.map((field) => {
                                     const fieldConfig = arrUnit[field];
+                                    const inputType = fieldConfig.type;
                                     const {
                                         tip,
                                         label,
@@ -218,7 +219,7 @@ function ArrayControl(props) {
                                                         // initialValue: item[field],
                                                         rules,
                                                         ...controlDecorator,
-                                                    })(<Control />)
+                                                    })(<Control type={inputType} />)
                                                 }
                                             </FormItem>
                                         </div>

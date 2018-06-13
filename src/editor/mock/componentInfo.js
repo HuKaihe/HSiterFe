@@ -1,6 +1,7 @@
 import AntDesignNavInfo from '../../components/AntDesignNav/info';
 import HKHBlogBannerInfo from '../../components/HKHBlogBanner/info';
 import HKHBlogCollectionInfo from '../../components/HKHBlogCollection/info';
+import HTeamGalleryInfo from '../../components/HTeamGallery/info';
 
 const containerData = {
     margin: {
@@ -23,6 +24,7 @@ const componentTypeInfoList = [
     HKHBlogCollectionInfo,
     HKHBlogBannerInfo,
     AntDesignNavInfo,
+    HTeamGalleryInfo,
 ];
 
 componentTypeInfoList.forEach((componentTypeInfo) => {
@@ -37,9 +39,9 @@ const classification = [{
     children: [],
 },
 {
-    title: 'web原生组件',
-    icon: 'fa-html5',
-    code: 'origin',
+    title: '画廊',
+    icon: 'fa-pagelines',
+    code: 'gallery',
     children: [],
 },
 {
